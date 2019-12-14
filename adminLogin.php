@@ -1,3 +1,9 @@
+<?php 
+	session_start();
+	if (isset($_SESSION['username']) == false) {
+
+ ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,3 +71,11 @@
 		
 </body>
 </html>
+
+<?php 
+
+	}else{
+		header('location: view/AdminHome.php');
+	}
+
+ ?>

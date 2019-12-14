@@ -84,7 +84,7 @@
 
 <?php
 	}else{
-		header('location: ../index.php');
+		header('location: ../AdminLogin.php');
 		echo "You are not Admin";
 	}
 

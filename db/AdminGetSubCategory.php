@@ -1,6 +1,6 @@
 <?php 
 
-	require_once('../db/db.php');
+	require_once('../db/adminDB.php');
 
 	$catname = $_POST['key'];
 	$conn = getConnection();

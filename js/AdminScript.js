@@ -103,7 +103,7 @@ function getSubCategory(){
 	var name = document.getElementById('cat').value;
 
 	var xhttp = new XMLHttpRequest();
-	xhttp.open("POST", "../php/AdminGetSubCategory.php", true);
+	xhttp.open("POST", "../db/AdminGetSubCategory.php", true);
 	xhttp.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
   	xhttp.send("key="+name);
   	xhttp.onreadystatechange = function() {

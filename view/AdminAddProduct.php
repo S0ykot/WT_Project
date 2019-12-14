@@ -1,5 +1,5 @@
 <?php 
-	require_once('../php/AdminProductFunction.php');
+	require_once('../db/AdminProductFunction.php');
 	session_start();
 
 	if (isset($_SESSION['username'])) {	
@@ -81,7 +81,13 @@
 		$data = getProductLastId();
 	 ?>
 	<form method="POST" action="../php/AdminAddProductCheck.php" enctype="multipart/form-data">
-		
+		<div style="color: red;font-weight: bold;">
+			<?php 
+				if (isset($_GET['msg'])) {
+					echo $_GET['msg'].'<br><br>';
+				}
+			?>
+		</div>
 		<table align="center" bgcolor="CornflowerBlue" cellspacing="30px">
 			<tr>
 				<td colspan="4">
@@ -201,6 +207,6 @@
 
 <?php
 	}else{
-		header('location: ../index.php');
+		header('location: ../AdminLogin.php');
 	}
 ?>
