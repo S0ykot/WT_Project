@@ -6,7 +6,7 @@ if (!isset($_COOKIE['id'])) { ?>
 <html>
 <head>
 	<title>Accessoy Store</title>
-	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/buyerStyle.css">
 </head>
 
 <body>
@@ -44,13 +44,13 @@ if (!isset($_COOKIE['id'])) { ?>
 											
 												<li><a href="../index.php">Home</a></li>
 												
-												<li><a href="Product/smartphone.php">Smartphone</a></li>
+												<li><a href="ProductPages/smartphone.php">Smartphone</a></li>
 												
-												<li><a href="Product/computer.php">Computer</a></li>
+												<li><a href="ProductPages/computer.php">Computer</a></li>
 												
-												<li><a href="Product/camera.php">Camera</a></li>
+												<li><a href="ProductPages/camera.php">Camera</a></li>
 												
-												<li><a href="Product/lifestyle.php">Lifestyle</a></li>
+												<li><a href="ProductPages/lifestyle.php">Lifestyle</a></li>
 											</ul>
 										</menu>
 									</nav>

@@ -34,13 +34,13 @@ if (isset($_COOKIE['id'])) { ?>
 									&emsp;&emsp;&emsp;&ensp;
 									<a href="index.php"><font color="white">Home</font></a>
 									&emsp;&emsp;&emsp;
-									<a href="Product/smartphone.php"><font color="white">Smartphone</font></a>
+									<a href="ProductPages/smartphone.php"><font color="white">Smartphone</font></a>
 									&emsp;&emsp;&emsp;
-									<a href="Product/computer.php"><font color="white">Computer</font></a>
+									<a href="ProductPages/computer.php"><font color="white">Computer</font></a>
 									&emsp;&emsp;&emsp;
-									<a href="Product/camera.php"><font color="white">Camera</font></a>
+									<a href="ProductPages/camera.php"><font color="white">Camera</font></a>
 									&emsp;&emsp;&emsp;
-									<a href="Product/lifestyle.php"><font color="white">Lifestyle</font></a>
+									<a href="ProductPages/lifestyle.php"><font color="white">Lifestyle</font></a>
 								</nav>
 							</td>
 						</tr>
@@ -61,7 +61,7 @@ if (isset($_COOKIE['id'])) { ?>
 								<font color="tomato" size="8px">Your Cart is Empty !</font>
 							</td>
 							<tr>
-								<td rowspan="">There is no product in your cart</td>
+								<td rowspan="">There is no ProductPages in your cart</td>
 							</tr>
 							<tr>
 								<td height="20px"></td>

@@ -120,7 +120,7 @@ if (isset($_REQUEST['save']))
 					else
 						{unlink('$file.tmp');}
 
-					header('location: LogoutCheck.php');
+					header('location: buyerLogoutCheck.php');
 				}
 			}
 			else

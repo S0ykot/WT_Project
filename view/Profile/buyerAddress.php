@@ -30,13 +30,13 @@ if (isset($_SESSION['NAME'])) { ?>
 									&emsp;&emsp;&emsp;&ensp;
 									<a href="../index.php"><font color="white">Home</font></a>
 									&emsp;&emsp;&emsp;
-									<a href="../Product/smartphone.php"><font color="white">Smartphone</font></a>
+									<a href="../ProductPages/smartphone.php"><font color="white">Smartphone</font></a>
 									&emsp;&emsp;&emsp;
-									<a href="../Product/computer.php"><font color="white">Computer</font></a>
+									<a href="../ProductPages/computer.php"><font color="white">Computer</font></a>
 									&emsp;&emsp;&emsp;
-									<a href="../Product/camera.php"><font color="white">Camera</font></a>
+									<a href="../ProductPages/camera.php"><font color="white">Camera</font></a>
 									&emsp;&emsp;&emsp;
-									<a href="../Product/lifestyle.php"><font color="white">Lifestyle</font></a>
+									<a href="../ProductPages/lifestyle.php"><font color="white">Lifestyle</font></a>
 								</nav>
 							</td>
 						</tr>
@@ -57,7 +57,7 @@ if (isset($_SESSION['NAME'])) { ?>
 							<td width="15%" bgcolor="#E8EBEC">
 								<table border="0px" width="100%" cellpadding="0px" cellspacing="0px">
 									<tr>
-										<td><a href="../LogoutCheck.php"><font color="black">Logout</font></a></td>
+										<td><a href="../buyerLogoutCheck.php"><font color="black">Logout</font></a></td>
 									</tr>
 									<tr><td height="20px"></td></tr>
 									<tr>
@@ -108,7 +108,7 @@ if (isset($_SESSION['NAME'])) { ?>
 									<tr><td height="20px" bgcolor="#E8EBEC"></td></tr>
 									<tr>
 										<td bgcolor="#E8EBEC">
-											&emsp;<a href="changeAddress.php"><font color="#8F2792">Change Billing Addres</font></a>
+											&emsp;<a href="buyerChangeAddress.php"><font color="#8F2792">Change Billing Addres</font></a>
 										</td>
 									</tr>
 									<tr><td height="20px" bgcolor="#E8EBEC"></td></tr>
@@ -127,7 +127,7 @@ if (isset($_SESSION['NAME'])) { ?>
 									<tr><td height="20px" bgcolor="#E8EBEC"></td></tr>
 									<tr>
 										<td bgcolor="#E8EBEC">
-											&emsp;<a href="changeAddress.php"><font color="#8F2792">Change Shipping Addres</font></a>
+											&emsp;<a href="buyerChangeAddress.php"><font color="#8F2792">Change Shipping Addres</font></a>
 										</td>
 									</tr>
 									<tr><td height="20px" bgcolor="#E8EBEC"></td></tr>

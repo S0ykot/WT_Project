@@ -15,7 +15,7 @@ if (isset($_REQUEST['change']))
 	
 	if(empty($newAddress) == true)
 	{
-		header('location: ../../view/Profile/changeAddress.php');
+		header('location: ../../view/Profile/buyerChangeAddress.php');
 	}
 	else
 	{
@@ -45,7 +45,7 @@ if (isset($_REQUEST['change']))
 					else
 						{unlink('$file.tmp');}
 
-					header('location: ../LogoutCheck.php');
+					header('location: ../buyerLogoutCheck.php');
 	}
 }
 else

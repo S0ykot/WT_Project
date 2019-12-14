@@ -35,13 +35,13 @@
 									&emsp;&emsp;&emsp;&ensp;
 									<a href="../../index.php"><font color="white">Home</font></a>
 									&emsp;&emsp;&emsp;
-									<a href="../Product/smartphone.php"><font color="white">Smartphone</font></a>
+									<a href="../ProductPages/smartphone.php"><font color="white">Smartphone</font></a>
 									&emsp;&emsp;&emsp;
-									<a href="../Product/computer.php"><font color="white">Computer</font></a>
+									<a href="../ProductPages/computer.php"><font color="white">Computer</font></a>
 									&emsp;&emsp;&emsp;
-									<a href="../Product/camera.php"><font color="white">Camera</font></a>
+									<a href="../ProductPages/camera.php"><font color="white">Camera</font></a>
 									&emsp;&emsp;&emsp;
-									<a href="../Product/lifestyle.php"><font color="white">Lifestyle</font></a>
+									<a href="../ProductPages/lifestyle.php"><font color="white">Lifestyle</font></a>
 								</nav>
 							</td>
 						</tr>

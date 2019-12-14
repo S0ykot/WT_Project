@@ -17,15 +17,15 @@ if (isset($_REQUEST['savepass']))
 	
 	if(empty($oldPass) == true || empty($newPass) == true || empty($conNewPass) == true)
 	{
-		header('location: ../../view/Profile/changePass.php');
+		header('location: ../../view/Profile/buyerChangePass.php');
 	}
 	elseif($oldPass!=$_SESSION['Pass'])
 	{
-		header('location: ../../view/Profile/changePass.php');
+		header('location: ../../view/Profile/buyerChangePass.php');
 	}
 	elseif ($newPass!=$conNewPass) 
 	{
-		header('location: ../../view/Profile/changePass.php');
+		header('location: ../../view/Profile/buyerChangePass.php');
 	}
 	else
 	{
@@ -55,7 +55,7 @@ if (isset($_REQUEST['savepass']))
 					else
 						{unlink('$file.tmp');}
 
-					header('location: ../LogoutCheck.php');
+					header('location: ../buyerLogoutCheck.php');
 	}
 }
 else
