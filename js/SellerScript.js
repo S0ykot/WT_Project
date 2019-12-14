@@ -150,7 +150,7 @@ function updatePassword()
 	var cnp = document.getElementById('cnpass').value;
 	var cp = document.getElementById('cpass').value;
 
-	xhttp.open("POST", "SellerChangePassword.php", true);
+	xhttp.open("POST", "../php/SellerChangePassword.php", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send("npass="+np+"&cnpass="+cnp+"&cp="+cp);
 
