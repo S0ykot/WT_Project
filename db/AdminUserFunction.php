@@ -1,6 +1,6 @@
 <?php 
 
-	require_once('../db/db.php');
+	require_once('adminDB.php');
 
 	function validUser($uname, $password){
 

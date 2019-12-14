@@ -138,7 +138,7 @@
 
 <?php
 	}else{
-		header('location: ../index.php');
+		header('location: ../AdminLogin.php');
 	}
 
 ?>
