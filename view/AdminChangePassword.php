@@ -1,0 +1,144 @@
+<?php 
+	
+	if (isset($_POST['submit'])) {
+		
+		$old = $_POST['oldpass'];
+		$new = $_POST['newpass'];
+		$con = $_POST['connewpass'];
+		$myfile = fopen('UserList.txt', 'r');
+		while (!feof($myfile)) {
+				$data = fgets($myfile);
+				$str = explode('|', $data);
+				for ($i=0; $i <count($str) ; $i++) { 
+					if ($old == $str[$i+1]) {
+					
+						$str[$i+1] = $new;
+						$user = array('username' =>$str[$i] ,'password' =>$str[$i+1], 'email' =>$str[$i+2] , 'phone' =>$str[$i+3] , 'type' =>$str[$i+4]);
+					}
+					
+				}
+				print_r($user);
+			}
+
+		/*$myfile = fopen('UserList.txt', 'w');
+		fwrite($myfile,"");
+		fclose($myfile);*/
+	}
+
+
+
+
+	session_start();
+
+	if (isset($_SESSION['username'])) {	
+		
+?>
+
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Change Password</title>
+	<link rel="stylesheet" type="text/css" href="../css/Navigate.css">
+	<link rel="stylesheet" type="text/css" href="../css/Design.css">
+</head>
+<body style="background-color: CornflowerBlue;">
+	<div class="nav">
+
+		<a href="AdminHome.php" class="a1">Home</a>
+
+		<div class="dropdown">
+			<button class="dropbtn">Products</button>
+		    <div class="dropdown-content">
+		    	<a href="AdminAddProduct.php">Add Product</a>
+		    	<a href="AdminUpdateProduct.php">Update Product</a>
+		    	<a href="AdminRemoveProduct.php">Remove Product</a>
+		    	<a href="AdminProductDetails.php">Product Details</a>
+		  	</div>
+		</div>
+
+		<div class="dropdown">
+			<button class="dropbtn">Manage Users</button>
+		    <div class="dropdown-content">
+		    	<a href="AdminAddUser.php">Add User</a>
+		    	<a href="AdminUpdateUser.php">Update User</a>
+		    	<a href="AdminRemoveUser.php">Remove User</a>
+		    	<a href="AdminUserDetails.php">User Details</a>
+		  	</div>
+		</div>
+
+		<div class="dropdown">
+			<button class="dropbtn">Sales Report</button>
+		    <div class="dropdown-content">
+		    	<a href="AdminGenerateReport.php">Generate Report</a>
+		  	</div>
+		</div>
+
+		<div class="dropdown">
+			<button class="dropbtn">Promo Code</button>
+		    <div class="dropdown-content">
+		    	<a href="AdminGeneratePromoCode.php">Generate Promo Code</a>
+		    	<a href="AdminEnableOrDisablePromoCode.php">Enable/Disable Promo Code</a>
+		    	<a href="AdminPromoCodeDetails.php">Promo Code Details</a>
+		  	</div>
+		</div>
+
+		<div class="dropdown">
+			<button class="dropbtn">Profile</button>
+		    <div class="dropdown-content">
+		    	<a href="AdminProfileView.php">My Profile</a>
+		    	<a href="AdminChangePassword.php">Change Password</a>
+		    	<a href="../php/AdminLogout.php">Logout</a>
+		  	</div>
+		</div>
+	</div>
+	<form method="POST" action="">
+		<table align="center" bgcolor="CornflowerBlue" cellspacing="30px">
+			<tr>
+				<td colspan="2">
+					<center><h1><font color="DarkBlue" face="Cursive"><u>Change Password</u></font></h1></center>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Old Password:
+				</td>
+				<td>
+					<input type="Password" name="opass" placeholder="Enter Old Password" size="27">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					New Password:
+				</td>
+				<td>
+					<input type="Password" name="npass" placeholder="Enter New Password" size="27">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Confirm New Password:
+				</td>
+				<td>
+					<input type="Password" name="cnpass" placeholder="Enter Confirm New Password" size="27">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="submit" name="submit" value="Change Password">
+				</td>
+				<td >
+					<input type="reset" name="reset" value="Reset">
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
+
+<?php
+	}else{
+		header('location: ../index.php');
+	}
+
+?>
