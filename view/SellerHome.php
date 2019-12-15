@@ -23,11 +23,13 @@ if ($_SESSION['name'] AND $_SESSION['type']) {
 <br>
 <div id="left-sticky">
 	<div id="menu">
-		<button id="btn1" onclick="home();title_change(1);">Home</button>
+		<button id="btn1" onclick="home()">Home</button>
 		<br><br>
-		<button id="btn2" onclick="details();title_change(2);">Product</button>
+		<button id="btn2" onclick="product_option()">Product</button>
 		<br><br>
-		<button id="btn3" onclick="profileOption();title_change(3);">Setting</button>
+		<button id="btn3" onclick="profileOption()">Setting</button>
+		<br><br>
+		<button id="btn9" onclick="">Customer List</button>
 		<br><br>
 		<button id="btn4">Report</button>
 		<br><br>

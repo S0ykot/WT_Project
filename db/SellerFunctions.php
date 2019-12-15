@@ -35,6 +35,17 @@ function product_details()
 }
 
 
+function product_search($search)
+{
+	$conn = getConnection();
+	$query="SELECT * from product where name like '%$search%'";
+	$result = mysqli_query($conn,$query);
+	return $result ;
+}
+
+
+
+
 function profile($id)
 {
 	$conn = getConnection();

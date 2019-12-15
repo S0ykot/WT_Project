@@ -25,7 +25,7 @@ function login_show()
 }
 
 
-function details()
+function product_details()
 {
 	window.location='SellerHome.php#product';
 	if (window.location.hash=="#product") {
@@ -97,7 +97,7 @@ function profileSettings()
 	  xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
 	     	document.getElementById('product').innerHTML = this.responseText;
-	     	document.getElementById('path').innerHTML = "==>Settings";
+	     	document.getElementById('path').innerHTML = "==>(Options)Profile Update";
 	    }
 	  };
 	}
@@ -137,30 +137,60 @@ function chnagePassword()
 	  xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
 	     	document.getElementById('product').innerHTML = this.responseText;
-	     	document.getElementById('path').innerHTML = "==>Change Password";
+	     	document.getElementById('path').innerHTML = "==>(Options) Change Password";
+	    }
+	  };
+	}
+}
+
+function search_product()
+{
+	var re = document.getElementById('pdata');
+	var dta = document.getElementById('src').value;
+
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "../php/SellerSearchProduct.php", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	 xhttp.send("search="+dta);
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	     	re.innerHTML = this.responseText;
+	    }
+	  };
+
+}
+
+function product_search_view()
+{
+	window.location='SellerHome.php#productSearch';
+	if (window.location.hash=="#productSearch") {
+		var xhttp = new XMLHttpRequest();
+	xhttp.open("GET", "SellerProductSearch.php", true);
+	xhttp.send();
+	
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	     	document.getElementById('product').innerHTML = this.responseText;
+	     	document.getElementById('path').innerHTML = "==>(Options) Product Search";
 	    }
 	  };
 	}
 }
 
 
-function updatePassword()
+function product_option()
 {
-	var np = document.getElementById('npass').value;
-	var cnp = document.getElementById('cnpass').value;
-	var cp = document.getElementById('cpass').value;
-
-	xhttp.open("POST", "../php/SellerChangePassword.php", true);
-	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send("npass="+np+"&cnpass="+cnp+"&cp="+cp);
-
+	window.location='SellerHome.php#productOption';
+	if (window.location.hash=="#productOption") {
+		var xhttp = new XMLHttpRequest();
+	xhttp.open("GET", "SellerProductOption.php", true);
+	xhttp.send();
+	
 	  xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
-	    	alert(1);
 	     	document.getElementById('product').innerHTML = this.responseText;
-	     	document.getElementById('path').innerHTML = "==>Change Password";
+	     	document.getElementById('path').innerHTML = "==>Option";
 	    }
 	  };
-
-	  
+	}
 }
