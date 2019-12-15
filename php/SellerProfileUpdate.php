@@ -23,8 +23,8 @@ if (isset($_POST['update'])) {
 
 
 	if (empty($fullname) OR empty($email) OR empty($cpass)) {
-		header('Location:../view/SellerProfileEdit.php');
-		echo "empty value";
+		echo "<script>alert('Null submission')</script>";
+				echo "<script>window.location='../view/SellerHome.php#profile';</script>";
 	}
 	else
 	{		

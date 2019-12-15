@@ -2,7 +2,7 @@
 error_reporting(0);
 session_start();
 require_once '../db/SellerFunctions.php';
-if ($_SESSION['name'] AND $_SESSION['type']) {
+if ($_SESSION['name'] AND $_SESSION['type'] AND $_COOKIE['timeout']) {
 
 	$data =profile($_SESSION['ID']);
 	while ($row=mysqli_fetch_assoc($data))

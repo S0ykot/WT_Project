@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['name'] AND $_SESSION['type']) {
+if ($_SESSION['name'] AND $_SESSION['type'] AND $_COOKIE['timeout']) {
 
 ?>
 
@@ -29,7 +29,7 @@ if ($_SESSION['name'] AND $_SESSION['type']) {
 		<br><br>
 		<button id="btn3" onclick="profileOption()">Setting</button>
 		<br><br>
-		<button id="btn9" onclick="">Customer List</button>
+		<button id="btn9" onclick="customer_details()">Customer List</button>
 		<br><br>
 		<button id="btn4">Report</button>
 		<br><br>

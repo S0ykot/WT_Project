@@ -16,6 +16,8 @@ function auth_check($uname,$pass)
 		$_SESSION['type']=2;
 		date_default_timezone_set("Asia/Dhaka");
 		$_SESSION['time']=date("h:i:sa");
+		$cookie_value = md5($row['id'].$row['username']);
+		setcookie('timeout',$cookie_value,time()+1800,'/');
 		return TRUE;
 	}
 	else
@@ -29,7 +31,7 @@ function auth_check($uname,$pass)
 function product_details()
 {
 	$conn = getConnection();
-	$query="SELECT * from product";
+	$query="SELECT * from product,category,subcategory where (product.subcat_id=subcategory.subcat_id) AND (category.cat_id=subcategory.cat_id)";
 	$result = mysqli_query($conn,$query);
 	return $result ;
 }
@@ -81,6 +83,16 @@ function updatePassword($newPass,$id)
 	{
 		return FALSE;
 	}
+}
+
+
+
+function customer_details()
+{
+	$conn = getConnection();
+	$query = "SELECT * from customer_user";
+	$result = mysqli_query($conn,$query);
+	return $result;
 }
 
 
