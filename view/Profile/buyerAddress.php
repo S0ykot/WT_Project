@@ -28,7 +28,7 @@ if (isset($_SESSION['NAME'])) { ?>
 							<td height="30px" bgcolor="dodgerblue">
 								<nav>
 									&emsp;&emsp;&emsp;&ensp;
-									<a href="../index.php"><font color="white">Home</font></a>
+									<a href="../../index.php"><font color="white">Home</font></a>
 									&emsp;&emsp;&emsp;
 									<a href="../ProductPages/smartphone.php"><font color="white">Smartphone</font></a>
 									&emsp;&emsp;&emsp;
