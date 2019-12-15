@@ -147,3 +147,21 @@ a
 	background-color: black;
  	transition: all 0.5s;
 }
+
+#contentBlock{
+	padding-top: 50px;
+	padding-bottom: 10px;
+	background-color: #f1f1f1;
+}
+#productBlock{
+	padding-top: 50px;
+	padding-bottom: 10px;
+	background-color: white;
+}
+#addCartBtn{
+	height: 50px;
+	width: 280px;
+	background-color: tomato;
+	color: white;
+	border:none;
+}
