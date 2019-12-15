@@ -22,5 +22,29 @@ function registration($id,$pass,$name,$email,$dob,$address,$gender,$con)
 		return false;
 }
 
+function updatePass($username,$newPass)
+{
+	$conn= getConnection();
+	$sql = "update customer_user set password='{$newPass}' where username='{$username}'";
+	if(mysqli_query($conn, $sql))
+	{
+		return true;	
+	}
+	else 
+		return false;
+}
+
+function updateAddress($username,$newAddress)
+{
+	$conn= getConnection();
+	$sql = "update customer_user set billing_address='{$newAddress}',shipping_address='{$newAddress}' where username='{$username}'";
+	if(mysqli_query($conn, $sql))
+	{
+		return true;	
+	}
+	else 
+		return false;
+}
+
 
 ?>
