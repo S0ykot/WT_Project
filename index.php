@@ -63,13 +63,13 @@
 								<table border="1px" width="100%" cellpadding="0px" cellspacing="0px">
 									<tr>
 										<td width="20%" align="center"> <img src="view/Images/w1.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px"><a href="view/ProductPages/ProductPagesDetails.php">Watch </a> 	<br>1200tk <br><br> Available</td>
+											<br><br><hr width="120px"><a href="view/ProductPages/productDetails.php">Watch </a> 	<br>1200tk <br><br> Available</td>
 										<td width="20%" align="center"> <img src="view/Images/w1.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px"><a href="view/ProductPages/ProductPagesDetails.php">Watch </a>	<br>1200tk <br><br> Available</td>
+											<br><br><hr width="120px"><a href="view/ProductPages/productDetails.php">Watch </a>	<br>1200tk <br><br> Available</td>
 										<td width="20%" align="center"> <img src="view/Images/w1.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px"><a href="view/ProductPages/ProductPagesDetails.php">Watch </a>		<br>1200tk <br><br> Available</td>
+											<br><br><hr width="120px"><a href="view/ProductPages/productDetails.php">Watch </a>		<br>1200tk <br><br> Available</td>
 										<td width="20%" align="center"> <img src="view/Images/w1.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px"><a href="view/ProductPages/ProductPagesDetails.php">Watch </a>		<br>1200tk <br><br> Available</td>
+											<br><br><hr width="120px"><a href="view/ProductPages/productDetails.php">Watch </a>		<br>1200tk <br><br> Available</td>
 									</tr>
 								</table>
 							</td>
@@ -82,13 +82,13 @@
 								<table border="1px" width="100%" cellpadding="0px" cellspacing="0px">
 									<tr>
 										<td width="20%" align="center"> <img src="view/Images/mobileLense.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px"><a href="view/ProductPages/ProductPagesDetails.php">Smartphone Camera Lense </a> 	<br>2000tk <br><br> Available</td>
+											<br><br><hr width="120px"><a href="view/ProductPages/productDetails.php">Smartphone Camera Lense </a> 	<br>2000tk <br><br> Available</td>
 										<td width="20%" align="center"> <img src="view/Images/mobileLense.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px"><a href="view/ProductPages/ProductPagesDetails.php">Smartphone Camera Lense </a>		<br>2000tk <br><br> Available</td>
+											<br><br><hr width="120px"><a href="view/ProductPages/productDetails.php">Smartphone Camera Lense </a>		<br>2000tk <br><br> Available</td>
 										<td width="20%" align="center"> <img src="view/Images/mobileLense.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px"><a href="view/ProductPages/ProductPagesDetails.php">Smartphone Camera Lense </a>		<br>2000tk <br><br> Available</td>
+											<br><br><hr width="120px"><a href="view/ProductPages/productDetails.php">Smartphone Camera Lense </a>		<br>2000tk <br><br> Available</td>
 										<td width="20%" align="center"> <img src="view/Images/mobileLense.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px"><a href="view/ProductPages/ProductPagesDetails.php">Smartphone Camera Lense </a>		<br>2000tk <br><br> Available</td>
+											<br><br><hr width="120px"><a href="view/ProductPages/productDetails.php">Smartphone Camera Lense </a>		<br>2000tk <br><br> Available</td>
 									</tr>
 								</table>
 							</td>
@@ -101,13 +101,13 @@
 								<table border="1px" width="100%" cellpadding="0px" cellspacing="0px">
 									<tr>
 										<td width="20%" align="center"> <img src="view/Images/cooler.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px"><a href="view/ProductPages/ProductPagesDetails.php">Laptop Cooler </a>	<br>6000tk <br><br> Available</td>
+											<br><br><hr width="120px"><a href="view/ProductPages/productDetails.php">Laptop Cooler </a>	<br>6000tk <br><br> Available</td>
 										<td width="20%" align="center"> <img src="view/Images/cooler.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px"><a href="view/ProductPages/ProductPagesDetails.php">Laptop Cooler </a>		<br>6000tk <br><br> Available</td>
+											<br><br><hr width="120px"><a href="view/ProductPages/productDetails.php">Laptop Cooler </a>		<br>6000tk <br><br> Available</td>
 										<td width="20%" align="center"> <img src="view/Images/cooler.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px"><a href="view/ProductPages/ProductPagesDetails.php">Laptop Cooler </a>		<br>6000tk <br><br> Available</td>
+											<br><br><hr width="120px"><a href="view/ProductPages/productDetails.php">Laptop Cooler </a>		<br>6000tk <br><br> Available</td>
 										<td width="20%" align="center"> <img src="view/Images/cooler.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px"><a href="view/ProductPages/ProductPagesDetails.php">Laptop Cooler </a>		<br>6000tk <br><br> Available</td>
+											<br><br><hr width="120px"><a href="view/ProductPages/productDetails.php">Laptop Cooler </a>		<br>6000tk <br><br> Available</td>
 									</tr>
 								</table>
 							</td>
