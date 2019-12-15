@@ -1,5 +1,5 @@
 <?php 
-
+error_reporting(0);
 session_start();
 require_once '../db/SellerFunctions.php';
 
@@ -16,17 +16,20 @@ if (isset($_POST['update'])) {
 
 
 	if (empty($np) OR empty($cnp) OR empty($cp)) {
-		header('Location:../view/SellerPasswordChange.php?msg=null submission');
+		echo "<script>alert('NULL submission')</script>";
+				echo "<script>window.location='../view/SellerHome.php#profile';</script>";
 	}
 	else
 	{
 		if ($np!=$cnp) {
-			header("Location:../view/SellerPasswordChange.php?msg=Current password didn't match");
+			echo "<script>alert('Confirm password not match')</script>";
+				echo "<script>window.location='../view/SellerHome.php#profile';</script>";
 		}
 		else
 		{
 			if ($cp!=$row['password']) {
-			header('Location:../view/SellerPasswordChange.php?msg=Wrong current password');
+				echo "<script>alert('Current password wrong')</script>";
+				echo "<script>window.location='../view/SellerHome.php#profile';</script>";
 		}
 			else
 			{
@@ -42,7 +45,8 @@ if (isset($_POST['update'])) {
 	}
 	else
 	{
-		header('Location:../view/SellerPasswordChange.php?msg=update failed');
+		echo "<script>alert('Something Wrong')</script>";
+			echo "<script>window.location='../view/SellerHome.php#profile';</script>";
 	}
 }
 

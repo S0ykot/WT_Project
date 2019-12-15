@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require_once 'db.php';
+require_once 'SellerDB.php';
 
 function auth_check($uname,$pass)
 {
@@ -33,6 +33,17 @@ function product_details()
 	$result = mysqli_query($conn,$query);
 	return $result ;
 }
+
+
+function product_search($search)
+{
+	$conn = getConnection();
+	$query="SELECT * from product where name like '%$search%'";
+	$result = mysqli_query($conn,$query);
+	return $result ;
+}
+
+
 
 
 function profile($id)

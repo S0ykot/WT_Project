@@ -37,6 +37,7 @@ th,td {
 	<h3><?=$msg;?></h3>
 	<h2>Change Password</h2>
 </center>
+	<form action="../php/SellerChangePassword.php" method="POST">
 	<table border="1" align="center">
 	<tr>
 		<td>New Password:</td>
@@ -54,8 +55,14 @@ th,td {
 	<tr>
 		<td colspan="2"></td>
 	</tr>
+
+	<tr>
+		<td colspan="2"> <input type="submit" name="update" value="update"></td>
+	</tr>
 </table>
-<button type="button" onclick="updatePassword()" name="update">Update</button>
+
+</form>
+
 
 
 <?php

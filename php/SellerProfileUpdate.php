@@ -23,14 +23,14 @@ if (isset($_POST['update'])) {
 
 
 	if (empty($fullname) OR empty($email) OR empty($cpass)) {
-		//header('Location:../view/SellerProfileEdit.php');
+		header('Location:../view/SellerProfileEdit.php');
 		echo "empty value";
 	}
 	else
 	{		
 		if ($cpass!=$_SESSION['pass']) {
-				header('Location:../view/SellerProfileEdit.php?msg=current password wrong');
-			echo "password falied";
+				echo "<script>alert('Current password not matching')</script>";
+				echo "<script>window.location='../view/SellerHome.php#profile';</script>";
 			}
 			else{
 				if ((pathinfo($pImg, PATHINFO_EXTENSION) == "gif") OR (pathinfo($pImg, PATHINFO_EXTENSION) == "jpg") OR (pathinfo($pImg, PATHINFO_EXTENSION) == "png") OR (pathinfo($pImg, PATHINFO_EXTENSION) == "jpge")) 
@@ -43,12 +43,12 @@ if (isset($_POST['update'])) {
 							$x = move_uploaded_file($_FILES['profile']['tmp_name'], $dir);
 							if ($x) {
 								echo "<script>alert('Profile updated')</script>";
-								echo "<script>window.location='../view/SellerProfile.php';</script>";
+								echo "<script>window.location='../view/SellerHome.php#profile';</script>";
 							}
 							else
 							{
-								
-								header('Location:../view/SellerProfileEdit.php?msg=Updated');
+								echo "<script>alert('Profile updated')</script>";
+								echo "<script>window.location='../view/SellerHome.php#profile';</script>";
 							}
 						}
 						else
@@ -60,6 +60,7 @@ if (isset($_POST['update'])) {
 					}
 					else
 					{
+						echo "<script>alert('Something wrong')</script>";
 						header('Location:../view/SellerProfileEdit.php?msg=Something Wrong');
 					}
 
