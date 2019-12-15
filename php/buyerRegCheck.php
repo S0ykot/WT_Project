@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+require_once('../db/buyerFunctions.php');
 
 $id = "";
 $name = "";
@@ -109,10 +110,7 @@ if (isset($_REQUEST['userreg'])) {
 				}
 				else
 				{
-					$myFile = fopen('../BuyerInfo.txt', 'a');
-					fwrite($myFile, $id."|".$pass."|".$name."|".$email."|".$dob."|".$address."|".$gender."|".$con."\n");
-					fclose($myFile);
-
+					$user = registration($id,$pass,$name,$email,$dob,$address,$gender,$con);
 					header('location: ../view/buyerLogin.php');
 				}
 			}

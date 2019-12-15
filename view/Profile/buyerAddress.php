@@ -78,7 +78,7 @@ if (isset($_SESSION['NAME'])) { ?>
 									</tr>
 									<tr><td height="20px"></td></tr>
 									<tr>
-										<td><a href="buyerDashboard.php"><font color="black">My Dashboard</font></a></td>
+										<td><a href="../../php/buyerLogoutCheck.php"><font color="black">My Dashboard</font></a></td>
 									</tr>
 									<tr><td height="20px"></td></tr>
 									<tr>
