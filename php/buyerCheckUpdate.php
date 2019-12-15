@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-
+require_once('../db/buyerFunctions.php');
 $newName = "";
 $newEmail = "";
 $newCon = "";
@@ -94,31 +94,7 @@ if (isset($_REQUEST['save']))
 				}
 				else
 				{
-					$file = "../BuyerInfo.txt";
-
-					$read = fopen($file, 'r');
-					$write = fopen('$file.tmp', 'w');
-
-					$replaced = false;
-
-					while(!feof($read))
-					{
-						$line = fgets($read);
-						if (stristr($line, $username)) {
-							$line = $username."|".$_SESSION['Pass']."|".$newName."|".$newEmail."|".$_SESSION['DOB']."|".$_SESSION['ADDRESS']."|".$_SESSION['Gender']."|".$newCon."\n";
-							$replaced = true;
-						}
-						fwrite($write,$line);
-					}
-
-					fclose($read);
-					fclose($write);
-
-					if ($replaced) {
-						rename('$file.tmp', $file);
-					}
-					else
-						{unlink('$file.tmp');}
+					$update = updateInfo($username,$newName,$newEmail,$newCon);
 
 					header('location: buyerLogoutCheck.php');
 				}

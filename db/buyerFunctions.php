@@ -46,5 +46,18 @@ function updateAddress($username,$newAddress)
 		return false;
 }
 
+function updateInfo($username,$newName,$newEmail,$newCon)
+{
+	$conn= getConnection();
+	$sql = "update customer_user set fullname='{$newName}',email='{$newEmail}',phone='{$newCon}' where username='{$username}'";
+	if(mysqli_query($conn, $sql))
+	{
+		return true;	
+	}
+	else 
+		return false;
+}
+
+
 
 ?>
