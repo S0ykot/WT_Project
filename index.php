@@ -127,13 +127,13 @@
 							<td width="10%"></td>
 							<td align="center">
 								<div class="footerHeader"><h4>KNOW US</h4></div>
-								<a href="FooterInfo/aboutus.php"><div class="footerContents">About Us</div></a>
-								<a href="FooterInfo/privacypolicy.php"><div class="footerContents">Privacy Policy</div></a>
-								<a href="FooterInfo/cookiepolicy.php"><div class="footerContents">Cookie Ploicy</div></a>
-								<a href="FooterInfo/warrentypolicy.php"><div class="footerContents">Warrenty Policy</div></a>
-								<a href="FooterInfo/shippingpolicy.php"><div class="footerContents">Shipping Policy</div></a>
-								<a href="FooterInfo/whyshopping.php"><div class="footerContents">Why Shopping Here</div></a>
-								<a href="FooterInfo/termspolicy.php"><div class="footerContents">Terms & Conditions</div></a>
+								<a href="view/FooterInfo/aboutus.php"><div class="footerContents">About Us</div></a>
+								<a href="view/FooterInfo/privacypolicy.php"><div class="footerContents">Privacy Policy</div></a>
+								<a href="view/FooterInfo/cookiepolicy.php"><div class="footerContents">Cookie Ploicy</div></a>
+								<a href="view/FooterInfo/warrentypolicy.php"><div class="footerContents">Warrenty Policy</div></a>
+								<a href="view/FooterInfo/shippingpolicy.php"><div class="footerContents">Shipping Policy</div></a>
+								<a href="view/FooterInfo/whyshopping.php"><div class="footerContents">Why Shopping Here</div></a>
+								<a href="view/FooterInfo/termspolicy.php"><div class="footerContents">Terms & Conditions</div></a>
 							</td>
 							<td width="10%"></td>
 							<td align="center" valign="top">
@@ -141,26 +141,26 @@
 								<?php
 									if (isset($_COOKIE['id'])) {
 								?>
-										<a href="Profile/buyerDashboard.php"><div class="footerContents">Your Account</div></font></a>
-										<a href="Profile/buyerOrder.php"><div class="footerContents">Your Orders</div></a>
+										<a href="view/Profile/buyerDashboard.php"><div class="footerContents">Your Account</div></font></a>
+										<a href="view/Profile/buyerOrder.php"><div class="footerContents">Your Orders</div></a>
 								<?php }
 									else 
 										{
 								?>
-										<a href="buyerLogin.php"><div class="footerContents">Your Account</div></a>
-										<a href="buyerLogin.php"><div class="footerContents">Your Orders</div></a>
+										<a href="view/buyerLogin.php"><div class="footerContents">Your Account</div></a>
+										<a href="view/buyerLogin.php"><div class="footerContents">Your Orders</div></a>
 								<?php
 									}
 								?>
-								<a href="FooterInfo/howorder.php"><div class="footerContents">How to make an Order</div></a>
+								<a href="view/FooterInfo/howorder.php"><div class="footerContents">How to make an Order</div></a>
 							</td>
 							<td width="10%"></td>
 							<td align="center" valign="top">
 								<div class="footerHeader"><h4>GET IN TOUCH US</h4></div>
-								<a href="FooterInfo/contactus.php"><div class="footerContents">Contact Us</div></a>
+								<a href="view/FooterInfo/contactus.php"><div class="footerContents">Contact Us</div></a>
 								<div class="footerHeader"><h4>PAYMENT METHODS</h4></div>
-								<a href="FooterInfo/cod.php"><div class="footerContents">Cash On Delivery</div></a>
-								<a href="FooterInfo/bkash.php"><div class="footerContents">bKash</div></a>
+								<a href="view/FooterInfo/cod.php"><div class="footerContents">Cash On Delivery</div></a>
+								<a href="view/FooterInfo/bkash.php"><div class="footerContents">bKash</div></a>
 							</td>
 							<td width="10%"></td>
 							<td align="center" valign="top">

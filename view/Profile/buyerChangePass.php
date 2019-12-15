@@ -18,7 +18,7 @@ if (isset($_SESSION['NAME'])) { ?>
 							<td width="20%"><a href="buyerDashboard.php">
 								<font color="tomato">My Account</font></a>
 								&emsp;&emsp;
-								<a href="../cart.php"><font color="#8F2792">Cart</font></a>
+								<a href="../../cart.php"><font color="#8F2792">Cart</font></a>
 							</td>
 						</tr>
 					</table>
