@@ -189,6 +189,10 @@ function validateDescription(){
 		{
 			errdes.innerHTML = "Description can not be empty";
 		}
+		else if (description.indexOf('.') == -1) 
+		{
+			errdes.innerHTML = "Description is not valid";
+		}	
 		else{
 			errdes.innerHTML = "";
 		}
@@ -221,4 +225,18 @@ function validateFile(){
 			}
         });
     });
+}
+
+function getProductBySearch(){
+	var search = document.getElementById('key').value;
+
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "../db/AdminGetSearchProduct.php", true);
+	xhttp.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+  	xhttp.send("skey="+search);
+  	xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    	document.getElementById("select").innerHTML = this.responseText;
+    	//alert(this.responseText);
+    }};
 }

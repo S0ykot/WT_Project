@@ -179,8 +179,8 @@
 				<td>
 					<select name="act" id="pact" onchange="validateActivity()">
 						<option value="">Select Activity</option>
-						<option value="1">Available</option>
-						<option value="0">Sold-Out</option>
+						<option value="Available">Available</option>
+						<option value="Sold-Out">Sold-Out</option>
 					</select>
 					<div id="eract" style="color: red;font-weight: bold;"></div>
 				</td>

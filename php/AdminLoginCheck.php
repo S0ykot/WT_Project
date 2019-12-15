@@ -16,7 +16,8 @@
 				
 				$_SESSION['username'] = $uname;
 				$_SESSION['password'] = $pass;
-
+				$_SESSION['time'] = date("h:i:sa");
+				
 				header('location: ../view/AdminHome.php');
 
 			}else{
