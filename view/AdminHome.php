@@ -67,6 +67,7 @@
 		</div>
 	</div>
 
+
 	<div style="width: 15%; margin-top: 2.5%; margin-left: 5%">
 		<a href="AdminAddProduct.php" class="a1">Add Product</a>
 		<a href="AdminAddUser.php" class="a1">Add User</a>
@@ -76,7 +77,9 @@
 	</div>
 
 	<div style="background-color: DodgerBlue; padding: 5px; text-align: center; margin-top: 2.5%">
-		<p style="text-align: right; font-weight: bold;">Admin Dashboard</p>
+		<p style="text-align: right; font-weight: bold;">Username: <?php echo $_SESSION['username']; ?></p>
+		
+		<p style="text-align: right; font-weight: bold;">Last Login Time: <?php echo $_SESSION['time']; ?></p>
 	</div>
 </body>
 </html>
