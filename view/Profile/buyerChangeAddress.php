@@ -2,42 +2,59 @@
 
 if (isset($_SESSION['NAME'])) { ?>
 
-
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Accessoy Store</title>
+	<link rel="stylesheet" href="../../css/buyerStyle.css">
 </head>
 
 <body>
 					<table border="0px" width="100%" cellpadding="0px" cellspacing="0px" bgcolor="#f1f1f1">
 						<tr>
-							<td width="20%" height="80px" align="center"><font size="20px" color="dodgerblue"><b>TITLE</b></font></td>
+							<td width="20%" height="70px" align="center"><font size="20px" color="dodgerblue"><b>TITLE</b></font></td>
 							<td width="">
-								<input size="30px" type="text" value="" placeholder="Search"><input type="submit" value="Search">
+								<input type="text" id="search" placeholder="Search..."><input type="submit" value="Search" id="btn">
 							</td>
-							<td width="20%"><a href="buyerDashboard.php">
-								<font color="tomato">My Account</font></a>
-								&emsp;&emsp;
-								<a href="../cart.php"><font color="#8F2792">Cart</font></a>
+							<td width="30%">
+								<?php
+									if (isset($_COOKIE['id'])) {
+										?>
+										<a href="Profile/buyerDashboard.php"><div id="myAccount">My Account</div></a>
+										<?php
+									}
+									else{
+										?>
+										 <a href="buyerLogin.php"><div id="sign">Sign In</div></a>
+										 <?php
+									}
+									?>
+
+								<a href="cart.php"><div id="cart">Cart</div></a>
 							</td>
 						</tr>
 					</table>
 					<table border="0px" width="100%" cellpadding="0px" cellspacing="0px">
 						<tr>
 							<td height="30px" bgcolor="dodgerblue">
-								<nav>
-									&emsp;&emsp;&emsp;&ensp;
-									<a href="../../index.php"><font color="white">Home</font></a>
-									&emsp;&emsp;&emsp;
-									<a href="../ProductPages/smartphone.php"><font color="white">Smartphone</font></a>
-									&emsp;&emsp;&emsp;
-									<a href="../ProductPages/computer.php"><font color="white">Computer</font></a>
-									&emsp;&emsp;&emsp;
-									<a href="../ProductPages/camera.php"><font color="white">Camera</font></a>
-									&emsp;&emsp;&emsp;
-									<a href="../ProductPages/lifestyle.php"><font color="white">Lifestyle</font></a>
-								</nav>
+								<div id="menuBar">
+									<nav id="menuContainer">
+										<menu id="listContainer">
+											<ul id="lists">
+											
+												<li><a href="../../index.php">Home</a></li>
+												
+												<li><a href="../ProductPages/smartphone.php">Smartphone</a></li>
+												
+												<li><a href="../ProductPages/computer.php">Computer</a></li>
+												
+												<li><a href="../ProductPages/camera.php">Camera</a></li>
+												
+												<li><a href="../ProductPages/lifestyle.php">Lifestyle</a></li>
+											</ul>
+										</menu>
+									</nav>
+								</div>
 							</td>
 						</tr>
 					</table>
@@ -47,7 +64,7 @@ if (isset($_SESSION['NAME'])) { ?>
 					<table border="0px" width="100%" cellpadding="0px" cellspacing="0px">
 						<tr>
 							<td height="5px" bgcolor="white" colspan="1">
-							<td height="5px" bgcolor="dodgerblue" colspan="2"></td>
+							<td height="5px" bgcolor="tomato" colspan="2"></td>
 							<td height="5px" bgcolor="white" colspan="1">
 							<td height="5px" bgcolor="white" colspan="2"></td>
 						</tr>
@@ -127,7 +144,7 @@ if (isset($_SESSION['NAME'])) { ?>
 									
 									<tr>
 										<td bgcolor="#E8EBEC">
-											&emsp;&nbsp;<input type="submit" name="change" value="Change">
+											&emsp;&nbsp;<input type="submit" id="loginRegBtn" name="change" value="Change">
 										</td>
 									</tr>
 									<tr><td height="20px" bgcolor="#E8EBEC"></td></tr>
@@ -145,33 +162,45 @@ if (isset($_SESSION['NAME'])) { ?>
 						<tr>
 							<td width="10%"></td>
 							<td align="center">
-								<h4>KNOW US</h4>
-								<a href="../FooterInfo/aboutus.php"><font color="black">About Us</font></a> <br><br>
-								<a href="../FooterInfo/privacypolicy.php"><font color="black">Privacy Policy</font></a> <br><br>
-								<a href="../FooterInfo/cookiepolicy.php"><font color="black">Cookie Ploicy</font></a> <br><br>
-								<a href="../FooterInfo/warrentypolicy.php"><font color="black">Warrenty Policy</font></a> <br><br>
-								<a href="../FooterInfo/shippingpolicy.php"><font color="black">Shipping Policy</font></a> <br><br>
-								<a href="../FooterInfo/whyshopping.php"><font color="black">Why Shopping Here</font></a> <br><br>
-								<a href="../FooterInfo/termspolicy.php"><font color="black">Terms & Conditions</font></a> <br><br>
+								<div class="footerHeader"><h4>KNOW US</h4></div>
+								<a href="../FooterInfo/aboutus.php"><div class="footerContents">About Us</div></a>
+								<a href="../FooterInfo/privacypolicy.php"><div class="footerContents">Privacy Policy</div></a>
+								<a href="../FooterInfo/cookiepolicy.php"><div class="footerContents">Cookie Ploicy</div></a>
+								<a href="../FooterInfo/warrentypolicy.php"><div class="footerContents">Warrenty Policy</div></a>
+								<a href="../FooterInfo/shippingpolicy.php"><div class="footerContents">Shipping Policy</div></a>
+								<a href="../FooterInfo/whyshopping.php"><div class="footerContents">Why Shopping Here</div></a>
+								<a href="../FooterInfo/termspolicy.php"><div class="footerContents">Terms & Conditions</div></a>
 							</td>
 							<td width="10%"></td>
 							<td align="center" valign="top">
-								<h4>YOUR CONCERN</h4>
-								<a href="../Profile/buyerDashboard.php"><font color="black">Your Account</font></a> <br><br>
-								<a href="../Profile/buyerOrder.php"><font color="black">Your Orders</font></a> <br><br>
-								<a href="../FooterInfo/howorder.php"><font color="black">How to make an Order</font></a> <br><br>
+								<div class="footerHeader"><h4>YOUR CONCERN</h4></div>
+								<?php
+									if (isset($_COOKIE['id'])) {
+								?>
+										<a href="../Profile/buyerDashboard.php"><div class="footerContents">Your Account</div></font></a>
+										<a href="../Profile/buyerOrder.php"><div class="footerContents">Your Orders</div></a>
+								<?php }
+									else 
+										{
+								?>
+										<a href="../buyerLogin.php"><div class="footerContents">Your Account</div></a>
+										<a href="../buyerLogin.php"><div class="footerContents">Your Orders</div></a>
+								<?php
+									}
+								?>
+								<a href="../FooterInfo/howorder.php"><div class="footerContents">How to make an Order</div></a>
 							</td>
 							<td width="10%"></td>
 							<td align="center" valign="top">
-								<h4>GET IN TOUCH US</h4>
-								<a href="../FooterInfo/contactus.php"><font color="black">Contact Us</font></a> <br><br>
-								<h4>PAYMENT METHODS</h4>
-								<a href="../FooterInfo/cod.php"><font color="black">Cash On Delivery</font></a>&emsp;
-								<a href="../FooterInfo/bkash.php"><font color="black">bKash</font></a> <br><br>
+								<div class="footerHeader"><h4>GET IN TOUCH US</h4></div>
+								<a href="../FooterInfo/contactus.php"><div class="footerContents">Contact Us</div></a>
+								<div class="footerHeader"><h4>PAYMENT METHODS</h4></div>
+								<a href="../FooterInfo/cod.php"><div class="footerContents">Cash On Delivery</div></a>
+								<a href="../FooterInfo/bkash.php"><div class="footerContents">bKash</div></a>
 							</td>
 							<td width="10%"></td>
 							<td align="center" valign="top">
-								<h4>LOCATION</h4>
+								<div class="footerHeader"><h4>LOCATION</h4></div>
 								Dhaka, Bangladesh
 							</td>
 							<td width="10%"></td>
