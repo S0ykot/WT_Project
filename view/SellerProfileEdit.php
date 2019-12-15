@@ -3,7 +3,7 @@ error_reporting(0);
 session_start();
 require_once '../db/SellerFunctions.php';
 
-if ($_SESSION['name'] AND $_SESSION['type']) {
+if ($_SESSION['name'] AND $_SESSION['type'] AND $_COOKIE['timeout']) {
 
 $msg="";
 if (isset($_GET['msg'])) {

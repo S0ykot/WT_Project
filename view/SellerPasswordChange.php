@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
-if ($_SESSION['name'] AND $_SESSION['type']) {
+if ($_SESSION['name'] AND $_SESSION['type']  AND $_COOKIE['timeout']) {
 $msg='';
 if (isset($_GET['msg'])) {
 	$msg = htmlspecialchars($_GET['msg']);

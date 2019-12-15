@@ -1,7 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
-if ($_SESSION['name'] AND $_SESSION['type']) {
+if ($_SESSION['name'] AND $_SESSION['type'] AND $_COOKIE['timeout']) {
 
 	header('Location:view/SellerHome.php');
 

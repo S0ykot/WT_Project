@@ -2,7 +2,7 @@
 session_start();
 error_reporting(0);
 require_once '../db/SellerFunctions.php';
-if ($_SESSION['name'] AND $_SESSION['type']) {
+if ($_SESSION['name'] AND $_SESSION['type'] AND $_COOKIE['timeout']) {
 ?>
 
 	<link rel="stylesheet" type="text/css" href="../css/SellerProduct.css">

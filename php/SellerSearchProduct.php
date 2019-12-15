@@ -2,7 +2,7 @@
 session_start();
 error_reporting(0);
 require_once '../db/SellerFunctions.php';
-if ($_SESSION['name'] AND $_SESSION['type']) {
+if ($_SESSION['name'] AND $_SESSION['type'] AND $_COOKIE['timeout']) {
 	$act="";
 	if ($_POST['search']) {
 		$value = $_POST['search'];
@@ -20,7 +20,8 @@ if ($_SESSION['name'] AND $_SESSION['type']) {
 ?>
 
 	<link rel="stylesheet" type="text/css" href="../css/SellerProduct.css">
-	<table border="1" width="50%" align="center">
+	<div id="div1">
+	<table border="1" width="50%" align="center" id="Stable">
 	<tr>
 		<th>ID</th>
 		<th>Name</th>
@@ -56,6 +57,7 @@ if ($_SESSION['name'] AND $_SESSION['type']) {
 		 ?>
 		 </tbody>
 </table>
+</div>
 
 
 <?php
