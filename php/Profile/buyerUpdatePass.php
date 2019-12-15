@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-
+require_once('../../db/buyerFunctions.php');
 $oldPass = "";
 $newPass = "";
 $conNewPass = "";
@@ -29,33 +29,9 @@ if (isset($_REQUEST['savepass']))
 	}
 	else
 	{
-		$file = "../../BuyerInfo.txt";
-
-					$read = fopen($file, 'r');
-					$write = fopen('$file.tmp', 'w');
-
-					$replaced = false;
-
-					while(!feof($read))
-					{
-						$line = fgets($read);
-						if (stristr($line, $username)) {
-							$line = $username."|".$newPass."|".$_SESSION['NAME']."|".$_SESSION['EMAIL']."|".$_SESSION['DOB']."|".$_SESSION['ADDRESS']."|".$_SESSION['Gender']."|".$_SESSION['CONTACT'];
-							$replaced = true;
-						}
-						fwrite($write,$line);
-					}
-
-					fclose($read);
-					fclose($write);
-
-					if ($replaced) {
-						rename('$file.tmp', $file);
-					}
-					else
-						{unlink('$file.tmp');}
-
-					header('location: ../buyerLogoutCheck.php');
+		$update = updatePass($username,$newPass);
+					
+		header('location: ../buyerLogoutCheck.php');
 	}
 }
 else

@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+require_once('../db/buyerFunctions.php');
 
 if (isset($_REQUEST['login'])) {
 
@@ -15,33 +16,33 @@ if (isset($_REQUEST['login'])) {
 	}
 	else
 	{
-			$myFile = fopen('../BuyerInfo.txt', 'r');
+			/*$myFile = fopen('../BuyerInfo.txt', 'r');
 			while (!feof($myFile)) {
 				$line = fgets($myFile);
 				if (stristr($line, $id)) {
 					break;
 				}
-			}
-			$user = explode("|", $line);
+			}*/
 
-			fclose($myFile);
-			for ($i=0; $i < count($user) ; $i++) { 
-				if ($id == $user[$i] && $pass == $user[$i+1]) {
+			$user = loginCheck($id,$pass);
+			//print_r($user);
+
+			/*fclose($myFile);*/ 
+				if ($id == $user['username'] && $pass == $user['password']) {
 					$temp = TRUE;
-					setcookie('id',$user[$i],time()+(3600*60*24),"/");
-					$_SESSION['Gender'] = $user[$i+6];
-					$_SESSION['Pass'] = $user[$i+1];
-					$_SESSION['DOB'] = $user[$i+4];
-					$_SESSION['Username'] = $user[$i];
-					$_SESSION['NAME'] = $user[$i+2];
-					$_SESSION['EMAIL'] = $user[$i+3];
-					$_SESSION['ADDRESS'] = $user[$i+5];
-					$_SESSION['CONTACT'] = $user[$i+7];
-					break;
+					setcookie('id',$user['username'],time()+(3600*60*24),"/");
+					$_SESSION['Gender'] = $user['gender'];
+					$_SESSION['Pass'] = $user['password'];
+					$_SESSION['DOB'] = $user['dob'];
+					$_SESSION['Username'] = $user['username'];
+					$_SESSION['NAME'] = $user['fullname'];
+					$_SESSION['EMAIL'] = $user['email'];
+					$_SESSION['ADDRESS'] = $user['billing_address'];
+					$_SESSION['CONTACT'] = $user['phone'];
+					
 				}
 				else
 					$temp = false;
-			}
 
 			if ($temp == TRUE) {
 

@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-
+require_once('../../db/buyerFunctions.php');
 $newAddress = "";
 
 
@@ -19,33 +19,9 @@ if (isset($_REQUEST['change']))
 	}
 	else
 	{
-		$file = "../../BuyerInfo.txt";
+		$update = updateAddress($username,$newAddress);
 
-					$read = fopen($file, 'r');
-					$write = fopen('$file.tmp', 'w');
-
-					$replaced = false;
-
-					while(!feof($read))
-					{
-						$line = fgets($read);
-						if (stristr($line, $username)) {
-							$line = $username."|".$_SESSION['Pass']."|".$_SESSION['NAME']."|".$_SESSION['EMAIL']."|".$_SESSION['DOB']."|".$newAddress."|".$_SESSION['Gender']."|".$_SESSION['CONTACT'];
-							$replaced = true;
-						}
-						fwrite($write,$line);
-					}
-
-					fclose($read);
-					fclose($write);
-
-					if ($replaced) {
-						rename('$file.tmp', $file);
-					}
-					else
-						{unlink('$file.tmp');}
-
-					header('location: ../buyerLogoutCheck.php');
+		header('location: ../buyerLogoutCheck.php');
 	}
 }
 else
