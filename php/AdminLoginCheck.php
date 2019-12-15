@@ -27,7 +27,7 @@
 		}
 		
 	}else{
-		header('location: ../AdminLogin.php');
+		header('location: ../adminLogin.php');
 	}
 
 ?>
