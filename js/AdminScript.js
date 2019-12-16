@@ -240,3 +240,19 @@ function getProductBySearch(){
     	//alert(this.responseText);
     }};
 }
+
+function DeleteUser(deleteid){
+
+	var conf = confirm("Are you sure to delete?");
+	if(conf == true){
+		var xhttp = new XMLHttpRequest();
+		xhttp.open("POST", "../db/AdminDeleteProduct.php", true);
+		xhttp.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+  		xhttp.send("delid="+deleteid);
+  		xhttp.onreadystatechange = function() {
+    	if (this.readyState == 4 && this.status == 200) {
+    		document.getElementById("select").innerHTML = this.responseText;
+    		//alert(this.responseText);
+    	}};
+	}
+}

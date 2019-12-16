@@ -29,7 +29,7 @@
 
 		if (empty($pname) || empty($cat) || empty($subcat) || empty($quan) ||empty($buy) || empty($sell) || empty($date) || empty($des) || empty($activity) || empty($_FILES['pimage']['name'])) {
 			
-			echo "<script> alert('.$activity.'); </script>";
+			echo "<script> alert('Empty'); </script>";
 		}else if (strlen($pname) != $length) {
 			echo "<script> alert('Product name not valid'); </script>";
 		}elseif (strpos($des, '.') == false) {
