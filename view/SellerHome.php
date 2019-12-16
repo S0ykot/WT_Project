@@ -47,7 +47,6 @@ if ($_SESSION['name'] AND $_SESSION['type'] AND $_COOKIE['timeout']) {
 	<marquee>Last login :<?="Time: ".$_SESSION['time'];?></marquee>
 </div>
 
-
 </body>
 </html>
 

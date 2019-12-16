@@ -20,6 +20,6 @@
 
 <center>
 		<h1>Options</h1>
-	<button id="btn10" onclick="product_details()">Product Details</button> <button id="btn11" onclick="product_search_view()">Product search</button> <button id="btn12" onclick="">Add Product</button>
+	<button id="btn10" onclick="product_details()">Product Details</button> <button id="btn11" onclick="product_search_view()">Product search</button> <button id="btn12" onclick="product_add()">Add Product</button>
 	
 </center>
