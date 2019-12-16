@@ -211,3 +211,34 @@ function customer_details()
 	  };
 	}
 }
+
+function getSubCat()
+{
+	var name = document.getElementById('cat').value;
+
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "../php/SellerGetSubCat.php", true);
+	xhttp.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+  	xhttp.send("cat="+name);
+  	xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    	document.getElementById("sub").innerHTML = this.responseText;
+    }};
+}
+
+function product_add()
+{
+	window.location='SellerHome.php#productAdd';
+	if (window.location.hash=="#productAdd") {
+		var xhttp = new XMLHttpRequest();
+	xhttp.open("GET", "SellerProductAdd.php", true);
+	xhttp.send();
+	
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	     	document.getElementById('product').innerHTML = this.responseText;
+	     	document.getElementById('path').innerHTML = "==>Product Add";
+	    }
+	  };
+	}
+}

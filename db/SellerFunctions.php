@@ -96,6 +96,23 @@ function customer_details()
 }
 
 
+function getCatageory()
+{
+	$conn = getConnection();
+	$query = "SELECT * from category";
+	$result = mysqli_query($conn,$query);
+	return $result;
+}
+
+
+function getSubCategory($cat)
+{
+	$conn = getConnection();
+	$query = "SELECT * from subcategory where cat_id=$cat";
+	$result = mysqli_query($conn,$query);
+	return $result;
+}
+
 
 
 ?>
