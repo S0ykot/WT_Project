@@ -24,8 +24,6 @@
 			<button class="dropbtn">Products</button>
 		    <div class="dropdown-content">
 		    	<a href="AdminAddProduct.php">Add Product</a>
-		    	<a href="AdminUpdateProduct.php">Update Product</a>
-		    	<a href="AdminRemoveProduct.php">Remove Product</a>
 		    	<a href="AdminProductDetails.php">Product Details</a>
 		  	</div>
 		</div>
@@ -34,8 +32,6 @@
 			<button class="dropbtn">Manage Users</button>
 		    <div class="dropdown-content">
 		    	<a href="AdminAddUser.php">Add User</a>
-		    	<a href="AdminUpdateUser.php">Update User</a>
-		    	<a href="AdminRemoveUser.php">Remove User</a>
 		    	<a href="AdminUserDetails.php">User Details</a>
 		  	</div>
 		</div>
@@ -51,7 +47,6 @@
 			<button class="dropbtn">Promo Code</button>
 		    <div class="dropdown-content">
 		    	<a href="AdminGeneratePromoCode.php">Generate Promo Code</a>
-		    	<a href="AdminEnableOrDisablePromoCode.php">Enable/Disable Promo Code</a>
 		    	<a href="AdminPromoCodeDetails.php">Promo Code Details</a>
 		  	</div>
 		</div>
@@ -65,6 +60,7 @@
 		  	</div>
 		</div>
 	</div>
+	
 	<center>
 		<h1><font color="DarkBlue" face="Cursive"><u>Product Details</u></font></h1><br><br>
 		<input type="text" name="searchkey" placeholder="Search Product By Name" size="50" id="key" onkeyup="getProductBySearch()">
@@ -120,7 +116,7 @@
 						} ?>
 				</td>
 				<td><button class="btn">Update</button></td>
-				<td><button class="btn">Delete</button></td>
+				<td><button class="btn" onclick="DeleteUser(<?php echo $rows['pid']; ?>)">Delete</button></td>
 			</tr>
 			<?php } ?>
 			

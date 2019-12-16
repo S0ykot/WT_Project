@@ -16,6 +16,7 @@
 				
 				$_SESSION['username'] = $uname;
 				$_SESSION['password'] = $pass;
+				date_default_timezone_set('Asia/Dhaka');
 				$_SESSION['time'] = date("h:i:sa");
 				
 				header('location: ../view/AdminHome.php');

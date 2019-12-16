@@ -71,5 +71,15 @@
 		return $result;	
 	}
 
+	function deleteProduct($id){
+
+		$conn = getConnection();
+		$sql = "delete from product where pid = '{$id}'";
+		if (mysqli_query($conn,$sql)) {
+			return true;
+		}else{
+			return false;
+		}
+	}
 
  ?>

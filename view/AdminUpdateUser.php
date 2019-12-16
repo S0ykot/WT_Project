@@ -23,8 +23,6 @@
 			<button class="dropbtn">Products</button>
 		    <div class="dropdown-content">
 		    	<a href="AdminAddProduct.php">Add Product</a>
-		    	<a href="AdminUpdateProduct.php">Update Product</a>
-		    	<a href="AdminRemoveProduct.php">Remove Product</a>
 		    	<a href="AdminProductDetails.php">Product Details</a>
 		  	</div>
 		</div>
@@ -33,8 +31,6 @@
 			<button class="dropbtn">Manage Users</button>
 		    <div class="dropdown-content">
 		    	<a href="AdminAddUser.php">Add User</a>
-		    	<a href="AdminUpdateUser.php">Update User</a>
-		    	<a href="AdminRemoveUser.php">Remove User</a>
 		    	<a href="AdminUserDetails.php">User Details</a>
 		  	</div>
 		</div>
@@ -50,7 +46,6 @@
 			<button class="dropbtn">Promo Code</button>
 		    <div class="dropdown-content">
 		    	<a href="AdminGeneratePromoCode.php">Generate Promo Code</a>
-		    	<a href="AdminEnableOrDisablePromoCode.php">Enable/Disable Promo Code</a>
 		    	<a href="AdminPromoCodeDetails.php">Promo Code Details</a>
 		  	</div>
 		</div>
