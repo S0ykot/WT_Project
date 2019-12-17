@@ -68,6 +68,8 @@
 		    <div class="dropdown-content">
 		    	<a href="AdminAddProduct.php">Add Product</a>
 		    	<a href="AdminProductDetails.php">Product Details</a>
+		    	<a href="AdminAddCategory.php">Add Category</a>
+		    	<a href="AdminAddSubCategory.php">Add Sub-Category</a>
 		  	</div>
 		</div>
 
