@@ -242,3 +242,37 @@ function product_add()
 	  };
 	}
 }
+
+function category_add()
+{
+	window.location='SellerHome.php#catrgoryAdd';
+	if (window.location.hash=="#catrgoryAdd") {
+		var xhttp = new XMLHttpRequest();
+	xhttp.open("GET", "SellerCategoryAdd.php", true);
+	xhttp.send();
+	
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	     	document.getElementById('product').innerHTML = this.responseText;
+	     	document.getElementById('path').innerHTML = "==>Product Add";
+	    }
+	  };
+	}
+}
+
+function subcategory_add()
+{
+	window.location='SellerHome.php#subcategoryAdd';
+	if (window.location.hash=="#subcategoryAdd") {
+		var xhttp = new XMLHttpRequest();
+	xhttp.open("GET", "SellerSubCategoryAdd.php", true);
+	xhttp.send();
+	
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	     	document.getElementById('product').innerHTML = this.responseText;
+	     	document.getElementById('path').innerHTML = "==>Product Add";
+	    }
+	  };
+	}
+}
