@@ -10,11 +10,3 @@ th,td {
   height: 50px;
   border: 2px solid black;
 }
-
-#div1
-{
-	height: 100%;
-	width: 900px;
-	overflow-x: hidden;
-	overflow: auto;
-}

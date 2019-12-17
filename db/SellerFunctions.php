@@ -113,7 +113,20 @@ function getSubCategory($cat)
 	return $result;
 }
 
+function productAdd($name,$qnty,$inDate,$bprice,$sprice,$desc,$image,$status,$subcat)
+{
+	$conn = getConnection();
+	$query="INSERT INTO product values ('','$name','$qnty','$inDate','$bprice','$sprice','$desc','$image','$status','$subcat')";
 
+	$result = mysqli_query($conn,$query);
+	if ($result) {
+		return TRUE;
+	}
+	else
+	{
+		return FALSE;
+	}
+}
 
 ?>
 

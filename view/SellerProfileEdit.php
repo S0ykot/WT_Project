@@ -33,7 +33,7 @@ $data =profile($_SESSION['ID']);
 	</center>
 
 	<h1>Edit Profile</h1>
-	<form method="POST" enctype="multipart/form-data" action="../php/SellerProfileUpdate.php">
+	<form method="POST" enctype="multipart/form-data" action="../php/SellerProfileUpdate.php" >
 		<table border="1" width="20%">
 		<tr>
 			<td colspan="2" align="center">
