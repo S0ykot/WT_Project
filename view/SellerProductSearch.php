@@ -11,10 +11,8 @@ if ($_SESSION['name'] AND $_SESSION['type'] AND $_COOKIE['timeout']) {
 	
 	<center>
 		<input type="text" name="search" id='src' onkeyup="search_product()" placeholder="name wise"> <button onclick="search_product()">Search</button>
-	<div align="center">
-		<br>
 		<p id="pdata"></p>
-	</div>
+	
 	</center>
 
 

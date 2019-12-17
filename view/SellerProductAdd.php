@@ -27,7 +27,7 @@ th,td {
 </style>
 <center>
 	<h1>Add Product</h1>
-	<form method="POST" action="../test.php">
+	<form method="POST" action="../php/SellerAddProduct.php" enctype="multipart/form-data">
 	<table border="1" width="30%">
 		<tr>
 			<td>Name</td>
@@ -49,7 +49,7 @@ th,td {
 			<td><textarea name="desc"></textarea style="width: 100%;"></td>
 		</tr><tr>
 			<td>Image</td>
-			<td><input type="file" name="image"></td>
+			<td><input type="file" name="img"></td>
 		</tr><tr>
 			<td>Acivity</td>
 			<td>

@@ -40,7 +40,8 @@
 {
 	
 	float: right;
-	width: 82%;height:80%;
+	width: 82%;
+  height:100%;
 	background-color: #4CAF50;
 	border-style: groove;
 }
