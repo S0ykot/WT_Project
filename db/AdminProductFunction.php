@@ -82,4 +82,14 @@
 		}
 	}
 
+	function getCategoryLastId(){
+
+		$conn = getConnection();
+		$sql = "select max(cat_id) as 'cat_id' from category";
+		$result = mysqli_query($conn,$sql);
+		$data = mysqli_fetch_assoc($result);
+
+		return $data;
+	}
+
  ?>

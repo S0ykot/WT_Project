@@ -1,5 +1,5 @@
 <?php 
-	
+
 	session_start();
 
 	if (isset($_SESSION['username'])) {	
@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Enable/Disable Promo Code</title>
+	<title>Add Sub-Category</title>
 	<link rel="stylesheet" type="text/css" href="../css/Navigate.css">
 	<link rel="stylesheet" type="text/css" href="../css/Design.css">
 </head>
@@ -63,59 +63,39 @@
 	<form method="POST" action="">
 		<table align="center" bgcolor="CornflowerBlue" cellspacing="30px">
 			<tr>
-				<td colspan="4">
-					<center><h1><font color="DarkBlue" face="Cursive"><u>Enable/Disable Promo Code</u></font></h1></center>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="4" align="right">
-					<input type="text" name="search" placeholder="Search Promo Code">
-					<button type="button" class="btn">Search</button>
+				<td colspan="2">
+					<center><h1><font color="DarkBlue" face="Cursive"><u>Add Category</u></font></h1></center>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					Promo Code ID:
+					Sub-Category ID:
 				</td>
 				<td>
-					<input type="text" name="prid" disabled>
-				</td>
-				<td>
-					Promo Code:
-				</td>
-				<td>
-					<input type="text" name="prname" disabled>
+					<input type="text" name="catid" placeholder="Enter Category ID" size="27">
 				</td>
 			</tr>
 			<tr>
 				<td>
-					Amount of Discount:
+					Sub-Category Name:
 				</td>
 				<td>
-					<input type="text" name="dis" disabled>
-				</td>
-				<td>
-					Validity:
-				</td>
-				<td>
-					<input type="date" name="prval">
+					<input type="text" name="catname" placeholder="Enter Category Name" size="27">
 				</td>
 			</tr>
 			<tr>
 				<td>
-					Status:
+					Category:
 				</td>
 				<td>
-					<select name="prstat">
-						<option value="">Select Status</option>
-						<option value="Enable">Enable</option>
-						<option value="Disable">Disable</option>
+					<select>
+						<option value="">Select Category</option>
 					</select>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<input type="submit" name="submit" value="Update Promo">
+					<input type="submit" name="submit" value="Add Category">
 				</td>
 				<td >
 					<input type="reset" name="reset" value="Reset">
@@ -130,4 +110,5 @@
 	}else{
 		header('location: ../adminLogin.php');
 	}
+
 ?>
