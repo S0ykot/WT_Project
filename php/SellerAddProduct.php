@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
 
 	if (empty($name) || empty($qntity) || empty($inDate) || empty($bprice) || empty($sprice) || empty($desc) || empty($img) || empty($activity)|| empty($cat) || empty($subCat)) {
 		echo "<script>alert('Null submission')</script>";
-				/*echo "<script>window.location='../view/SellerHome.php#profile';</script>";*/
+				echo "<script>window.location='../view/SellerHome.php#profile';</script>";
 	}
 
 	else

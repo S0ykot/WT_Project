@@ -17,7 +17,7 @@ function auth_check($uname,$pass)
 		date_default_timezone_set("Asia/Dhaka");
 		$_SESSION['time']=date("h:i:sa");
 		$cookie_value = md5($row['id'].$row['username']);
-		setcookie('timeout',$cookie_value,time()+1800,'/');
+		setcookie('timeout',$cookie_value,time()+3600,'/');
 		return TRUE;
 	}
 	else
@@ -127,6 +127,56 @@ function productAdd($name,$qnty,$inDate,$bprice,$sprice,$desc,$image,$status,$su
 		return FALSE;
 	}
 }
+
+function categoryAdd($catName)
+{
+	$conn = getConnection();
+	$query = "INSERT INTO category values ('','$catName')";
+	$result = mysqli_query($conn,$query);
+	if ($result) {
+		return TRUE;
+	}
+	else
+	{
+		return FALSE;
+	}
+}
+
+
+function subcategoryAdd($cat,$subcat)
+{
+	$conn = getConnection();
+	$query = "INSERT INTO subcategory values ('','$subcat','$cat')";
+	$result = mysqli_query($conn,$query);
+	if ($result) {
+		return TRUE;
+	}
+	else
+	{
+		return FALSE;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ?>
 
