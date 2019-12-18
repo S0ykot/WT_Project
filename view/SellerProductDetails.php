@@ -5,8 +5,8 @@ require_once '../db/SellerFunctions.php';
 if ($_SESSION['name'] AND $_SESSION['type'] AND $_COOKIE['timeout']) {
 $act="";
 ?>
-
 	<link rel="stylesheet" type="text/css" href="../css/SellerProduct.css">
+	<script type="text/javascript" src="../js/SellerScript.js"></script>
 	<center><h1>Product Details</h1></center>
 	<div id="div1">
 	<table border="1" width="50%" align="center">
@@ -48,8 +48,10 @@ $act="";
 				<td align='center'>".$row['subcat_name']."</td>
 				<td align='center'><img src='../upload/".$row['image']."' height='100' width='100'></td>
 				<td align='center'>".$act."</td>
-				<td align='center'><button id='edit'>Edit</button> &nbsp <button id='del'>Delete</button></td>
+
+				<td align='center'><button id='edit' onclick='product_update(this.value);' name ='edit' value='".$row['pid']."'>Edit</button> &nbsp <button id='del' value='".$row['pid']."' name='del' onclick='deleteProduct(this.value)'>Delete</button></td>
 				</tr>
+
 				";
 			}
 		 ?>
