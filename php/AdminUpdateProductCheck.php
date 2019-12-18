@@ -1,59 +1,66 @@
 <?php
+	session_start();
 	require_once('../db/AdminProductFunction.php');
 
-	$pname1 = "";
-	$cat1 = "";
-	$subcat1 = "";
-	$quan1 = "";
-	$buy1 = "";
-	$sell1 = "";
-	$date1 = "";
-	$des1 = "";
-	$activity1 = "";
-	$rname1 = "";
+	$uppname = "";
+	$uppcat = "";
+	$uppsubcat = "";
+	$uppquan = "";
+	$uppbuy = "";
+	$uppsell = "";
+	$uppdate = "";
+	$uppdes = "";
+	$uppactivity = "";
+	$upprname = "";
 
 	
 
 	if (isset($_POST['submit'])) {
-		$pname1 = $_POST['pname1'];
-		$cat1 = $_POST['pcat1'];
-		$subcat1 = $_POST['subcat1'];
-		$quan1 = $_POST['quantity1'];
-		$buy1 = $_POST['buyprice1'];
-		$sell1 = $_POST['sellprice1'];
-		$date1 = $_POST['incomedate1'];
-		$des1 = $_POST['describe1'];
-		$activity1 = $_POST['act1'];
+		$uppname = $_POST['upname'];
+		$uppcat = $_POST['upcat'];
+		$uppsubcat = $_POST['usubcat'];
+		$uppquan = $_POST['uquantity'];
+		$uppbuy = $_POST['ubuyprice'];
+		$uppsell = $_POST['usellprice'];
+		$uppdate = $_POST['uincomedate'];
+		$uppdes = $_POST['udescribe'];
+		$uppactivity = $_POST['uact'];
 
-		$length1 = validName($pname1);
+		$plength = validName($uppname);
 
-		if (empty($pname1) || empty($cat1) || empty($subcat1) || empty($quan1) ||empty($buy1) || empty($sell1) || empty($date1) || empty($des1) || empty($activity1) || empty($_FILES['pimage1']['name'])) {
+		if (empty($uppname) || empty($uppcat) || empty($uppsubcat) || empty($uppquan) ||empty($uppbuy) || empty($uppsell) || empty($uppdate) || empty($uppdes) || empty($uppactivity)) {
 			
-			echo '<script type="text/javascript">alert("'.$_FILES['pimage1']['name'].'");</script>';
-		}else if (strlen($pname1) != $length1) {
+			echo '<script type="text/javascript">alert("Empty");</script>';
+		}else if (strlen($uppname) != $plength) {
 			echo "<script> alert('Product name not valid'); </script>";
-		}elseif (strpos($des1, '.') == false) {
+		}elseif (strpos($uppdes, '.') == false) {
 			echo "<script> alert('Give fullstop after each line'); </script>";
 		}else{
+				$data = singleProduct($_SESSION['pid']);
+				$row = mysqli_fetch_assoc($data);
 
-				$dir1 ="../upload/";
-				$name1 =$_FILES['pimage1']['tmp_name'];
-				$rname1 = $_FILES['pimage1']['name'];
-				$ext1 = explode('.', $rname1);
-				$newname1= uniqid().'.'.$ext1[1];
-				move_uploaded_file($name1, $dir1.$newname1);
+				if (empty($_FILES['upimage']['name'])) {
+					$newname1 = $row['image'];
+					
+				}elseif (empty($_FILES['upimage']['name']) == false) {
+					$dir1 ="../upload/";
+					$name1 =$_FILES['upimage']['tmp_name'];
+					$rname1 = $_FILES['upimage']['name'];
+					$ext1 = explode('.', $rname1);
+					$newname1= uniqid().'.'.$ext1[1];
+					move_uploaded_file($name1, $dir1.$newname1);
+				}
 
-				if ($activity1 == "Available") {
+				if ($uppactivity == "Available") {
 					
 					$finalAct1 = 1;
-				}else{
+				}elseif ($uppactivity == "Sold-Out") {
 					$finalAct1 = 0;
 				}
 			
+			$stat = productUpdate($_SESSION['pid'],$uppname,$uppsubcat,$uppquan,$uppbuy,$uppsell,$uppdate,$uppdes,$finalAct1,$newname1);
 
-			$status1 = productUpdate($_SESSION['pid'],$pname1,$subcat1,$quan1,$buy1,$sell1,$date1,$des1,$finalAct1,$newname1);
-
-			if ($status1) {
+			if ($stat) {
 				header('location: ../view/AdminProductDetails.php?msg=Updating successfull');
 			}else{
 				header('location: ../view/AdminProductDetails.php?msg=Updating error');

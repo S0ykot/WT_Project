@@ -64,7 +64,15 @@
 	</div>
 	
 	<center>
-		<h1><font color="DarkBlue" face="Cursive"><u>Product Details</u></font></h1><br><br>
+		<h1><font color="DarkBlue" face="Cursive"><u>Product Details</u></font></h1><br>
+		<div style="color: red;font-weight: bold;">
+			<?php 
+				if (isset($_GET['msg'])) {
+					echo $_GET['msg'].'<br><br>';
+				}
+			?>
+		</div>
+		
 		<input type="text" name="searchkey" placeholder="Search Product By Name" size="50" id="key" onkeyup="getProductBySearch()">
 	</center>
 	
@@ -117,7 +125,7 @@
 							echo "Sold-Out";
 						} ?>
 				</td>
-				<td><button class="btn">Update</button></td>
+				<td><a href="AdminUpdateProduct.php?pid=<?php echo $rows['pid']; ?>" class="a1">Update</a></td>
 				<td><button class="btn" onclick="DeleteUser(<?php echo $rows['pid']; ?>)">Delete</button></td>
 			</tr>
 			<?php } ?>

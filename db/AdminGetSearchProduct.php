@@ -12,6 +12,7 @@
 <html>
 <head>
 	<title></title>
+	<script type="text/javascript" src="../js/AdminScript.js"></script>
 </head>
 <body>
 	<table width="100%" cellspacing="20px" style="margin-top: 2.5%">
@@ -62,8 +63,8 @@
 						echo "Sold-Out";
 				} ?>
 			</td>
-			<td><button class="btn">Update</button></td>
-			<td><button class="btn">Delete</button></td>
+			<td><a href="AdminUpdateProduct.php?pid=<?php echo $rows['pid']; ?>" class="a1">Update</a></td>
+			<td><button class="btn" onclick="DeleteUser(<?php echo $rows['pid']; ?>)">Delete</button></td>
 		</tr>
 		<?php } ?>
 			

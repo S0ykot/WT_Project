@@ -64,7 +64,7 @@
 						echo "Sold-Out";
 					} ?>
 			</td>
-			<td><button class="btn">Update</button></td>
+			<td><a href="AdminUpdateProduct.php?pid=<?php echo $rows['pid']; ?>" class="a1">Update</a></td>
 			<td><button class="btn" onclick="DeleteUser('.$rows['pid'].')">Delete</button></td>
 		</tr>
 		<?php } ?>
