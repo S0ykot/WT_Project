@@ -8,7 +8,6 @@
 
 		if(empty($uname) == true || empty($pass) == true){
 			header('location: ../AdminLogin.php?msg=Please Fill Data');
-			//echo "<script> document.getElementById('er').innerHTML = "Empty"; </script>";
 			
 		}else{
 
@@ -23,7 +22,6 @@
 
 			}else{
 				header('location: ../AdminLogin.php?msg=Invalid Username/Password');
-				//echo "<script> alert('Invalid Username/Password'); </script>";
 			}
 		}
 		

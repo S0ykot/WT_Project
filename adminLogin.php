@@ -22,13 +22,6 @@
 					<img src="upload/LoginLogo.jpg" align="left" width="100px" height="100px">
 					<center>
 						<h1><font color="DarkBlue" face="Cursive"><u>Login Panel</u></font></h1>
-					</center>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<fieldset>
-						<legend><h3>Login</h3></legend><br>
 						<div style="color: red;font-weight: bold;">
 							<?php 
 
@@ -37,6 +30,13 @@
 								}
 							 ?>
 						</div>
+					</center>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<fieldset>
+						<legend><h3>Login</h3></legend><br>
 						<table cellspacing="30px">
 							<tr>
 								<td width="35%">

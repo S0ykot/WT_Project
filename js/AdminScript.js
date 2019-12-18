@@ -269,3 +269,16 @@ function validateCategoryName(){
 			errcat.innerHTML = "";
 		}
 }
+
+function validateSubCategoryName(){
+	var subcategory = document.getElementById('subcat').value;
+	var errsubcat = document.getElementById('ersubcatname');
+	
+		if(subcategory == "")
+		{
+			errsubcat.innerHTML = "Sub-Category name can not be empty";
+		}
+		else{
+			errsubcat.innerHTML = "";
+		}
+}
