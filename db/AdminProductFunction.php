@@ -92,4 +92,28 @@
 		return $data;
 	}
 
+	function singleProduct($id)
+	{
+		$conn = getConnection();
+		$sql = "select * from product where pid='{$id}'";
+		$result = mysqli_query($conn,$sql);
+
+		return $result;
+	}
+
+	function productUpdate($pid,$name,$subcat,$quan,$buy,$sell,$date,$des,$finalAct,$imgname){
+
+		$conn = getConnection();
+		$sql1 = "select * from subcategory where subcat_name = '{$subcat}'";
+		$result1 = mysqli_query($conn,$sql1);
+		$sub = mysqli_fetch_assoc($result1);
+		$subcatid = $sub['subcat_id'];
+		$sql2 = "update product set name='{$name}',quantity='{$quan}',incoming_date='{$date}',buying_price='{$buy}',selling_price='{$sell}',description='{$des}',image='{$imgname}',activity='{$finalAct}',subcat_id='{$subcatid}' where pid ='{$pid}'";
+		if (mysqli_query($conn,$sql2)) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
  ?>

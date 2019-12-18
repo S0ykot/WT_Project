@@ -1,8 +1,13 @@
 <?php 
-	
+	require_once('../db/AdminProductFunction.php');
 	session_start();
 
 	if (isset($_SESSION['username'])) {	
+		if (isset($_GET['pid'])) {
+			$data =singleProduct($_GET['pid']);
+			$rows = mysqli_fetch_assoc($data);
+			$_SESSION['pid'] = $rows['pid'];
+		}
 		
 ?>
 
@@ -12,6 +17,7 @@
 	<title>Update Product</title>
 	<link rel="stylesheet" type="text/css" href="../css/Navigate.css">
 	<link rel="stylesheet" type="text/css" href="../css/Design.css">
+	<script type="text/javascript" src="../js/AdminScript.js"></script>
 </head>
 <body style="background-color: CornflowerBlue;">
 	<div class="nav">
@@ -60,7 +66,15 @@
 		  	</div>
 		</div>
 	</div>
-	<form method="POST" action="">
+	<?php 
+		$category = "";
+		$result = getAllCategory();
+		while ($row = mysqli_fetch_assoc($result)) {
+			$category .= '<option value="'.$row["cat_name"].'">'.$row["cat_name"].'</option>';
+		}
+
+	 ?>
+	<form method="POST" action="../php/AdminUpdateProductCheck.php" enctype="multipart/form-data">
 		
 		<table align="center" bgcolor="CornflowerBlue" cellspacing="30px">
 			<tr>
@@ -69,65 +83,81 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="4" align="right">
-					<input type="text" name="search" placeholder="Search Product">
-					<button type="button" class="btn">Search</button>
-				</td>
-			</tr>
-			<tr>
 				<td>
 					Product ID:
 				</td>
 				<td>
-					<input type="text" name="pid">
+					<input type="text" name="upid" value="<?php echo $_SESSION['pid']; ?>" disabled>
 				</td>
 				<td>
 					Product Name:
 				</td>
 				<td>
-					<input type="text" name="pname">
+					<input type="text" id="valpname" name="upname" onkeyup="validateName()" value="<?php echo $rows['name']; ?>">
+					<div id="erpname" style="color: red;font-weight: bold;"></div>
 				</td>
 			</tr>
 			<tr>
+				<td>
+					Category:
+				</td>
+				<td>
+					<select name="upcat" id="cat" onchange="getSubCategory()" onclick ="validateCategory()">
+						<option value="">Select Category</option>
+						<?php echo $category; ?>
+					</select>
+					<div id="ercat" style="color: red;font-weight: bold;"></div>
+				</td>
 				<td>
 					Sub-Category:
 				</td>
 				<td>
-					<input type="text" name="pname">
+					<select name="usubcat" id="sub">
+						<option value="">Select Sub-Category</option>
+						
+					</select>
+					
 				</td>
+			</tr>
+			<tr>
 				<td>
 					Quantity:
 				</td>
 				<td>
-					<input type="number" name="quantity">
+					<input type="number" value="<?php echo $rows['quantity']; ?>" name="uquantity" id="pquan" onclick="validateQuantity()" onkeyup="validateQuantity()" min="0">
+					<div id="erquan" style="color: red;font-weight: bold;"></div>
 				</td>
-			</tr>
-			<tr>
 				<td>
 					Buying Price:
 				</td>
 				<td>
-					<input type="number" name="buyprice">
-				</td>
-				<td>
-					Selling Price:
-				</td>
-				<td>
-					<input type="number" name="sellprice">
+					<input type="number" value="<?php echo $rows['buying_price']; ?>" name="ubuyprice" step="0.01" id="pbuy" onclick="validateBuyingPrice()" onkeyup="validateBuyingPrice()" min="0">
+					<div id="erbuy" style="color: red;font-weight: bold;"></div>
 				</td>
 			</tr>
 			<tr>
 				<td>
+					Selling Price:
+				</td>
+				<td>
+					<input type="number" value="<?php echo $rows['selling_price']; ?>" name="usellprice" step="0.01" min="0" id="psel" onclick="validateSellingPrice()" onkeyup="validateSellingPrice()">
+					<div id="ersel" style="color: red;font-weight: bold;"></div>
+				</td>
+				<td>
 					Incoming Date:
 				</td>
 				<td>
-					<input type="date" name="incomedate">
+					<input type="date" value="<?php echo $rows['incoming_date']; ?>" name="uincomedate" id="pin" onclick="validateIncomedate()" onkeyup="validateIncomedate()" min="2001-01-01" max="2400-12-31">
+					<div id="erin" style="color: red;font-weight: bold;"></div>
 				</td>
+			</tr>
+			<tr>
 				<td>
 					Description:
 				</td>
-				<td>
-					<textarea name="describe"></textarea>
+				<td colspan="3">
+					<textarea name="udescribe" cols="70" id="pdes" onkeyup="validateDescription()"><?php echo $rows['description']; ?></textarea>
+					<div id="erdes" style="color: red;font-weight: bold;"></div>
 				</td>
 			</tr>
 			<tr>
@@ -135,13 +165,23 @@
 					Activity:
 				</td>
 				<td>
-					<input type="text" name="activity">
+					<select name="uact" id="pact" onchange="validateActivity()">
+						<option value="">Select Activity</option>
+						<option value="Available" <?php if ($rows['activity'] == 1) {
+							echo "selected";
+						} ?>>Available</option>
+						<option value="Sold-Out" <?php if ($rows['activity'] == 0) {
+							echo "selected";
+						} ?>>Sold-Out</option>
+					</select>
+					<div id="eract" style="color: red;font-weight: bold;"></div>
 				</td>
 				<td>
 					Image:
 				</td>
 				<td>
-					<input type="file" name="image">
+					<input type="file" value="../upload/<?php echo $rows['image']; ?>" name="upimage" accept="image/x-png,image/jpeg" id="pimg" onclick="validateFile()">
+					<div id="erimg" style="color: red;font-weight: bold;"></div>
 				</td>
 			</tr>
 			<tr>
