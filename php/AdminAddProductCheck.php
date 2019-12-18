@@ -29,11 +29,11 @@
 
 		if (empty($pname) || empty($cat) || empty($subcat) || empty($quan) ||empty($buy) || empty($sell) || empty($date) || empty($des) || empty($activity) || empty($_FILES['pimage']['name'])) {
 			
-			echo "<script> alert('Empty'); </script>";
+			header('location: ../view/AdminAddProduct.php?msg=Please fill all data');
 		}else if (strlen($pname) != $length) {
-			echo "<script> alert('Product name not valid'); </script>";
+			header('location: ../view/AdminAddProduct.php?msg=Product name not valid');
 		}elseif (strpos($des, '.') == false) {
-			echo "<script> alert('Give fullstop after each line'); </script>";
+			header('location: ../view/AdminAddProduct.php?msg=Give fullstop after each line in description');
 		}else{
 
 				$dir ="../upload/";
@@ -54,9 +54,9 @@
 			$status = productAdd($pname,$subcat,$quan,$buy,$sell,$date,$des,$finalAct,$newname);
 
 			if ($status) {
-				header('location: ../view/AdminAddProduct.php?msg=success');
+				header('location: ../view/AdminAddProduct.php?msg=Product successfully added');
 			}else{
-				header('location: ../view/AdminAddProduct.php?msg=Error');
+				header('location: ../view/AdminAddProduct.php?msg=Product is not added');
 			}
 
 		}	

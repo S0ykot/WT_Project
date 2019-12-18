@@ -7,6 +7,9 @@
 			$data =singleProduct($_GET['pid']);
 			$rows = mysqli_fetch_assoc($data);
 			$_SESSION['pid'] = $rows['pid'];
+			$cat = singleProductCategory($_SESSION['pid']);
+			$category = mysqli_fetch_assoc($cat);
+			$catname = $category['cat_name'];
 		}
 		
 ?>
@@ -69,8 +72,12 @@
 	<?php 
 		$category = "";
 		$result = getAllCategory();
+		$s = "";
 		while ($row = mysqli_fetch_assoc($result)) {
-			$category .= '<option value="'.$row["cat_name"].'">'.$row["cat_name"].'</option>';
+			if ($row['cat_name'] == $catname) {
+				$s="selected";
+			}
+			$category .= '<option value="'.$row["cat_name"].'"'.$s.'">'.$row["cat_name"].'</option>';
 		}
 
 	 ?>
@@ -79,7 +86,16 @@
 		<table align="center" bgcolor="CornflowerBlue" cellspacing="30px">
 			<tr>
 				<td colspan="4">
-					<center><h1><font color="DarkBlue" face="Cursive"><u>Update Product</u></font></h1></center>
+					<center>
+						<h1><font color="DarkBlue" face="Cursive"><u>Update Product</u></font></h1>
+						<div style="color: red;font-weight: bold;">
+							<?php 
+								if (isset($_GET['msg'])) {
+									echo $_GET['msg'].'<br><br>';
+								}
+							?>
+						</div>
+					</center>
 				</td>
 			</tr>
 			<tr>

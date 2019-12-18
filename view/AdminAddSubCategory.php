@@ -1,5 +1,5 @@
 <?php 
-
+	require_once('../db/AdminProductFunction.php');
 	session_start();
 
 	if (isset($_SESSION['username'])) {	
@@ -12,6 +12,7 @@
 	<title>Add Sub-Category</title>
 	<link rel="stylesheet" type="text/css" href="../css/Navigate.css">
 	<link rel="stylesheet" type="text/css" href="../css/Design.css">
+	<script type="text/javascript" src="../js/AdminScript.js"></script>
 </head>
 <body style="background-color: CornflowerBlue;">
 	<div class="nav">
@@ -60,11 +61,30 @@
 		  	</div>
 		</div>
 	</div>
-	<form method="POST" action="">
+	<?php 
+		$category = "";
+		$result = getAllCategory();
+		while ($rows = mysqli_fetch_assoc($result)) {
+			$category .= '<option value="'.$rows["cat_name"].'">'.$rows["cat_name"].'</option>';
+		}
+
+		$data = getSubCategoryLastId();
+
+	 ?>
+	<form method="POST" action="../php/AdminAddSubCategoryCheck.php">
 		<table align="center" bgcolor="CornflowerBlue" cellspacing="30px">
 			<tr>
 				<td colspan="2">
-					<center><h1><font color="DarkBlue" face="Cursive"><u>Add Category</u></font></h1></center>
+					<center>
+						<h1><font color="DarkBlue" face="Cursive"><u>Add Sub-Category</u></font></h1>
+						<div style="color: red;font-weight: bold;">
+							<?php 
+								if (isset($_GET['msg'])) {
+									echo $_GET['msg'].'<br><br>';
+								}
+							?>
+						</div>
+					</center>
 				</td>
 			</tr>
 			<tr>
@@ -72,7 +92,7 @@
 					Sub-Category ID:
 				</td>
 				<td>
-					<input type="text" name="catid" placeholder="Enter Category ID" size="27">
+					<input type="text" name="catid" size="27" value="<?php echo $data['subcat_id']+1; ?>" disabled>
 				</td>
 			</tr>
 			<tr>
@@ -80,7 +100,8 @@
 					Sub-Category Name:
 				</td>
 				<td>
-					<input type="text" name="catname" placeholder="Enter Category Name" size="27">
+					<input type="text" name="subcatname" placeholder="Enter Category Name" size="27" id="subcat" onkeyup="validateSubCategoryName()">
+					<div id="ersubcatname" style="color: red;font-weight: bold;"></div>
 				</td>
 			</tr>
 			<tr>
@@ -88,14 +109,15 @@
 					Category:
 				</td>
 				<td>
-					<select>
+					<select name="cat">
 						<option value="">Select Category</option>
+						<?php echo $category; ?>
 					</select>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<input type="submit" name="submit" value="Add Category">
+					<input type="submit" name="submit" value="Add Sub-Category">
 				</td>
 				<td >
 					<input type="reset" name="reset" value="Reset">

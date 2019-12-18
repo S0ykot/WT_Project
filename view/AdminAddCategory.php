@@ -66,11 +66,20 @@
 		$data = getCategoryLastId();
 
 	 ?>
-	<form method="POST" action="">
+	<form method="POST" action="../php/AdminAddCategoryCheck.php">
 		<table align="center" bgcolor="CornflowerBlue" cellspacing="30px">
 			<tr>
 				<td colspan="2">
-					<center><h1><font color="DarkBlue" face="Cursive"><u>Add Category</u></font></h1></center>
+					<center>
+						<h1><font color="DarkBlue" face="Cursive"><u>Add Category</u></font></h1>
+						<div style="color: red;font-weight: bold;">
+							<?php 
+								if (isset($_GET['msg'])) {
+									echo $_GET['msg'].'<br><br>';
+								}
+							?>
+						</div>
+					</center>
 				</td>
 			</tr>
 			<tr>
@@ -78,7 +87,7 @@
 					Category ID:
 				</td>
 				<td>
-					<input type="text" name="catid" placeholder="Enter Category ID" size="27" value="<?php echo $data['cat_id']+1; ?>" disabled>
+					<input type="text" name="catid" size="27" value="<?php echo $data['cat_id']+1; ?>" disabled>
 				</td>
 			</tr>
 			<tr>

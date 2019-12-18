@@ -82,16 +82,6 @@
 		}
 	}
 
-	function getCategoryLastId(){
-
-		$conn = getConnection();
-		$sql = "select max(cat_id) as 'cat_id' from category";
-		$result = mysqli_query($conn,$sql);
-		$data = mysqli_fetch_assoc($result);
-
-		return $data;
-	}
-
 	function singleProduct($id)
 	{
 		$conn = getConnection();
@@ -116,6 +106,70 @@
 		}else{
 			return false;
 		}
+	}
+
+	function getCategoryLastId(){
+
+		$conn = getConnection();
+		$sql = "select max(cat_id) as 'cat_id' from category";
+		$result = mysqli_query($conn,$sql);
+		$data = mysqli_fetch_assoc($result);
+
+		return $data;
+	}
+
+	function categoryAdd($name){
+
+		$conn = getConnection();
+		$sql = "insert into category values ('','{$name}')";
+		if (mysqli_query($conn,$sql)) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	function getSubCategoryLastId(){
+
+		$conn = getConnection();
+		$sql = "select max(subcat_id) as 'subcat_id' from subcategory";
+		$result = mysqli_query($conn,$sql);
+		$data = mysqli_fetch_assoc($result);
+
+		return $data;
+	}
+
+	function getCategoryAndSubcategory(){
+
+		$conn = getConnection();
+		$sql = "select category.cat_name,subcategory.subcat_name from category,subcategory where category.cat_id = subcategory.cat_id";
+		$result = mysqli_query($conn,$sql);
+
+		return $result;
+	}
+
+	function subcategoryAdd($sname,$cname){
+
+		$conn = getConnection();
+		$sql1 = "select * from category where cat_name = '{$cname}'";
+		$result1 = mysqli_query($conn,$sql1);
+		$cat = mysqli_fetch_assoc($result1);
+		$catid = $cat['cat_id'];
+		$sql2 = "insert into subcategory values ('','{$sname}','{$catid}')";
+		if (mysqli_query($conn,$sql2)) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	function singleProductCategory($id){
+
+		$conn = getConnection();
+		$sql = "select product.pid,category.cat_name from product,category,subcategory where product.subcat_id=subcategory.subcat_id and subcategory.cat_id=category.cat_id and pid = '{$id}'";
+		$result = mysqli_query($conn,$sql);
+
+		return $result;
 	}
 
  ?>
