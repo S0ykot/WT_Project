@@ -163,4 +163,13 @@
 		}
 	}
 
+	function singleProductCategory($id){
+
+		$conn = getConnection();
+		$sql = "select product.pid,category.cat_name from product,category,subcategory where product.subcat_id=subcategory.subcat_id and subcategory.cat_id=category.cat_id and pid = '{$id}'";
+		$result = mysqli_query($conn,$sql);
+
+		return $result;
+	}
+
  ?>

@@ -29,12 +29,11 @@
 		$plength = validName($uppname);
 
 		if (empty($uppname) || empty($uppcat) || empty($uppsubcat) || empty($uppquan) ||empty($uppbuy) || empty($uppsell) || empty($uppdate) || empty($uppdes) || empty($uppactivity)) {
-			
-			echo '<script type="text/javascript">alert("Empty");</script>';
+			header('location: ../view/AdminUpdateProduct.php?pid='.$_SESSION['pid'].'&msg=Please fill all data');
 		}else if (strlen($uppname) != $plength) {
-			echo "<script> alert('Product name not valid'); </script>";
+			header('location: ../view/AdminUpdateProduct.php?pid='.$_SESSION['pid'].'&msg=Product name is not valid');
 		}elseif (strpos($uppdes, '.') == false) {
-			echo "<script> alert('Give fullstop after each line'); </script>";
+			header('location: ../view/AdminUpdateProduct.php?pid='.$_SESSION['pid'].'&msg=Give fullstop after each line in description');
 		}else{
 				$data = singleProduct($_SESSION['pid']);
 				$row = mysqli_fetch_assoc($data);
@@ -62,6 +61,7 @@
 
 			if ($stat) {
 				header('location: ../view/AdminProductDetails.php?msg=Updating successfull');
+				unset($_SESSION['pid']);
 			}else{
 				header('location: ../view/AdminProductDetails.php?msg=Updating error');
 			}
