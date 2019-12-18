@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	require_once('../db/AdminProductFunction.php');
 
 	$uppname = "";
@@ -27,7 +28,7 @@
 
 		$plength = validName($uppname);
 
-		if (empty($uppname) || empty($uppcat) || empty($uppsubcat) || empty($uppquan) ||empty($uppbuy) || empty($uppsell) || empty($uppdate) || empty($uppdes) || empty($uppactivity) || empty($_FILES['upimage']['name'])) {
+		if (empty($uppname) || empty($uppcat) || empty($uppsubcat) || empty($uppquan) ||empty($uppbuy) || empty($uppsell) || empty($uppdate) || empty($uppdes) || empty($uppactivity)) {
 			
 			echo '<script type="text/javascript">alert("Empty");</script>';
 		}else if (strlen($uppname) != $plength) {
@@ -35,13 +36,20 @@
 		}elseif (strpos($uppdes, '.') == false) {
 			echo "<script> alert('Give fullstop after each line'); </script>";
 		}else{
+				$data = singleProduct($_SESSION['pid']);
+				$row = mysqli_fetch_assoc($data);
 
-				$dir1 ="../upload/";
-				$name1 =$_FILES['upimage']['tmp_name'];
-				$rname1 = $_FILES['upimage']['name'];
-				$ext1 = explode('.', $rname1);
-				$newname1= uniqid().'.'.$ext1[1];
-				move_uploaded_file($name1, $dir1.$newname1);
+				if (empty($_FILES['upimage']['name'])) {
+					$newname1 = $row['image'];
+					
+				}elseif (empty($_FILES['upimage']['name']) == false) {
+					$dir1 ="../upload/";
+					$name1 =$_FILES['upimage']['tmp_name'];
+					$rname1 = $_FILES['upimage']['name'];
+					$ext1 = explode('.', $rname1);
+					$newname1= uniqid().'.'.$ext1[1];
+					move_uploaded_file($name1, $dir1.$newname1);
+				}
 
 				if ($uppactivity == "Available") {
 					

@@ -108,8 +108,10 @@
 		$result1 = mysqli_query($conn,$sql1);
 		$sub = mysqli_fetch_assoc($result1);
 		$subcatid = $sub['subcat_id'];
+		mysqli_close($conn);
+		$conn1 = getConnection();
 		$sql2 = "update product set name='{$name}',quantity='{$quan}',incoming_date='{$date}',buying_price='{$buy}',selling_price='{$sell}',description='{$des}',image='{$imgname}',activity='{$finalAct}',subcat_id='{$subcatid}' where pid ='{$pid}'";
-		if (mysqli_query($conn,$sql2)) {
+		if (mysqli_query($conn1,$sql2)) {
 			return true;
 		}else{
 			return false;
