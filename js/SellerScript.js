@@ -276,3 +276,31 @@ function subcategory_add()
 	  };
 	}
 }
+
+function product_update(value)
+{
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "SellerProductUpdate.php", true);
+	xhttp.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+  	xhttp.send("edit="+value);
+  	xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    	document.getElementById("product").innerHTML = this.responseText;
+    }};
+}
+
+function deleteProduct(id){
+
+	var conf = confirm("Are you sure to delete?");
+	if(conf == true){
+		var xhttp = new XMLHttpRequest();
+		xhttp.open("POST", "../php/SellerDeleteProduct.php", true);
+		xhttp.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+  		xhttp.send("del="+id);
+  		xhttp.onreadystatechange = function() {
+    	if (this.readyState == 4 && this.status == 200) {
+    		 alert(this.responseText);
+    		//alert(this.responseText);
+    	}};
+	}
+}

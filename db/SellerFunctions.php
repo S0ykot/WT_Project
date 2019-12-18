@@ -158,11 +158,44 @@ function subcategoryAdd($cat,$subcat)
 }
 
 
+function GetProductData($id)
+{
+	$conn = getConnection();
+	$query = "SELECT * from product,category,subcategory where (product.subcat_id=subcategory.subcat_id) AND (category.cat_id=subcategory.cat_id) and product.pid=$id";
+	$result =mysqli_query($conn,$query);
+
+	return $result;
+}
 
 
+function updateProduct($id,$name,$qntity,$inDate,$buyP,$sellP,$desc,$subcat,$img,$act)
+{
+	$conn = getConnection();
+	$query = "UPDATE product SET name='$name',quantity='$qntity',incoming_date='$inDate',buying_price='$buyP',selling_price='$sellP',description='$desc',image='$img',activity='$act',subcat_id='$subcat' WHERE pid=$id";
+	$result=mysqli_query($conn,$query);
+	if ($result) {
+		return TRUE;
+	}
+	else
+	{
+		return FALSE;
+	}
+
+}
 
 
-
+function deleteProduct($id)
+{
+	$conn = getConnection();
+	$query = "DELETE FROM product WHERE pid=$id";
+	if (mysqli_query($conn,$query)) {
+		return TRUE;
+	}
+	else
+	{
+		return FALSE;
+	}
+}
 
 
 
