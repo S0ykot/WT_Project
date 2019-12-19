@@ -1,5 +1,6 @@
-function letterValid(name){
-	var letter = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' ','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+function letterValid(name)
+{
+	var letter = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' ','.','-','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 	var	splitName = name.split('');
 	var	flag = 0;
 		for (var i = 0; i < splitName.length; i++) {
@@ -280,5 +281,220 @@ function validateSubCategoryName(){
 		}
 		else{
 			errsubcat.innerHTML = "";
+		}
+}
+
+function validateFName() {
+
+	var erfname = document.getElementById('erfname');
+	var fname = document.getElementById('fname').value;
+	
+	if (fname == "") 
+	{
+		erfname.innerHTML = "First name can not be empty.";
+	}
+	else {
+		if(letterValid(fname))
+		{
+			erfname.innerHTML = "";
+		}
+		else
+		{
+			erfname.innerHTML = "First name is not Valid.";
+		}
+	}
+}
+
+function validateLName() {
+
+	var erlname = document.getElementById('erlname');
+	var lname = document.getElementById('lname').value;
+	
+	if (lname == "") 
+	{
+		erlname.innerHTML = "Last name can not be empty.";
+	}
+	else {
+		if(letterValid(lname))
+		{
+			erlname.innerHTML = "";
+		}
+		else
+		{
+			erlname.innerHTML = "Last name is not Valid.";
+		}
+	}
+	
+}
+
+function validateUName() {
+
+	var eruname = document.getElementById('eruname');
+	var uname = document.getElementById('uname').value;
+	
+	if (uname == "") 
+	{
+		eruname.innerHTML = "Username can not be empty.";
+	}
+	else {
+		if(NumberValid(uname))
+		{
+			eruname.innerHTML = "";
+		}
+		else
+		{
+			eruname.innerHTML = "Username is not Valid.";
+		}
+	}
+	
+}
+
+function specialCharPresent(a,b)
+{
+	var c = a.indexOf(b);
+	return c;
+}
+
+
+function Email(email)
+{
+	var c = specialCharPresent(email,'@');
+	if(email.charAt(0)==" "||email.charAt(0)=="@")
+	{
+		return false;
+	}
+	else
+	{
+		if(c == -1)
+		{
+			return false;
+		}
+		else
+		{
+			var splitEmail_1 = email.split('@');
+			var positionOfDot = specialCharPresent(splitEmail_1[1],'.');
+
+			if(splitEmail_1[1].charAt(0)==" "||splitEmail_1[1].charAt(0)==".")
+			{
+				return false;
+			}
+			else
+			{
+				if(positionOfDot == -1)
+				{
+					return false;
+				}
+				else
+				{
+					var splitEmail_2 = splitEmail_1[1].split('.');
+					if(splitEmail_2[1]!="com")
+					{
+						return false;
+					}
+					else
+						return true;
+				}
+			}
+		}
+	}
+}
+function validateEmail(){
+	var email = document.getElementById('email').value;
+	var eremail = document.getElementById('eremail');
+
+	if (email == "") {
+		eremail.innerHTML = "Email can not be empty.";
+	}
+	else {
+		if(Email(email))
+		{
+			eremail.innerHTML = "";
+		}
+		else
+		{
+			eremail.innerHTML = "Email can not Valid.";
+		}
+	}
+
+}
+
+function validateUserType(){
+	var utype = document.getElementById('utype').value;
+	var erutype = document.getElementById('erutype');
+	
+		if(utype == "")
+		{
+			erutype.innerHTML = "User type can not be empty";
+		}
+		else{
+			erutype.innerHTML = "";
+		}
+}
+
+function validatePassword(){
+	var upass = document.getElementById('upass').value;
+	var erupass = document.getElementById('erupass');
+	
+		if(upass == "")
+		{
+			erupass.innerHTML = "Password can not be empty";
+		}
+		else{
+			erupass.innerHTML = "";
+		}
+}
+
+function validateCpass(){
+	var pass = document.getElementById('upass').value;
+	var cpass = document.getElementById('ucpass').value;
+	var ercpass = document.getElementById('erucpass');
+
+	if (cpass == "") {
+		ercpass.innerHTML = "Confirm Password can not be empty.";
+		ercpass.style.color = "red";
+	}
+	else{
+		if (cpass == pass) {
+			ercpass.innerHTML = "Password Matched";
+			ercpass.style.color = "green";
+		}
+		else{
+			ercpass.innerHTML = "Password is not matched";
+			ercpass.style.color = "red";
+		}
+	}
+
+}
+
+function NumberValid(uid)
+{
+	var number = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' ','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+	var	splitUid = uid.split('');
+	var	flag = 0;
+		for (var i = 0; i < splitUid.length; i++) {
+			for (var j = 0; j < number.length; j++) 
+			{
+				if(splitUid[i] == number[j])
+				{
+					flag += 1;
+				}
+				else{
+					flag = flag;
+				}
+			}
+		}
+		if(uid.charAt(0) == "")
+		{
+			return false;
+		}
+		else
+		{
+			if(uid.length==flag)
+			{
+				return true;
+			}
+			else{
+				return false;
+			}
 		}
 }
