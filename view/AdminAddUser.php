@@ -1,53 +1,10 @@
 <?php
-
-	$name="";
-	$pass="";
-	$conpass="";
-	$email="";
-	$pno=0;
-	$utype="";
-	if (isset($_POST['submit'])) {
-		$name=$_POST['name'];
-		$pass=$_POST['newpass'];
-		$conpass=$_POST['connewpass'];
-		$email=$_POST['email'];
-		$pno=$_POST['pno'];
-		$utype=$_POST['utype'];
-
-		if ($name == "" || $pass == "" || $email == "" || $pno == "" || $utype == "") {
-			$message = "Fill up all fields";
-			echo "<script>alert('$message');</script>";
-		}
-		elseif (filter_var($email, FILTER_VALIDATE_EMAIL)==false) {
-			$message = "Email is not valid";
-			echo "<script>alert('$message');</script>";
-		}
-		elseif (strlen(strval($pno)) != 13) {
-			$message = "Phone Number is not valid";
-			echo "<script>alert('$message');</script>";
-		}
-		elseif ($pass != $conpass) {
-			$message = "Password is not match";
-			echo "<script>alert('$message');</script>";
-		}
-		else{
-			$myfile = fopen('UserList.txt', 'a');
-			fwrite($myfile, $name."|".$pass."|".$email."|".$pno."|".$utype."\n");
-			fclose($myfile);
-			$message = "Successfully user added";
-			echo "<script>alert('$message');</script>";
-		}
-
-	}
-
+	require_once('../db/AdminUserFunction.php');
 	session_start();
 
 	if (isset($_SESSION['username'])) {	
 
 ?>
-
-
-
 
 
 <!DOCTYPE html>
@@ -56,6 +13,7 @@
 	<title>Registration</title>
 	<link rel="stylesheet" type="text/css" href="../css/Navigate.css">
 	<link rel="stylesheet" type="text/css" href="../css/Design.css">
+	<script type="text/javascript" src="../js/AdminScript.js"></script>
 </head>
 <body style="background-color: CornflowerBlue; margin: 0;">
 
@@ -105,12 +63,26 @@
 		  	</div>
 		</div>
 	</div>
+	<?php 
 
-	<form method="POST" action="">
+		$data = getUserLastId();
+
+	 ?>
+
+	<form method="POST" action="../php/UserCheck.php" enctype="multipart/form-data">
 		<table align="center" bgcolor="CornflowerBlue" cellspacing="30px">
 			<tr>
 				<td colspan="4">
-					<center><h1><font color="DarkBlue" face="Cursive"><u>New User Registration</u></font></h1></center>
+					<center>
+						<h1><font color="DarkBlue" face="Cursive"><u>New User Registration</u></font></h1>
+						<div style="color: red;font-weight: bold;">
+							<?php 
+								if (isset($_GET['msg'])) {
+									echo $_GET['msg'].'<br><br>';
+								}
+							?>
+						</div>
+					</center>
 				</td>
 			</tr>
 			<tr>
@@ -118,13 +90,14 @@
 					User ID:
 				</td>
 				<td>
-					<input type="text" name="uid" placeholder="Enter User ID">
+					<input type="text" name="uid" value="<?php echo $data['id']+1; ?>" disabled>
 				</td>
 				<td>
 					First Name:
 				</td>
 				<td>
-					<input type="text" name="fname" placeholder="Enter First Name">
+					<input type="text" name="fname" placeholder="Enter First Name" id="fname" onkeyup="validateFName()">
+					<div id="erfname" style="color: red;font-weight: bold;"></div>
 				</td>
 			</tr>
 			<tr>
@@ -132,13 +105,15 @@
 					Last Name:
 				</td>
 				<td>
-					<input type="text" name="lname" placeholder="Enter Last Name">
+					<input type="text" name="lname" placeholder="Enter Last Name" id="lname" onkeyup="validateLName()">
+					<div id="erlname" style="color: red;font-weight: bold;"></div>
 				</td>
 				<td>
 					Username:
 				</td>
 				<td>
-					<input type="text" name="uname" placeholder="Enter Username">
+					<input type="text" name="uname" placeholder="Enter Username" id="uname" onkeyup="validateUName()">
+					<div id="eruname" style="color: red;font-weight: bold;"></div>
 				</td>
 			</tr>
 			<tr>
@@ -146,13 +121,19 @@
 					Email:
 				</td>
 				<td>
-					<input type="text" name="email" placeholder="Enter User Email">
+					<input type="text" name="email" placeholder="Enter User Email" id="email" onkeyup="validateEmail()">
+					<div id="eremail" style="color: red;font-weight: bold;"></div>
 				</td>
 				<td>
-					Image:
+					User Type:
 				</td>
 				<td>
-					<input type="file" name="uimage">
+					<select name="utype" id="utype" onchange="validateUserType()">
+						<option value="">Select Type</option>
+						<option value="1">Admin</option>
+						<option value="2">Seller</option>
+					</select>
+					<div id="erutype" style="color: red;font-weight: bold;"></div>
 				</td>
 			</tr>
 			<tr>
@@ -160,13 +141,23 @@
 					Password:
 				</td>
 				<td>
-					<input type="Password" name="upass" placeholder="Enter Password">
+					<input type="Password" name="upass" placeholder="Enter Password" id="upass" onkeyup="validatePassword()">
+					<div id="erupass" style="color: red;font-weight: bold;"></div>
 				</td>
 				<td>
 					Confirm Password:
 				</td>
 				<td>
-					<input type="Password" name="ucpass" placeholder="Enter Confirm Password">
+					<input type="Password" name="ucpass" placeholder="Enter Confirm Password" id="ucpass" onkeyup="validateCpass()">
+					<div id="erucpass" style="color: red;font-weight: bold;"></div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Image:
+				</td>
+				<td>
+					<input type="file" name="uimage" accept="image/x-png,image/jpeg,image/jpg">
 				</td>
 			</tr>
 			<tr>

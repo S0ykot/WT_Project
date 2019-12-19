@@ -98,7 +98,7 @@
 					Product ID:
 				</td>
 				<td>
-					<input type="text" name="pid" placeholder="Enter Product ID" value="<?php echo $data['pid']+1; ?>" disabled>
+					<input type="text" name="pid" value="<?php echo $data['pid']+1; ?>" disabled>
 				</td>
 				<td>
 					Product Name:
@@ -187,7 +187,7 @@
 					Image:
 				</td>
 				<td>
-					<input type="file" name="pimage" accept="image/x-png,image/jpeg" id="pimg" onclick="validateFile()">
+					<input type="file" name="pimage" accept="image/x-png,image/jpeg,image/jpg" id="pimg" onclick="validateFile()">
 					<div id="erimg" style="color: red;font-weight: bold;"></div>
 				</td>
 			</tr>
