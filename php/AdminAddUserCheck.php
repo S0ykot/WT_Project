@@ -67,7 +67,7 @@
 										$ext = explode('.', $rname);
 										$newname = uniqid().'.'.$ext[1];
 										move_uploaded_file($name, $dir.$newname);
-										$ufullname = $fname." ".$lname;
+										$ufullname = $fname."  ".$lname;
 										date_default_timezone_set('Asia/Dhaka');
 										$time = date("Y-m-d h:i:sa");
 										$status = UserAdd($uname,$pass,$email,$ufullname,$newname,$utype,$time);

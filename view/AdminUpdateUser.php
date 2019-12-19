@@ -1,8 +1,16 @@
 <?php 
-	
+	require_once('../db/AdminUserFunction.php');
 	session_start();
 
 	if (isset($_SESSION['username'])) {	
+		if (isset($_GET['id'])) {
+			$data =singleUser($_GET['id']);
+			$rows = mysqli_fetch_assoc($data);
+			$_SESSION['uid'] = $rows['id'];
+			$fullname = $rows['fullname'];
+			$fl = explode('  ', $fullname);
+			$t = $rows['eid'];
+		}
 		
 ?>
 
@@ -12,6 +20,7 @@
 	<title>Update User</title>
 	<link rel="stylesheet" type="text/css" href="../css/Navigate.css">
 	<link rel="stylesheet" type="text/css" href="../css/Design.css">
+	<script type="text/javascript" src="../js/AdminScript.js"></script>
 </head>
 <body style="background-color: CornflowerBlue; margin: 0;">
 
@@ -61,17 +70,20 @@
 		  	</div>
 		</div>
 	</div>
-	<form method="POST" action="">
+	<form method="POST" action="../php/AdminUpdateUserCheck.php" enctype="multipart/form-data">
 		<table align="center" bgcolor="CornflowerBlue" cellspacing="30px">
 			<tr>
 				<td colspan="4">
-					<center><h1><font color="DarkBlue" face="Cursive"><u>Update User</u></font></h1></center>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="4" align="right">
-					<input type="text" name="search" placeholder="Search User">
-					<button type="button" class="btn">Search</button>
+					<center>
+						<h1><font color="DarkBlue" face="Cursive"><u>Update User</u></font></h1>
+						<div style="color: red;font-weight: bold;">
+							<?php 
+								if (isset($_GET['msg'])) {
+									echo $_GET['msg'].'<br><br>';
+								}
+							?>
+						</div>
+					</center>
 				</td>
 			</tr>
 			<tr>
@@ -79,13 +91,14 @@
 					User ID:
 				</td>
 				<td>
-					<input type="text" name="uid" placeholder="Enter User ID">
+					<input type="text" name="uid" value="<?php echo $_SESSION['uid']; ?>" disabled>
 				</td>
 				<td>
 					First Name:
 				</td>
 				<td>
-					<input type="text" name="fname" placeholder="Enter First Name">
+					<input type="text" name="upfname" placeholder="Enter First Name" id="fname" onkeyup="validateFName()" value="<?php echo $fl[0]; ?>">
+					<div id="erfname" style="color: red;font-weight: bold;"></div>
 				</td>
 			</tr>
 			<tr>
@@ -93,13 +106,15 @@
 					Last Name:
 				</td>
 				<td>
-					<input type="text" name="lname" placeholder="Enter Last Name">
+					<input type="text" name="uplname" placeholder="Enter Last Name" id="lname" onkeyup="validateLName()" value="<?php echo $fl[1]; ?>">
+					<div id="erlname" style="color: red;font-weight: bold;"></div>
 				</td>
 				<td>
 					Username:
 				</td>
 				<td>
-					<input type="text" name="uname" placeholder="Enter Username">
+					<input type="text" name="upuname" placeholder="Enter Username" id="uname" onkeyup="validateUName()" value="<?php echo $rows['username']; ?>">
+					<div id="eruname" style="color: red;font-weight: bold;"></div>
 				</td>
 			</tr>
 			<tr>
@@ -107,13 +122,25 @@
 					Email:
 				</td>
 				<td>
-					<input type="text" name="email" placeholder="Enter User Email">
+					<input type="text" name="upemail" placeholder="Enter User Email" id="email" onkeyup="validateEmail()" value="<?php echo $rows['email']; ?>">
+					<div id="eremail" style="color: red;font-weight: bold;"></div>
 				</td>
 				<td>
-					Image:
+					User Type:
 				</td>
 				<td>
-					<input type="file" name="uimage">
+					<select name="uputype" id="utype" onchange="validateUserType()">
+						<option value="" <?php if ($t == "") {
+							echo "selected";
+						} ?>>Select Type</option>
+						<option value="1" <?php if ($t == 1) {
+							echo "selected";
+						} ?>>Admin</option>
+						<option value="2" <?php if ($t == 2) {
+							echo "selected";
+						} ?>>Seller</option>
+					</select>
+					<div id="erutype" style="color: red;font-weight: bold;"></div>
 				</td>
 			</tr>
 			<tr>
@@ -121,13 +148,23 @@
 					Password:
 				</td>
 				<td>
-					<input type="Password" name="upass" placeholder="Enter Password">
+					<input type="Password" name="upupass" placeholder="Enter Password" id="upass" onkeyup="validatePassword()" value="<?php echo $rows['password']; ?>">
+					<div id="erupass" style="color: red;font-weight: bold;"></div>
 				</td>
 				<td>
 					Confirm Password:
 				</td>
 				<td>
-					<input type="Password" name="ucpass" placeholder="Enter Confirm Password">
+					<input type="Password" name="upucpass" placeholder="Enter Confirm Password" id="ucpass" onkeyup="validateCpass()"  value="<?php echo $rows['password']; ?>">
+					<div id="erucpass" style="color: red;font-weight: bold;"></div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Image:
+				</td>
+				<td>
+					<input type="file" name="upuimage" accept="image/x-png,image/jpeg,image/jpg">
 				</td>
 			</tr>
 			<tr>
