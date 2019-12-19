@@ -123,4 +123,34 @@
 
 		return $result;	
 	}
+
+	function singleUser($id)
+	{
+		$conn = getConnection();
+		$sql = "select * from system_user where id='{$id}'";
+		$result = mysqli_query($conn,$sql);
+
+		return $result;
+	}
+
+	function updateUser($id,$upuname,$uppass,$upemail,$upfullname,$newname,$uputype,$uptime){
+
+		$conn = getConnection();
+		$sql = "update system_user set username='{$upuname}', password='{$uppass}', email='{$upemail}', fullname='{$upfullname}', image='{$newname}', eid='{$uputype}', last_update='{$uptime}' where id='{$id}'";
+
+		if (mysqli_query($conn,$sql)) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	function getsingleUserEmailAndUname($id)
+	{
+		$conn = getConnection();
+		$sql = "select username,email from system_user where id!='{$id}'";
+		$result = mysqli_query($conn,$sql);
+
+		return $result;
+	}
  ?>
