@@ -69,7 +69,7 @@
 
 	 ?>
 
-	<form method="POST" action="../php/UserCheck.php" enctype="multipart/form-data">
+	<form method="POST" action="../php/AdminAddUserCheck.php" enctype="multipart/form-data">
 		<table align="center" bgcolor="CornflowerBlue" cellspacing="30px">
 			<tr>
 				<td colspan="4">
