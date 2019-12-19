@@ -1,5 +1,5 @@
 <?php 
-	
+	require_once('../db/AdminUserFunction.php');
 	session_start();
 
 	if (isset($_SESSION['username'])) {	
@@ -13,6 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/Navigate.css">
 	<link rel="stylesheet" type="text/css" href="../css/Design.css">
 	<link rel="stylesheet" type="text/css" href="../css/Table.css">
+	<script type="text/javascript" src="../js/AdminScript.js"></script>
 </head>
 <body>
 	<div class="nav">
@@ -62,55 +63,51 @@
 		</div>
 	</div>
 	<center>
-		<h1><font color="DarkBlue" face="Cursive"><u>User Details</u></font></h1><br><br>
-		<input type="text" name="searchkey" placeholder="Search User">
-		<button type="button" class="btn">Search</button>
+		<h1><font color="DarkBlue" face="Cursive"><u>User Details</u></font></h1><br>
+		<div style="color: red;font-weight: bold;">
+			<?php 
+				if (isset($_GET['msg'])) {
+					echo $_GET['msg'].'<br><br>';
+				}
+			?>
+		</div>
+		
+		<input type="text" name="searchkey" placeholder="Search User By Name or Type or Email" size="50" id="skey" onkeyup="getProductBySearch()">
 	</center>
 	
-	<table bgcolor="CornflowerBlue" width="100%" cellspacing="20px" style="margin-top: 2.5%">
-		<tr>
-			<th>User Name</th>
-			<th>Email</th>
-			<th>Phone Number</th>
-			<th>User Type</th>
-		</tr>
-		<tr align="center">
-			<td>admin</td>
-			<td>admin@gmail.com</td>
-			<td>8801234567890</td>
-			<td>Admin</td>
-		</tr>
-		<tr align="center">
-			<td>seller</td>
-			<td>seller@yahoo.com</td>
-			<td>8801631287459</td>
-			<td>Seller</td>
-		</tr>
-		<tr align="center">
-			<td>admin2</td>
-			<td>admin2@yahoo.com</td>
-			<td>8801795328617</td>
-			<td>Admin</td>
-		</tr>
-		<tr align="center">
-			<td>owner</td>
-			<td>owner@gmail.com</td>
-			<td>8801912345678</td>
-			<td>Admin</td>
-		</tr>
-		<tr align="center">
-			<td>service</td>
-			<td>service@outlook.com</td>
-			<td>8801898745632</td>
-			<td>Seller</td>
-		</tr>
-		<tr align="center">
-			<td>salesman</td>
-			<td>salesman@gmail.com</td>
-			<td>8801545698712</td>
-			<td>Seller</td>
-		</tr>
-	</table>
+	<div id="userdata">
+		<table width="100%" cellspacing="20px" style="margin-top: 2.5%">
+			<tr>
+				<th>User ID</th>
+				<th>Username</th>
+				<th>Email</th>
+				<th>Full Name</th>
+				<th>Image</th>
+				<th>User Type</th>
+				<th colspan="2">Operation</th>
+			</tr>
+
+			<?php 
+
+				$result = getUserDetails();
+				while ($rows = mysqli_fetch_assoc($result)) {
+
+			?>
+
+			<tr align="center">
+				<td><?php echo $rows['id']; ?></td>
+				<td><?php echo $rows['username']; ?></td>
+				<td><?php echo $rows['email']; ?></td>
+				<td><?php echo $rows['fullname']; ?></td>
+				<td><img src="../upload/<?php echo $rows['image'];?>" width="150px" height="150px"></td>
+				<td><?php echo $rows['type']; ?></td>
+				<td><a href="AdminUpdateUser.php?id=<?php echo $rows['id']; ?>" class="a1">Update</a></td>
+				<td><button class="btn" onclick="DeleteUser(<?php echo $rows['id']; ?>)">Delete</button></td>
+			</tr>
+			<?php } ?>
+			
+		</table>
+	</div>
 			
 </body>
 </html>

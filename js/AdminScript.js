@@ -242,7 +242,7 @@ function getProductBySearch(){
     }};
 }
 
-function DeleteUser(deleteid){
+function DeleteProduct(deleteid){
 
 	var conf = confirm("Are you sure to delete?");
 	if(conf == true){
@@ -497,4 +497,34 @@ function NumberValid(uid)
 				return false;
 			}
 		}
+}
+
+function DeleteUser(deleteuid){
+
+	var conf = confirm("Are you sure to delete?");
+	if(conf == true){
+		var xhttp = new XMLHttpRequest();
+		xhttp.open("POST", "../db/AdminDeleteUser.php", true);
+		xhttp.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+  		xhttp.send("userid="+deleteuid);
+  		xhttp.onreadystatechange = function() {
+    	if (this.readyState == 4 && this.status == 200) {
+    		document.getElementById("userdata").innerHTML = this.responseText;
+    		//alert(this.responseText);
+    	}};
+	}
+}
+
+function getProductBySearch(){
+	var search = document.getElementById('skey').value;
+
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "../db/AdminGetSearchUser.php", true);
+	xhttp.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+  	xhttp.send("shkey="+search);
+  	xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    	document.getElementById("userdata").innerHTML = this.responseText;
+    	//alert(this.responseText);
+    }};
 }

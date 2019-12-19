@@ -95,4 +95,32 @@
 		return $flag;
 	}
 
+	function getUserDetails(){
+
+		$conn = getConnection();
+		$sql = "select system_user.id,system_user.username,system_user.email,system_user.fullname,system_user.image,emp_type.type from system_user,emp_type where system_user.eid=emp_type.eid order by system_user.id asc";
+		$result = mysqli_query($conn,$sql);
+
+		return $result;
+	}
+
+	function deleteUser($id){
+
+		$conn = getConnection();
+		$sql = "delete from system_user where id = '{$id}'";
+		if (mysqli_query($conn,$sql)) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	function getSearchUser($key){
+
+		$conn = getConnection();
+		$sql = "select system_user.id,system_user.username,system_user.email,system_user.fullname,system_user.image,emp_type.type from system_user,emp_type where system_user.eid=emp_type.eid and (system_user.fullname like '{$key}%' or system_user.email like '{$key}%' or emp_type.type like '{$key}%')";
+		$result = mysqli_query($conn,$sql);
+
+		return $result;	
+	}
  ?>
