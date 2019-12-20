@@ -134,6 +134,12 @@ a
 	transition: all 0.2s;
 	transform: scale(0.9);
 }
+
+#addCartBtn:hover{
+	transition: all 0.2s;
+	transform: scale(0.9);
+}
+
 #lists li{
 	float: left;
 	list-style: none;
@@ -244,4 +250,16 @@ a
 #itemsBlock
 {
 	border-bottom:1px solid black;
+}
+
+#qty
+{
+	height: 30px;
+	width: 50px;
+}
+
+#productDetails
+{
+	color: tomato;
+	font-size: 25px;
 }

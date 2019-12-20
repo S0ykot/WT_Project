@@ -1,6 +1,10 @@
 <?php 
+session_start();
+require_once('../db/buyerFunctions.php');
+//print_r(getItemsCount($_SESSION['Username']));
+if (isset($_COOKIE['id'])) { 
 
-if (isset($_COOKIE['id'])) { ?>
+?>
 
 <!DOCTYPE html>
 <html>
@@ -69,7 +73,58 @@ if (isset($_COOKIE['id'])) { ?>
 							</menu>
 						</nav>
 					</div>
-					<table border="0px" width="100%" cellpadding="0px" cellspacing="0px" bgcolor="#E8EBEC">
+					<?php
+					if(getItemsCount($_SESSION['Username'])>0)
+					{
+						$cart=getItems($_SESSION['Username']);
+					?>
+						<div style="margin-top: 60px; margin-bottom: 40px">
+						<center>
+						<table border="0px" width="60%" cellpadding="0px" cellspacing="0px" bgcolor="#E8EBEC">
+							<tr>
+								<th  style="padding: 5px 0px">Product Name</th>
+								<th  style="padding: 5px 0px">Product Price</th>
+								<th  style="padding: 5px 0px">Quantity</th>
+								<th  style="padding: 5px 0px">Total Price</th>
+							</tr>
+						<?php
+							for ($i=0; $i <count($cart) ; $i++) { 
+								?>
+								<tr>
+									<td align="center"  style="padding-bottom: 10px "><?= $cart[$i]['product_name']?></td>
+									<td align="center"  style="padding-bottom: 10px "><?= $cart[$i]['price']?></td>
+									<td align="center" style="padding-bottom: 10px "><?= $cart[$i]['quantity']?></td>
+									<td align="center"  style="padding-bottom: 10px "><?= $cart[$i]['total_price']?></td>
+								</tr>
+								<?php
+							}
+						?>
+						<tr>
+							<th colspan="3" align="right"  style="padding-bottom: 10px ">Total</th>
+							<th align="center"  style="padding-bottom: 10px ">
+								<span id="mainTotal">
+								<?php
+								$total = 0;
+									for ($i=0; $i <count($cart) ; $i++) { 
+										$total+=$cart[$i]['total_price'];
+								}
+										echo $total;
+								?>
+							</span>
+							</th>
+						</tr>
+					</table>
+					</center>
+					</div>
+					<div style="margin-bottom: 152px; text-align: center">
+						<input id="addCartBtn" type="button" name="checkout" value="Checkout" onclick="checkout()">
+					</div>
+							<?php
+						}
+						else
+						{
+							?>
+						<table border="0px" width="100%" cellpadding="0px" cellspacing="0px" bgcolor="#E8EBEC">
 						<tr>
 							<td colspan="5" height="5px"></td>
 						</tr>
@@ -95,6 +150,9 @@ if (isset($_COOKIE['id'])) { ?>
 							<td colspan="5" height="60px"></td>
 						</tr>
 					</table>
+							<?php
+						}
+					?>
 					<table>
 						<tr><hr></tr>
 					</table>

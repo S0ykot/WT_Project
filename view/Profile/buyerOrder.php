@@ -1,5 +1,7 @@
-<?php session_start();
-
+<?php 
+session_start();
+require_once('../../db/buyerFunctions.php');
+//echo getOrderCount($ID);
 if (isset($_SESSION['NAME'])) { ?>
 
 
@@ -22,7 +24,7 @@ if (isset($_SESSION['NAME'])) { ?>
 								<?php
 									if (isset($_COOKIE['id'])) {
 										?>
-										<a href="Profile/buyerDashboard.php"><div id="myAccount">My Account</div></a>
+										<a href="../Profile/buyerDashboard.php"><div id="myAccount">My Account</div></a>
 										<?php
 									}
 									else{
@@ -32,7 +34,7 @@ if (isset($_SESSION['NAME'])) { ?>
 									}
 									?>
 
-								<a href="cart.php"><div id="cart">Cart</div></a>
+								<a href="../cart.php"><div id="cart">Cart</div></a>
 							</td>
 						</tr>
 					</table>
@@ -70,6 +72,7 @@ if (isset($_SESSION['NAME'])) { ?>
 							</menu>
 						</nav>
 					</div>
+					
 					<table border="0px" width="100%" cellpadding="0px" cellspacing="0px">
 						<tr>
 							<td height="5px" bgcolor="white" colspan="1">
@@ -108,37 +111,78 @@ if (isset($_SESSION['NAME'])) { ?>
 							<td width="2%"></td>
 							<td width="1%" bgcolor="white"></td>
 							<td bgcolor="">
-						<table border="0px" width="100%" cellpadding="0px" cellspacing="0px" bgcolor="#E8EBEC">
-						<tr>
-							<td colspan="5" height="30px"></td>
-						</tr>
-						<tr>
-							<td colspan="5" height="60px" valign="top"><font color="dodgerblue">&emsp;&emsp;&emsp;&ensp;Order List</font></td>
-						</tr>
-						<tr>
-							<td width="12%" rowspan="4"></td>
-							<td>
-								<font color="tomato" size="8px">No Order(s) !</font>
-							</td>
-							<tr>
-								<td rowspan="">There is no ProductPages in Order list</td>
-							</tr>
-							<tr>
-								<td height="20px"></td>
-							</tr>
-							<tr>
-								<td rowspan=""><a href="../../index.php"><font color="tomato">Click Here</font></a> to continue Shopping</td>
-							</tr>
-						</tr>
-						<tr>
-							<td colspan="5" height="60px"></td>
-						</tr>
-						
-					</table>
-							</td>
-							<td width="5%"></td>
-						</tr>
-					</table>
+								<center>
+									<table border="0px" width="100%" cellpadding="0px" cellspacing="0px" bgcolor="#E8EBEC">
+										<?php
+									$ID = getId($_SESSION['Username']);
+									//echo $ID['cid'];
+									if(getOrderCount($ID['cid'])>0)
+									{
+										$order=getOrderList($ID['cid']);
+									?>
+										<div style="margin-top: 60px;">
+										<center>
+										<table border="0px" width="60%" cellpadding="0px" cellspacing="0px" bgcolor="#E8EBEC">
+											<tr>
+												<th  style="padding: 5px 0px">Products</th>
+												<th  style="padding: 5px 0px">Total Price</th>
+												<th  style="padding: 5px 0px">Order Date</th>
+												<th  style="padding: 5px 0px">Status</th>
+											</tr>
+										<?php
+											for ($i=0; $i <count($order) ; $i++) { 
+												?>
+												<tr>
+													<td align="center" width="140px" style="padding-bottom: 10px "><?= $order[$i]['item_quantity']?></td>
+													<td align="center"  style="padding-bottom: 10px "><?= $order[$i]['total_cost']?></td>
+													<td align="center" style="padding-bottom: 10px "><?= $order[$i]['order_date']?></td>
+													<td align="center"  style="padding-bottom: 10px "><?= $order[$i]['status']?></td>
+												</tr>
+												<?php
+											}
+										?>
+									</table>
+									</center>
+									<div style="margin-bottom: 210px"></div>
+									</div>
+											<?php
+										}
+										else{
+											?>
+										
+										<tr>
+											<td colspan="5" height="30px"></td>
+										</tr>
+										<tr>
+											<td colspan="5" height="60px" valign="top"><font color="dodgerblue">&emsp;&emsp;&emsp;&ensp;Order List</font></td>
+										</tr>
+										<tr>
+											<td width="12%" rowspan="4"></td>
+											<td>
+												<font color="tomato" size="8px">No Order(s) !</font>
+											</td>
+											<tr>
+												<td rowspan="">There is no ProductPages in Order list</td>
+											</tr>
+											<tr>
+												<td height="20px"></td>
+											</tr>
+											<tr>
+												<td rowspan=""><a href="../../index.php"><font color="tomato">Click Here</font></a> to continue Shopping</td>
+											</tr>
+										</tr>
+										<tr>
+											<td colspan="5" height="60px"></td>
+										</tr>
+										
+															</table>
+											</td>
+											<td width="5%"></td>
+										</tr>
+										<?php
+									}
+									?>
+									</table>
 					<table>
 						<tr><hr></tr>
 					</table>

@@ -52,3 +52,25 @@ function lifestyle()
 	    }
 	  };
 }
+
+function gotoProduct()
+{
+	var Productname = document.getElementById('productname').textContent;
+	var Productprice = document.getElementById('productprice').textContent;
+	var ProductQty = document.getElementById('qty').value;
+	//alert(ProductQty);
+
+	var xhttp = new XMLHttpRequest();
+	 xhttp.open("POST", "../../php/getProduct.php", true);
+	  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	  xhttp.send('ProName='+Productname+'&ProPrice='+Productprice+'&ProQty='+ProductQty);
+
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status==200) {
+	    	//alert(this.responseText);
+	    window.location = "../cart.php";
+
+	    }
+	    //alert(this.responseText);
+	  };
+}
