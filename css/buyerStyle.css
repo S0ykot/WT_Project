@@ -134,6 +134,12 @@ a
 	transition: all 0.2s;
 	transform: scale(0.9);
 }
+
+#addCartBtn:hover{
+	transition: all 0.2s;
+	transform: scale(0.9);
+}
+
 #lists li{
 	float: left;
 	list-style: none;

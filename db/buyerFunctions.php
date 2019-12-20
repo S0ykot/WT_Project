@@ -103,3 +103,91 @@ function getProduct($Product)
 	}
 	return $lists;
 }
+
+function setCart($username,$Productname,$Productprice,$ProductQty,$Totalqty)
+{
+	$conn= getConnection();
+	$sql = "insert into cart values ('','{$username}','{$Productname}','$Productprice','$ProductQty','$Totalqty')";
+	if(mysqli_query($conn, $sql))
+	{
+		return true;	
+	}
+	else 
+		return false;
+}
+
+function getItems($username)
+{
+	$conn = getConnection();
+	$sql = "select * from cart where username='{$username}'";
+	$result = mysqli_query($conn, $sql);
+	while($getResult = mysqli_fetch_assoc($result))
+	{
+		$lists[]=$getResult;
+	}
+	return $lists;
+}
+
+function getItemsCount($username)
+{
+	$conn = getConnection();
+	$sql = "select * from cart where username='{$username}'";
+	$result = mysqli_query($conn, $sql);
+	$users=mysqli_fetch_assoc($result);
+	return count($users);
+}
+
+function getId($id)
+{
+	$conn= getConnection();
+	$sql = "select cid from customer_user where username='{$id}'";
+	$result = mysqli_query($conn, $sql);
+	$users = mysqli_fetch_assoc($result);
+
+	return $users;
+}
+
+function checkout($id,$orderList,$Total)
+{
+	$conn= getConnection();
+	$sql = "insert into orders values ('','{}','{$orderList}','$Total','Pending','$id')";
+	if(mysqli_query($conn, $sql))
+	{
+		return true;	
+	}
+	else 
+		return false;
+}
+
+function deleteCart($username)
+{
+	$conn= getConnection();
+	$sql = "delete from cart where username='{$username}'";
+	if(mysqli_query($conn, $sql))
+	{
+		return true;	
+	}
+	else 
+		return false;
+}
+
+function getOrderCount($ID)
+{
+	$conn = getConnection();
+	$sql = "select * from orders where cid='{$ID}'";
+	$result = mysqli_query($conn, $sql);
+	$users=mysqli_fetch_assoc($result);
+	return count($users);
+}
+
+function getOrderList($id)
+{
+	$conn = getConnection();
+	$sql = "select * from orders where cid='{$id}'";
+	$result = mysqli_query($conn, $sql);
+	while($getResult = mysqli_fetch_assoc($result))
+	{
+		$lists[]=$getResult;
+	}
+	return $lists;
+}
