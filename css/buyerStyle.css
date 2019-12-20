@@ -14,7 +14,7 @@
 }
 #btn
 {
-	height: 34px;
+	height: 32px;
 	width: 80px;
 	background-color: RGB(30, 144 , 255);
 	color: white;
@@ -98,9 +98,13 @@ a
 }
 #menuBar{
 	padding-left: 40px;
+	background-color: dodgerblue;
+	position: absolute;
+	width: 97%;
 }
 #loginReg{
 	margin: 20px 0px;
+	top: 20px;
 }
 #sign:hover
 {
@@ -134,6 +138,7 @@ a
 	float: left;
 	list-style: none;
 	padding: 0px 20px;
+	position: relative;
 
 }
 #lists li a{
@@ -143,7 +148,7 @@ a
 
 
 }
-#lists li a:hover{
+#lists li:hover{
 	background-color: black;
  	transition: all 0.5s;
 }
@@ -164,4 +169,79 @@ a
 	background-color: tomato;
 	color: white;
 	border:none;
+}
+#sub_list li{
+	float: none;
+	padding: 0px 20px;
+	margin: 0px;
+
+}
+#sub_list
+{
+	background-color: tomato;
+	width: 200px;
+	position: absolute;
+	color: tomato;
+	left: -9999999999px;
+	margin-left: -5px;
+}
+
+#lists li:hover #sub_list{left: 5px;}
+
+#ComCat li{
+	float: none;
+	padding: 0px 20px;
+	margin: 0px;
+
+}
+#ComCat
+{
+	background-color: tomato;
+	width: 200px;
+	position: absolute;
+	color: tomato;
+	left: -9999999999px;
+	margin-left: -5px;
+}
+
+#lists li:hover #ComCat{left: 5px;}
+
+#CamCat li{
+	float: none;
+	padding: 0px 20px;
+	margin: 0px;
+
+}
+#CamCat
+{
+	background-color: tomato;
+	width: 200px;
+	position: absolute;
+	color: tomato;
+	left: -9999999999px;
+	margin-left: -5px;
+}
+
+#lists li:hover #CamCat{left: 5px;}
+
+#LifeCat li{
+	float: none;
+	padding: 0px 20px;
+	margin: 0px;
+}
+#LifeCat
+{
+	background-color: tomato;
+	width: 135px;
+	position: absolute;
+	color: tomato;
+	left: -9999999999px;
+	margin-left: -5px;
+}
+
+#lists li:hover #LifeCat{left: 5px;}
+
+#itemsBlock
+{
+	border-bottom:1px solid black;
 }

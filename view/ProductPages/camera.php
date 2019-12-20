@@ -1,5 +1,7 @@
 <?php
+error_reporting(0);
 	session_start();
+	$products = base64_decode($_GET['subCat']);
 ?>
 
 <!DOCTYPE html>
@@ -7,6 +9,7 @@
 <head>
 	<title>Accessoy Store</title>
 	<link rel="stylesheet" href="../../css/buyerStyle.css">
+	<script type="text/javascript" src="../../js/ProductPagesMenu/buyerScript.js"></script>
 </head>
 
 <body>
@@ -34,30 +37,40 @@
 							</td>
 						</tr>
 					</table>
-					<table border="0px" width="100%" cellpadding="0px" cellspacing="0px">
-						<tr>
-							<td height="30px" bgcolor="dodgerblue">
-								<div id="menuBar">
-									<nav id="menuContainer">
-										<menu id="listContainer">
-											<ul id="lists">
+					<div id="menuBar">
+						<nav id="menuContainer">
+							<menu id="listContainer">
+								<ul id="lists">
+								
+									<li><a href="../../index.php">Home</a></li>
+									
+									<li><a href="" onmouseover="smartphone()" id="smartphone">Smartphone</a>
+										<ul id="sub_list">
 											
-												<li><a href="../../index.php">Home</a></li>
-												
-												<li><a href="smartphone.php">Smartphone</a></li>
-												
-												<li><a href="computer.php">Computer</a></li>
-												
-												<li><a href="camera.php">Camera</a></li>
-												
-												<li><a href="lifestyle.php">Lifestyle</a></li>
-											</ul>
-										</menu>
-									</nav>
-								</div>
-							</td>
-						</tr>
-					</table>
+										</ul>
+									</li>
+									
+									<li><a href="" onmouseover="computer()" id="computer">Computer</a>
+										<ul id="ComCat">
+											
+										</ul>
+									</li>
+									
+									<li><a href="" onmouseover="camera()" id="camera">Camera</a>
+										<ul id="CamCat">
+											
+										</ul>
+									</li>
+									
+									<li><a href="" onmouseover="lifestyle()" id="lifestyle">Lifestyle</a>
+										<ul id="LifeCat">
+											
+										</ul>
+									</li>
+								</ul>
+							</menu>
+						</nav>
+					</div>
 							
 					<div id="productBlock">
 						<table border="0px" width="100%" cellpadding="0px" cellspacing="0px">
@@ -65,59 +78,30 @@
 						<tr>
 							<td width="20%" valign="top" align="center" bgcolor="#E8EBEC"><font color="tomato">Camera <br> Accessories</font></td>
 							<td>
-								<table border="1px" width="100%" cellpadding="0px" cellspacing="0px">
-									<tr>
-										<td width="20%" align="center"> <img src="../Images/camera.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px">DSLR Lense 	<br>1200tk <br><br> Available</td>
-										<td width="20%" align="center"> <img src="../Images/camera.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px">DSLR Lense		<br>1200tk <br><br> Available</td>
-										<td width="20%" align="center"> <img src="../Images/camera.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px">DSLR Lense		<br>1200tk <br><br> Available</td>
-										<td width="20%" align="center"> <img src="../Images/camera.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px">DSLR Lense		<br>1200tk <br><br> Available</td>
-									</tr>
-									<tr>
-										<td width="20%" align="center"> <img src="../Images/camera.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px">DSLR Lense 	<br>1200tk <br><br> Available</td>
-										<td width="20%" align="center"> <img src="../Images/camera.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px">DSLR Lense		<br>1200tk <br><br> Available</td>
-										<td width="20%" align="center"> <img src="../Images/camera.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px">DSLR Lense		<br>1200tk <br><br> Available</td>
-										<td width="20%" align="center"> <img src="../Images/camera.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px">DSLR Lense		<br>1200tk <br><br> Available</td>
-									</tr>
-									<tr>
-										<td width="20%" align="center"> <img src="../Images/camera.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px">DSLR Lense 	<br>1200tk <br><br> Available</td>
-										<td width="20%" align="center"> <img src="../Images/camera.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px">DSLR Lense		<br>1200tk <br><br> Available</td>
-										<td width="20%" align="center"> <img src="../Images/camera.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px">DSLR Lense		<br>1200tk <br><br> Available</td>
-										<td width="20%" align="center"> <img src="../Images/camera.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px">DSLR Lense		<br>1200tk <br><br> Available</td>
-									</tr>
-									<tr>
-										<td width="20%" align="center"> <img src="../Images/camera.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px">DSLR Lense 	<br>1200tk <br><br> Available</td>
-										<td width="20%" align="center"> <img src="../Images/camera.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px">DSLR Lense		<br>1200tk <br><br> Available</td>
-										<td width="20%" align="center"> <img src="../Images/camera.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px">DSLR Lense		<br>1200tk <br><br> Available</td>
-										<td width="20%" align="center"> <img src="../Images/camera.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px">DSLR Lense		<br>1200tk <br><br> Available</td>
-									</tr>
-									<tr>
-										<td width="20%" align="center"> <img src="../Images/camera.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px">DSLR Lense 	<br>1200tk <br><br> Available</td>
-										<td width="20%" align="center"> <img src="../Images/camera.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px">DSLR Lense		<br>1200tk <br><br> Available</td>
-										<td width="20%" align="center"> <img src="../Images/camera.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px">DSLR Lense		<br>1200tk <br><br> Available</td>
-										<td width="20%" align="center"> <img src="../Images/camera.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px">DSLR Lense		<br>1200tk <br><br> Available</td>
-									</tr>
+								<table border="0px" width="100%" cellpadding="0px" cellspacing="0px">									
+									<?php
+									require_once('../../db/buyerFunctions.php');
+									$Cat = $products;
+									$lists=getProductLists($Cat);
+									//echo $lists[0]['subcat_name'];
+										for ($i=0; $i <count($lists) ; $i++) { 
+											$x = $lists[$i]['name'];
+											?>
+											<tr>
+												<td width="5%"></td>
+												<td width="20%"> <img src="../Images/camera.jpg" alt="" height="125px" width="100px"></td>
+												<td><font size="10px" color="tomato"><a href="productDetails.php"><?= $x?></a></font></td>
+											</tr>
+											<tr>
+												<td colspan="3"><hr></td>
+											</tr>
+											<?php
+											$x = '';
+										}
+									?>								
 								</table>
 							</td>
+							<td width="20%" valign="top" align="center" bgcolor="#E8EBEC"></td>
 						</tr>
 					</table>
 					</div>

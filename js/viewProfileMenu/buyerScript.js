@@ -1,7 +1,7 @@
-function indexSmartphone()
+function smartphone()
 {	var x = document.getElementById('smartphone').textContent;
 	 var xhttp = new XMLHttpRequest();
-	 xhttp.open("POST", "php/buyerSubCat.php", true);
+	 xhttp.open("POST", "../../php/buyerSubCat4.php", true);
 	  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	  xhttp.send('subCat='+x);
 	  xhttp.onreadystatechange = function() {
@@ -10,12 +10,12 @@ function indexSmartphone()
 	    }
 	  };
 }
-function indexComputer()
+function computer()
 {
 	var x = document.getElementById('computer').textContent;
 	
 	 var xhttp = new XMLHttpRequest();
-	 xhttp.open("POST", "php/buyerSubCat.php", true);
+	 xhttp.open("POST", "../../php/buyerSubCat4.php", true);
 	  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	  xhttp.send('subCat='+x);
 	  xhttp.onreadystatechange = function() {
@@ -24,12 +24,12 @@ function indexComputer()
 	    }
 	  };
 }
-function indexCamera()
+function camera()
 {
 	var x = document.getElementById('camera').textContent;
 	
 	 var xhttp = new XMLHttpRequest();
-	 xhttp.open("POST", "php/buyerSubCat.php", true);
+	 xhttp.open("POST", "../../php/buyerSubCat4.php", true);
 	  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	  xhttp.send('subCat='+x);
 	  xhttp.onreadystatechange = function() {
@@ -38,12 +38,12 @@ function indexCamera()
 	    }
 	  };
 }
-function indexLifestyle()
+function lifestyle()
 {
 	var x = document.getElementById('lifestyle').textContent;
 	
 	 var xhttp = new XMLHttpRequest();
-	 xhttp.open("POST", "php/buyerSubCat.php", true);
+	 xhttp.open("POST", "../../php/buyerSubCat4.php", true);
 	  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	  xhttp.send('subCat='+x);
 	  xhttp.onreadystatechange = function() {

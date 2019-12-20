@@ -8,6 +8,7 @@ if (isset($_SESSION['NAME'])) { ?>
 <head>
 	<title>Accessoy Store</title>
 	<link rel="stylesheet" href="../../css/buyerStyle.css">
+	<script type="text/javascript" src="../../js/viewProfileMenu/buyerScript.js"></script>
 </head>
 
 <body>
@@ -35,30 +36,40 @@ if (isset($_SESSION['NAME'])) { ?>
 							</td>
 						</tr>
 					</table>
-					<table border="0px" width="100%" cellpadding="0px" cellspacing="0px">
-						<tr>
-							<td height="30px" bgcolor="dodgerblue">
-								<div id="menuBar">
-									<nav id="menuContainer">
-										<menu id="listContainer">
-											<ul id="lists">
+					<div id="menuBar">
+						<nav id="menuContainer">
+							<menu id="listContainer">
+								<ul id="lists">
+								
+									<li><a href="../../index.php">Home</a></li>
+									
+									<li><a href="" onmouseover="smartphone()" id="smartphone">Smartphone</a>
+										<ul id="sub_list">
 											
-												<li><a href="../../index.php">Home</a></li>
-												
-												<li><a href="../ProductPages/smartphone.php">Smartphone</a></li>
-												
-												<li><a href="../ProductPages/computer.php">Computer</a></li>
-												
-												<li><a href="../ProductPages/camera.php">Camera</a></li>
-												
-												<li><a href="../ProductPages/lifestyle.php">Lifestyle</a></li>
-											</ul>
-										</menu>
-									</nav>
-								</div>
-							</td>
-						</tr>
-					</table>
+										</ul>
+									</li>
+									
+									<li><a href="" onmouseover="computer()" id="computer">Computer</a>
+										<ul id="ComCat">
+											
+										</ul>
+									</li>
+									
+									<li><a href="" onmouseover="camera()" id="camera">Camera</a>
+										<ul id="CamCat">
+											
+										</ul>
+									</li>
+									
+									<li><a href="" onmouseover="lifestyle()" id="lifestyle">Lifestyle</a>
+										<ul id="LifeCat">
+											
+										</ul>
+									</li>
+								</ul>
+							</menu>
+						</nav>
+					</div>
 					<table border="0px" width="100%" cellpadding="0px" cellspacing="0px">
 						<tr>
 							<td height="5px" bgcolor="white" colspan="1">
@@ -71,6 +82,7 @@ if (isset($_SESSION['NAME'])) { ?>
 							<td width="1%" bgcolor="#E8EBEC"></td>
 							<td width="15%" bgcolor="#E8EBEC">
 								<table border="0px" width="100%" cellpadding="0px" cellspacing="0px">
+									<tr><td height="30px"></td></tr>
 									<tr>
 										<td><a href="../../php/buyerLogoutCheck.php"><font color="black">Logout</font></a></td>
 									</tr>
@@ -96,9 +108,9 @@ if (isset($_SESSION['NAME'])) { ?>
 							<td width="2%"></td>
 							<td width="1%" bgcolor="white"></td>
 							<td bgcolor="">
-								<table border="0px" width="100%" cellpadding="0px" cellspacing="0px" bgcolor="#E8EBEC">
+						<table border="0px" width="100%" cellpadding="0px" cellspacing="0px" bgcolor="#E8EBEC">
 						<tr>
-							<td colspan="5" height="5px"></td>
+							<td colspan="5" height="30px"></td>
 						</tr>
 						<tr>
 							<td colspan="5" height="60px" valign="top"><font color="dodgerblue">&emsp;&emsp;&emsp;&ensp;Order List</font></td>
