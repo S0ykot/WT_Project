@@ -3,6 +3,7 @@
 <head>
 	<title>Accessoy Store</title>
 	<link rel="stylesheet" href="css/buyerStyle.css">
+	<script type="text/javascript" src="js/IndexMenu/buyerScript.js"></script>
 </head>
 
 <body>
@@ -16,7 +17,7 @@
 								<?php
 									if (isset($_COOKIE['id'])) {
 										?>
-										<a href="view/Profile/buyerDashboard.php"><div id="myAccount">My Account</div></a>
+										<a href="view/Profile/buyerDashboard.php"><div id="myAccount">Account</div></a>
 										<?php
 									}
 									else{
@@ -30,30 +31,40 @@
 							</td>
 						</tr>
 					</table>
-					<table border="0px" width="100%" cellpadding="0px" cellspacing="0px">
-						<tr>
-							<td height="30px" bgcolor="dodgerblue">
-								<div id="menuBar">
-									<nav id="menuContainer">
-										<menu id="listContainer">
-											<ul id="lists">
+					<div id="menuBar">
+						<nav id="menuContainer">
+							<menu id="listContainer">
+								<ul id="lists">
+								
+									<li><a href="index.php">Home</a></li>
+									
+									<li><a href="" onmouseover="indexSmartphone()" id="smartphone">Smartphone</a>
+										<ul id="sub_list">
 											
-												<li><a href="index.php">Home</a></li>
-												
-												<li><a href="view/ProductPages/smartphone.php">Smartphone</a></li>
-												
-												<li><a href="view/ProductPages/computer.php">Computer</a></li>
-												
-												<li><a href="view/ProductPages/camera.php">Camera</a></li>
-												
-												<li><a href="view/ProductPages/lifestyle.php">Lifestyle</a></li>
-											</ul>
-										</menu>
-									</nav>
-								</div>
-							</td>
-						</tr>
-					</table>
+										</ul>
+									</li>
+									
+									<li><a href="" onmouseover="indexComputer()" id="computer">Computer</a>
+										<ul id="ComCat">
+											
+										</ul>
+									</li>
+									
+									<li><a href="" onmouseover="indexCamera()" id="camera">Camera</a>
+										<ul id="CamCat">
+											
+										</ul>
+									</li>
+									
+									<li><a href="" onmouseover="indexLifestyle()" id="lifestyle">Lifestyle</a>
+										<ul id="LifeCat">
+											
+										</ul>
+									</li>
+								</ul>
+							</menu>
+						</nav>
+					</div>
 					<img src="view/Images/Cover.jpg" alt="" height="400px" width="100%">
 					<table border="0px" width="100%" cellpadding="0px" cellspacing="0px">
 						<tr><td colspan="3" align="center" height="30px" bgcolor="dodgerblue">**Hot Deals**</td></tr>

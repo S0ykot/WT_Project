@@ -59,5 +59,35 @@ function updateInfo($username,$newName,$newEmail,$newCon)
 }
 
 
+function getSubCats($Cat)
+{
+	$conn = getConnection();
+	$sql1 = "select cat_id from category where cat_name='{$Cat}'";
+	$result1 = mysqli_query($conn, $sql1);
+	$list = mysqli_fetch_assoc($result1);
+	$sql = "select subcat_name from subcategory where cat_id='{$list["cat_id"]}'";
+	$result = mysqli_query($conn, $sql);
+	//$lists[]=array();
+	while($getResult = mysqli_fetch_assoc($result))
+	{
+		$lists[]=$getResult;
+	}
+	return $lists;
+	
+}
 
-?>
+function getProductLists($Cat)
+{
+	$conn = getConnection();
+	$sql1 = "select subcat_id from subcategory where subcat_name='{$Cat}'";
+	$result1 = mysqli_query($conn, $sql1);
+	$list = mysqli_fetch_assoc($result1);
+	$sql = "select * from product where subcat_id='{$list["subcat_id"]}'";
+	$result = mysqli_query($conn, $sql);
+	//$lists[]=array();
+	while($getResult = mysqli_fetch_assoc($result))
+	{
+		$lists[]=$getResult;
+	}
+	return $lists;
+}

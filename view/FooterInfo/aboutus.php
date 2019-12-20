@@ -8,6 +8,7 @@
 <head>
 	<title>Accessoy Store</title>
 	<link rel="stylesheet" href="../../css/buyerStyle.css">
+	<script type="text/javascript" src="../../js/viewProfileMenu/buyerScript.js"></script>
 </head>
 
 <body>
@@ -35,35 +36,48 @@
 							</td>
 						</tr>
 					</table>
-					<table border="0px" width="100%" cellpadding="0px" cellspacing="0px">
-						<tr>
-							<td height="30px" bgcolor="dodgerblue">
-								<div id="menuBar">
-									<nav id="menuContainer">
-										<menu id="listContainer">
-											<ul id="lists">
+					<div id="menuBar">
+						<nav id="menuContainer">
+							<menu id="listContainer">
+								<ul id="lists">
+								
+									<li><a href="../../index.php">Home</a></li>
+									
+									<li><a href="" onmouseover="smartphone()" id="smartphone">Smartphone</a>
+										<ul id="sub_list">
 											
-												<li><a href="../../index.php">Home</a></li>
-												
-												<li><a href="../ProductPages/smartphone.php">Smartphone</a></li>
-												
-												<li><a href="../ProductPages/computer.php">Computer</a></li>
-												
-												<li><a href="../ProductPages/camera.php">Camera</a></li>
-												
-												<li><a href="../ProductPages/lifestyle.php">Lifestyle</a></li>
-											</ul>
-										</menu>
-									</nav>
-								</div>
-							</td>
-						</tr>
-					</table>
+										</ul>
+									</li>
+									
+									<li><a href="" onmouseover="computer()" id="computer">Computer</a>
+										<ul id="ComCat">
+											
+										</ul>
+									</li>
+									
+									<li><a href="" onmouseover="camera()" id="camera">Camera</a>
+										<ul id="CamCat">
+											
+										</ul>
+									</li>
+									
+									<li><a href="" onmouseover="lifestyle()" id="lifestyle">Lifestyle</a>
+										<ul id="LifeCat">
+											
+										</ul>
+									</li>
+								</ul>
+							</menu>
+						</nav>
+					</div>
 					
 					<table>
 						<tr><hr></tr>
 					</table>
 						<table border="0px" width="100%" cellpadding="0px" cellspacing="0px" bgcolor="#E8EBEC">
+							<tr>
+								<td height="30px"></td>
+							</tr>
 							<tr>
 								<td width="2%"></td>
 								<td>
