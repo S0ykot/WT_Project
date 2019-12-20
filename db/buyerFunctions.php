@@ -91,3 +91,15 @@ function getProductLists($Cat)
 	}
 	return $lists;
 }
+
+function getProduct($Product)
+{
+	$conn = getConnection();
+	$sql = "select * from product where name='{$Product}'";
+	$result = mysqli_query($conn, $sql);
+	while($getResult = mysqli_fetch_assoc($result))
+	{
+		$lists[]=$getResult;
+	}
+	return $lists;
+}

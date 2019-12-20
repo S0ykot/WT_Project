@@ -245,3 +245,15 @@ a
 {
 	border-bottom:1px solid black;
 }
+
+#qty
+{
+	height: 30px;
+	width: 50px;
+}
+
+#productDetails
+{
+	color: tomato;
+	font-size: 25px;
+}

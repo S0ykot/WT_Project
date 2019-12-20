@@ -90,7 +90,7 @@ error_reporting(0);
 											<tr>
 												<td width="5%"></td>
 												<td width="20%"> <img src="../Images/camera.jpg" alt="" height="125px" width="100px"></td>
-												<td><font size="10px" color="tomato"><a href="productDetails.php"><?= $x?></a></font></td>
+												<td><font size="10px" color="tomato"><a href="productDetails.php?product=<?= $x?>"><?= $x?></a></font></td>
 											</tr>
 											<tr>
 												<td colspan="3"><hr></td>

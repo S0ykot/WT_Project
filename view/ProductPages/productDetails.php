@@ -1,5 +1,9 @@
 <?php
 	session_start();
+	require_once('../../db/buyerFunctions.php');
+	$Product=$_GET['product'];
+
+	$getProduct=getProduct($Product);
 ?>
 
 
@@ -8,6 +12,7 @@
 <head>
 	<title>Accessoy Store</title>
 	<link rel="stylesheet" href="../../css/buyerStyle.css">
+	<script type="text/javascript" src="../../js/ProductPagesMenu/buyerScript.js"></script>
 </head>
 
 <body>
@@ -35,46 +40,71 @@
 							</td>
 						</tr>
 					</table>
-					<table border="0px" width="100%" cellpadding="0px" cellspacing="0px">
-						<tr>
-							<td height="30px" bgcolor="dodgerblue">
-								<div id="menuBar">
-									<nav id="menuContainer">
-										<menu id="listContainer">
-											<ul id="lists">
+					<div id="menuBar">
+						<nav id="menuContainer">
+							<menu id="listContainer">
+								<ul id="lists">
+								
+									<li><a href="../../index.php">Home</a></li>
+									
+									<li><a href="" onmouseover="smartphone()" id="smartphone">Smartphone</a>
+										<ul id="sub_list">
 											
-												<li><a href="../../index.php">Home</a></li>
-												
-												<li><a href="smartphone.php">Smartphone</a></li>
-												
-												<li><a href="computer.php">Computer</a></li>
-												
-												<li><a href="camera.php">Camera</a></li>
-												
-												<li><a href="lifestyle.php">Lifestyle</a></li>
-											</ul>
-										</menu>
-									</nav>
-								</div>
-							</td>
-						</tr>
-					</table>
+										</ul>
+									</li>
+									
+									<li><a href="" onmouseover="computer()" id="computer">Computer</a>
+										<ul id="ComCat">
+											
+										</ul>
+									</li>
+									
+									<li><a href="" onmouseover="camera()" id="camera">Camera</a>
+										<ul id="CamCat">
+											
+										</ul>
+									</li>
+									
+									<li><a href="" onmouseover="lifestyle()" id="lifestyle">Lifestyle</a>
+										<ul id="LifeCat">
+											
+										</ul>
+									</li>
+								</ul>
+							</menu>
+						</nav>
+					</div>
 					<div id="contentBlock">
-						<table border="0px" width="100%" cellpadding="0px" cellspacing="0px" bgcolor="#f1f1f1">
+							<table border="0px" width="100%" cellpadding="0px" cellspacing="0px" bgcolor="#f1f1f1">
 							<tr>
 								<td rowspan="4" width="5%"></td>
 							</tr>
 							<tr>
 								<td width="20%"><img src="../Images/Nev.jpg" alt="Product Picture" height="400px" width="280px"></td>
 								<td width="10%"></td>
-								<td>
-									Product Details<br><br>
-									Product Details<br><br>
-									Product Details<br><br>
+								<td id="productDetails">
+									Product Name: <span id="productname"><?=$getProduct[0]['name']?></span><br><br>
+									Product Price: <span id="productprice"><?=$getProduct[0]['selling_price']?></span><br><br>
+									Product Description: <span><?=$getProduct[0]['description']?></span><br><br>
+									Availability: <?php
+														if($getProduct[0]['quantity']>0)
+														{
+															echo "In Stock";
+														}
+														else
+															echo "Sold Out";
+													?><br><br>
+									Quantity: <select id="qty">
+													<option value="1">1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+													<option value="4">4</option>
+													<option value="5">5</option>
+												</select>
 								</td>
 							</tr>
 							<tr>
-								<td colspan="3" height="90px" valign="bottom"><input type="submit" id="addCartBtn" name="addcart" value="Add To Cart"></td>
+								<td colspan="3" height="90px" valign="bottom"><input type="button" id="addCartBtn" name="addcart" value="Add To Cart" onclick="gotoProduct()"></td>
 							</tr>
 							<tr>
 								<td height="20px" colspan="3"></td>
