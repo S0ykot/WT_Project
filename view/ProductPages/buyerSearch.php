@@ -1,13 +1,24 @@
-<?php session_start();
+<?php
+if(isset($_POST['btn']))
+{
 
-if (isset($_SESSION['NAME'])) { ?>
-
+	if($_POST['search']=="")
+	{
+		$status=0;
+	}
+	else
+	{
+		require_once('../../db/buyerFunctions.php');
+		$ProductName = $_POST['search'];
+		$status = searchProduct($ProductName);
+	}
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Accessoy Store</title>
 	<link rel="stylesheet" href="../../css/buyerStyle.css">
-	<script type="text/javascript" src="../../js/viewProfileMenu/buyerScript.js"></script>
+	<script type="text/javascript" src="../../js/ProductPagesMenu/buyerScript.js"></script>
 </head>
 
 <body>
@@ -23,17 +34,17 @@ if (isset($_SESSION['NAME'])) { ?>
 								<?php
 									if (isset($_COOKIE['id'])) {
 										?>
-										<a href="Profile/buyerDashboard.php"><div id="myAccount">My Account</div></a>
+										<a href="../Profile/buyerDashboard.php"><div id="myAccount">My Account</div></a>
 										<?php
 									}
 									else{
 										?>
-										 <a href="buyerLogin.php"><div id="sign">Sign In</div></a>
+										 <a href="../buyerLogin.php"><div id="sign">Sign In</div></a>
 										 <?php
 									}
 									?>
 
-								<a href="cart.php"><div id="cart">Cart</div></a>
+								<a href="../cart.php"><div id="cart">Cart</div></a>
 							</td>
 						</tr>
 					</table>
@@ -71,106 +82,67 @@ if (isset($_SESSION['NAME'])) { ?>
 							</menu>
 						</nav>
 					</div>
-					<table>
-						<tr><hr></tr>
-					</table>
-					<table border="0px" width="100%" cellpadding="0px" cellspacing="0px">
+							
+					<div id="productBlock">
+						<table border="0px" width="100%" cellpadding="0px" cellspacing="0px">
+						<tr><td colspan="3" align="center" height="30px" bgcolor="dodgerblue">**Hot Deals**</td></tr>
 						<tr>
-							<td height="5px" bgcolor="white" colspan="1">
-							<td height="5px" bgcolor="tomato" colspan="2"></td>
-							<td height="5px" bgcolor="white" colspan="1">
-							<td height="5px" bgcolor="white" colspan="2"></td>
-						</tr>
-						<tr>
-							<td width="5%"></td>
-							<td width="1%" bgcolor="#E8EBEC"></td>
-							<td width="15%" bgcolor="#E8EBEC">
-								<table border="0px" width="100%" cellpadding="0px" cellspacing="0px">
-									<tr>
-										<td><a href="../buyerLogoutCheck.php"><font color="black">Logout</font></a></td>
-									</tr>
-									<tr><td height="20px"></td></tr>
-									<tr>
-										<td><a href="../../php/buyerLogoutCheck.php"><font color="black">My Dashboard</font></a></td>
-									</tr>
-									<tr><td height="20px"></td></tr>
-									<tr>
-										<td><a href="buyerContact.php"><font color="black">Account Information</font></a></td>
-									</tr>
-									<tr><td height="20px"></td></tr>
-									<tr>
-										<td><a href="buyerAddress.php"><font color="black">Address</font></a></td>
-									</tr>
-									<tr><td height="20px"></td></tr>
-									<tr>
-										<td><a href="buyerOrder.php"><font color="black">My Orders</font></a></td>
-									</tr>
-									<tr><td height="20px"></td></tr>
+							<td width="20%" valign="top" align="center" bgcolor="#E8EBEC"><font color="tomato">Camera <br> Accessories</font></td>
+							<td>
+								<table border="0px" width="100%" cellpadding="0px" cellspacing="0px">									
+									<?php
+									/*require_once('../../db/buyerFunctions.php');
+									$Cat = $products;
+									$lists=getProductLists($Cat);*/
+									//echo $lists[0]['subcat_name'];
+										if($status==0)
+										{
+											?>
+											<div style="padding-bottom:  50px;">
+												<tr>
+													<td width="5%"></td>
+													
+													<td><font size="10px" color="tomato">No Product</font></td>
+												</tr>
+												<tr>
+													<td colspan="2"><hr></td>
+												</tr>
+											</div>
+											<?php
+										}
+										else
+										{
+											for ($i=0; $i <count($status) ; $i++) { 
+											$x = $status[$i]['name'];
+											?>
+											<tr>
+												<td width="5%"></td>
+												<td width="20%"> <img src="../Images/camera.jpg" alt="" height="125px" width="100px"></td>
+												<td><font size="10px" color="tomato"><a href="productDetails.php?product=<?= $x?>"><?= $x?></a></font></td>
+											</tr>
+											<tr>
+												<td colspan="3"><hr></td>
+											</tr>
+											<?php
+											$x = '';
+										}
+										}
+									?>								
 								</table>
 							</td>
-							<td width="2%"></td>
-							<td width="1%" bgcolor="white"></td>
-							<td bgcolor="">
-								<table border="0px" width="100%" cellpadding="0px" cellspacing="0px">
-									<tr><td height="25px"></td></tr>
-									<tr>
-										<td>
-											<font color="dodgerblue" size="5px">Address Book</font>
-										</td>
-									</tr>
-									<tr>
-										<td height="20px"></td>
-									</tr>
-									<tr>
-										<td height="5px" bgcolor="dodgerblue"></td>
-									</tr>
-									<tr>
-										<td bgcolor="#E8EBEC">
-											<font color="tomato"><br>&emsp;Billing Address</font>
-										</td>
-									</tr>
-									<tr><td height="20px" bgcolor="#E8EBEC"></td></tr>
-										<tr><td bgcolor="#E8EBEC">&emsp;<?= $_SESSION['NAME']?></td></tr>
-										<tr><td bgcolor="#E8EBEC">&emsp;<?= $_SESSION['EMAIL']?></td></tr>
-										<tr><td bgcolor="#E8EBEC">&emsp;<?= $_SESSION['ADDRESS']?></td></tr>
-										<tr><td bgcolor="#E8EBEC">&emsp;<?= $_SESSION['CONTACT']?></td></tr>
-									
-									<tr><td height="20px" bgcolor="#E8EBEC"></td></tr>
-									<tr>
-										<td bgcolor="#E8EBEC">
-											&emsp;<a href="buyerChangeAddress.php"><font color="#8F2792">Change Billing Addres</font></a>
-										</td>
-									</tr>
-									<tr><td height="20px" bgcolor="#E8EBEC"></td></tr>
-									
-									<tr>
-										<td bgcolor="#E8EBEC">
-											<font color="tomato"><br>&emsp;Shipping Address</font>
-										</td>
-									</tr>
-									<tr><td height="20px" bgcolor="#E8EBEC"></td></tr>
-										<tr><td bgcolor="#E8EBEC">&emsp;<?= $_SESSION['NAME']?></td></tr>
-										<tr><td bgcolor="#E8EBEC">&emsp;<?= $_SESSION['EMAIL']?></td></tr>
-										<tr><td bgcolor="#E8EBEC">&emsp;<?= $_SESSION['ADDRESS']?></td></tr>
-										<tr><td bgcolor="#E8EBEC">&emsp;<?= $_SESSION['CONTACT']?></td></tr>
-									
-									<tr><td height="20px" bgcolor="#E8EBEC"></td></tr>
-									<tr>
-										<td bgcolor="#E8EBEC">
-											&emsp;<a href="buyerChangeAddress.php"><font color="#8F2792">Change Shipping Addres</font></a>
-										</td>
-									</tr>
-									<tr><td height="20px" bgcolor="#E8EBEC"></td></tr>
-									
-								</table>
-							</td>
-							<td width="5%"></td>
+							<td width="20%" valign="top" align="center" bgcolor="#E8EBEC"></td>
 						</tr>
 					</table>
-					<table>
-						<tr><hr></tr>
-					</table>
-					<table border="0px" width="100%" cellpadding="0px" cellspacing="0px" bgcolor="#f1f1f1">
+					</div>
+							
+					
+					
+					
+					<div style="padding-top: 150px">
+						<table border="0px" width="100%" cellpadding="0px" cellspacing="0px">
+							<tr><hr></tr>
+						</table>
+						<table border="0px" width="100%" cellpadding="0px" cellspacing="0px" bgcolor="#f1f1f1">
 						<tr>
 							<td width="10%"></td>
 							<td align="center">
@@ -221,12 +193,11 @@ if (isset($_SESSION['NAME'])) { ?>
 							<td colspan="9" bgcolor="#222222" height="60px" valign="middle"><font color="#787878" size="2px">&emsp;&emsp;&emsp;&emsp;&copy;2019 blah blah | All rights reserved</font></td>
 						</tr>
 					</table>
+					</div>
 </body>
 </html>
-
 <?php
 }
-	else
-		header('location: ../index.php');
-
+else
+	header('location: ../../index.php');
 ?>

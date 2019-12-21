@@ -14,7 +14,9 @@
 						<tr>
 							<td width="20%" height="70px" align="center"><font size="20px" color="dodgerblue"><b>TITLE</b></font></td>
 							<td width="">
-								<input type="text" id="search" placeholder="Search..."><input type="submit" value="Search" id="btn">
+								<form action="../ProductPages/buyerSearch.php" method="post">
+									<input type="text" name="search" id="search" placeholder="Search..." ><input type="submit" id="btn" value="Search" name="btn">
+								</form>
 							</td>
 							<td width="30%">
 								<?php

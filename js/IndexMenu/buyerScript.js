@@ -52,3 +52,25 @@ function indexLifestyle()
 	    }
 	  };
 }
+
+function search()
+{
+	var ProName = document.getElementById('search').value;
+	if(ProName=="")
+	{
+		alert('No Product');
+	}
+	else
+	{
+	 var xhttp = new XMLHttpRequest();
+	 xhttp.open("POST", "php/buyerSearch.php", true);
+	  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	  xhttp.send('proName='+ProName);
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status==200) {
+	      //window.location = "view/cart.php?subCat="+this.responseText+"";
+	      alert(this.responseText);
+	    }
+	  };
+	}
+}
