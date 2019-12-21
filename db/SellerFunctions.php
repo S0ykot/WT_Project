@@ -198,7 +198,13 @@ function deleteProduct($id)
 }
 
 
-
+function orders()
+{
+	$conn = getConnection();
+	$query ="SELECT * FROM orders,customer_user where orders.cid=customer_user.cid";
+	$result = mysqli_query($conn,$query);
+	return $return;
+}
 
 
 

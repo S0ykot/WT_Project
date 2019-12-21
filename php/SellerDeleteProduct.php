@@ -14,12 +14,12 @@ if(isset($_POST['del']))
 		$status=deleteProduct($ID);
 		if ($status) {
 			echo "<script>alert('Product Deleted')</script>";
-										echo "<script>window.location='../view/SellerHome.php';</script>"
+										echo "<script>window.location='../view/SellerHome.php';</script>";
 		}
 		else
 		{
 			echo "<script>alert('Something wrong')</script>";
-										echo "<script>window.location='../view/SellerHome.php';</script>"
+										echo "<script>window.location='../view/SellerHome.php';</script>";
 		}
 	}
 ?>
