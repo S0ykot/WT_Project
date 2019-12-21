@@ -1,8 +1,14 @@
 <?php 
-	
+	require_once('../db/AdminPromoFunction.php');
 	session_start();
 
 	if (isset($_SESSION['username'])) {	
+		if (isset($_GET['id'])) {
+			$data =singlePromo($_GET['id']);
+			$rows = mysqli_fetch_assoc($data);
+			$_SESSION['promo'] = $rows['did'];
+			
+		}
 		
 ?>
 
@@ -12,6 +18,7 @@
 	<title>Enable/Disable Promo Code</title>
 	<link rel="stylesheet" type="text/css" href="../css/Navigate.css">
 	<link rel="stylesheet" type="text/css" href="../css/Design.css">
+	<script type="text/javascript" src="../js/AdminScript.js"></script>
 </head>
 <body style="background-color: CornflowerBlue;">
 	<div class="nav">
@@ -61,17 +68,20 @@
 		  	</div>
 		</div>
 	</div>
-	<form method="POST" action="">
+	<form method="POST" action="../php/AdminPromoCodeUpdateCheck.php">
 		<table align="center" bgcolor="CornflowerBlue" cellspacing="30px">
 			<tr>
 				<td colspan="4">
-					<center><h1><font color="DarkBlue" face="Cursive"><u>Enable/Disable Promo Code</u></font></h1></center>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="4" align="right">
-					<input type="text" name="search" placeholder="Search Promo Code">
-					<button type="button" class="btn">Search</button>
+					<center>
+						<h1><font color="DarkBlue" face="Cursive"><u>Update Promo Code</u></font></h1>
+						<div style="color: red;font-weight: bold;">
+							<?php 
+								if (isset($_GET['msg'])) {
+									echo $_GET['msg'].'<br><br>';
+								}
+							?>
+						</div>
+					</center>
 				</td>
 			</tr>
 			<tr>
@@ -79,13 +89,13 @@
 					Promo Code ID:
 				</td>
 				<td>
-					<input type="text" name="prid" disabled>
+					<input type="text" name="prid" value="<?php echo $_SESSION['promo']; ?>" disabled>
 				</td>
 				<td>
 					Promo Code:
 				</td>
 				<td>
-					<input type="text" name="prname" disabled>
+					<input type="text" name="prname" value="<?php echo $rows['promo_code'] ?>" disabled>
 				</td>
 			</tr>
 			<tr>
@@ -93,13 +103,15 @@
 					Amount of Discount:
 				</td>
 				<td>
-					<input type="text" name="dis" disabled>
+					<input type="text" name="dis" placeholder="Enter Discount Amount in %" id="pdis" onkeyup="validateDiscount()" value="<?php echo $rows['amount']; ?>">
+					<div id="erpdis" style="color: red;font-weight: bold;"></div>
 				</td>
 				<td>
 					Validity:
 				</td>
 				<td>
-					<input type="date" name="prval">
+					<input type="date" name="prval" id="prdate" min="2001-01-01" max="2400-12-31" onclick="validatePromoDate()" onkeyup="validatePromoDate()" value="<?php echo $rows['validity']; ?>"> 
+					<div id="erprdate" style="color: red;font-weight: bold;"></div>
 				</td>
 			</tr>
 			<tr>
@@ -107,11 +119,25 @@
 					Status:
 				</td>
 				<td>
-					<select name="prstat">
-						<option value="">Select Status</option>
-						<option value="Enable">Enable</option>
-						<option value="Disable">Disable</option>
+					<select name="prstat" id="prstat" onchange="validatePromoStatus()">
+						<option value="" <?php if ($rows['status'] == "") {
+							echo "selected";
+						} ?> >Select Status</option>
+						<option value="Enable" <?php if ($rows['status'] == "Enable") {
+							echo "selected";
+						} ?>>Enable</option>
+						<option value="Disable" <?php if ($rows['status'] == "Disable") {
+							echo "selected";
+						} ?>>Disable</option>
 					</select>
+					<div id="erprstat" style="color: red;font-weight: bold;"></div>
+				</td>
+				<td>
+					Customer ID:
+				</td>
+				<td>
+					<input type="text" name="cid" value="<?php echo $rows['cid']; ?>" disabled>
+					
 				</td>
 			</tr>
 			<tr>

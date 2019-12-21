@@ -167,13 +167,11 @@ function validateSellingPrice(){
 		}
 }
 
-
-
 function validateIncomedate(){
 	var date = document.getElementById('pin').value;
 	var errin = document.getElementById('erin');
 	
-		if(!date)
+		if(date == "")
 		{
 			errin.innerHTML = "Incoming date can not be empty";
 		}
@@ -339,7 +337,6 @@ function specialCharPresent(a,b)
 	return c;
 }
 
-
 function Email(email)
 {
 	var c = specialCharPresent(email,'@');
@@ -382,6 +379,7 @@ function Email(email)
 		}
 	}
 }
+
 function validateEmail(){
 	var email = document.getElementById('email').value;
 	var eremail = document.getElementById('eremail');
@@ -523,6 +521,175 @@ function getCustomerBySearch(){
   	xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
     	document.getElementById("cusdata").innerHTML = this.responseText;
+    	//alert(this.responseText);
+    }};
+}
+
+function PromoValid(name)
+{
+	var s = name.split(' ');
+	if(s.length == 1){
+		return true; 
+	}
+	else{
+		return false;
+	}
+	
+}
+
+function validatePromoCode() {
+
+	var erpromo = document.getElementById('erpcode');
+	var promo = document.getElementById('pcode').value;
+	
+	if (promo == "") 
+	{
+		erpromo.innerHTML = "Promo Code can not be empty.";
+	}
+	else {
+		if(PromoValid(promo))
+		{
+			erpromo.innerHTML = "";
+		}
+		else
+		{
+			erpromo.innerHTML = "Promo Code is not Valid.";
+		}
+	}
+	
+}
+
+function DiscountValueValid(discount)
+{
+	var number = ['0','1','2','3','4','5','6','7','8','9'];
+	var	splitDiscount = discount.split('');
+	var	flag = 0;
+		for (var i = 0; i < splitDiscount.length; i++) {
+			for (var j = 0; j < number.length; j++) 
+			{
+				if(splitDiscount[i] == number[j])
+				{
+					flag += 1;
+				}
+				else{
+					flag = flag;
+				}
+			}
+		}
+		if(discount.charAt(0) == "")
+		{
+			return false;
+		}
+		else
+		{
+			if(discount.length==flag)
+			{
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+}
+
+function validateDiscount(){
+
+	var erdis = document.getElementById('erpdis');
+	var dis = document.getElementById('pdis').value;
+	
+	if (dis == "") 
+	{
+		erpdis.innerHTML = "Discount Value can not be empty.";
+	}
+	else {
+		if(DiscountValueValid(dis))
+		{
+			erpdis.innerHTML = "";
+		}
+		else
+		{
+			erpdis.innerHTML = "Discount Value is not Valid.";
+		}
+	}
+	
+}
+
+function validatePromoDate(){
+	var date = document.getElementById('prdate').value;
+	var erpdate = document.getElementById('erprdate');
+	
+		if(date == "")
+		{
+			erprdate.innerHTML = "Validate can not be empty";
+		}
+		else{
+			erprdate.innerHTML = "";
+		}
+}
+
+function validatePromoStatus(){
+	var status = document.getElementById('prstat').value;
+	var erstatus = document.getElementById('erprstat');
+	
+		if(status == "")
+		{
+			erstatus.innerHTML = "Select product activity";
+		}
+		else{
+			erstatus.innerHTML = "";
+		}
+}
+
+function validateCID(){
+
+	var ercid = document.getElementById('ercid');
+	var cid = document.getElementById('cid').value;
+	
+	if (cid == "") 
+	{
+		ercid.innerHTML = "Customer ID can not be empty.";
+	}
+	else {
+		if(DiscountValueValid(cid))
+		{
+			ercid.innerHTML = "";
+		}
+		else
+		{
+			ercid.innerHTML = "Customer ID is not Valid.";
+		}
+	}
+	
+}
+
+
+
+function DisablePromo(id){
+
+	var conf = confirm("Are you sure to disable?");
+	if(conf == true){
+		var xhttp = new XMLHttpRequest();
+		xhttp.open("POST", "../db/AdminDisablePromo.php", true);
+		xhttp.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+  		xhttp.send("promoid="+id);
+  		xhttp.onreadystatechange = function() {
+    	if (this.readyState == 4 && this.status == 200) {
+    		document.getElementById("promodata").innerHTML = this.responseText;
+    		//alert(this.responseText);
+    	}};
+	}
+}
+
+function getPromoBySearch(){
+	var search = document.getElementById('pskey').value;
+
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "../db/AdminGetSearchPromo.php", true);
+	xhttp.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+  	xhttp.send("pkey="+search);
+  	xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    	document.getElementById("promodata").innerHTML = this.responseText;
     	//alert(this.responseText);
     }};
 }

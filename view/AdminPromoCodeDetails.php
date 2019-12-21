@@ -1,5 +1,5 @@
 <?php 
-	
+	require_once('../db/AdminPromoFunction.php');
 	session_start();
 
 	if (isset($_SESSION['username'])) {	
@@ -13,6 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/Navigate.css">
 	<link rel="stylesheet" type="text/css" href="../css/Design.css">
 	<link rel="stylesheet" type="text/css" href="../css/Table.css">
+	<script type="text/javascript" src="../js/AdminScript.js"></script>
 </head>
 <body>
 	<div class="nav">
@@ -63,48 +64,55 @@
 		</div>
 	</div>
 	<center>
-		<h1><font color="DarkBlue" face="Cursive"><u>User Details</u></font></h1><br><br>
-		<input type="text" name="searchkey" placeholder="Search Promo Code">
-		<button type="button" class="btn">Search</button>
+		<h1><font color="DarkBlue" face="Cursive"><u>User Details</u></font></h1><br>
+		<div style="color: red;font-weight: bold;">
+			<?php 
+				if (isset($_GET['msg'])) {
+					echo $_GET['msg'].'<br><br>';
+				}
+			?>
+		</div>
+		<input type="text" name="searchkey" placeholder="Search Promo Code By ID or Discount or Customer ID or Customer Phone" size="70" id="pskey" onkeyup="getPromoBySearch()">
+
 	</center>
 		
-	<table bgcolor="CornflowerBlue" width="100%" cellspacing="20px" style="margin-top: 2.5%">
-		<tr>
-			<th>Promo Code</th>
-			<th>Discount Percentage</th>
-			<th>Status</th>
-		</tr>
-		<tr align="center">
-			<td>BDXVHE</td>
-			<td>10%</td>
-			<td>Enable</td>
-		</tr>
-		<tr align="center">
-			<td>BDpHdE</td>
-			<td>15%</td>
-			<td>Disable</td>
-		</tr>
-		<tr align="center">
-			<td>AlPerd</td>
-			<td>20%</td>
-			<td>Disable</td>
-		</tr>
-		<tr align="center">
-			<td>PDerLH</td>
-			<td>25%</td>
-			<td>Enable</td>
-		</tr>
-		<tr align="center">
-			<td>BDALL</td>
-			<td>5%</td>
-			<td>Enable</td>
-		</tr>
-		<tr align="center">
-			<td>BlKVHE</td>
-			<td>10%</td>
-			<td>Disable</td>
-		</tr>
-	</table>
+	<div id="promodata">
+		<table width="100%" cellspacing="20px" style="margin-top: 2.5%">
+			<tr>
+				<th>Promo Code ID</th>
+				<th>Promo Code</th>
+				<th>Discount Amount</th>
+				<th>Validity</th>
+				<th>Status</th>
+				<th>Customer ID</th>
+				<th>Customer Name</th>
+				<th>Customer Phone</th>
+				<th colspan="2">Operation</th>
+			</tr>
+
+			<?php 
+
+				$result = getPromoCodeDetails();
+				while ($rows = mysqli_fetch_assoc($result)) {
+
+			?>
+
+			<tr align="center">
+				<td><?php echo $rows['did']; ?></td>
+				<td><?php echo $rows['promo_code']; ?></td>
+				<td><?php echo $rows['amount']; ?></td>
+				<td><?php echo $rows['validity']; ?></td>
+				<td><?php echo $rows['status']; ?></td>
+				<td><?php echo $rows['cid']; ?></td>
+				<td><?php echo $rows['fullname']; ?></td>
+				<td><?php echo $rows['phone']; ?></td>
+				<td><a href="AdminEnableOrDisablePromoCode.php?id=<?php echo $rows['did']; ?>" class="a1">Update</a></td>
+				<td><button class="btn" onclick="DisablePromo(<?php echo $rows['did']; ?>)">Disable</button></td>
+			</tr>
+			<?php } ?>
+			
+		</table>
+	</div>
 				
 </body>
 </html>
