@@ -201,4 +201,16 @@
 			return false;
 		}
 	}
+
+	function changePassword($currentid,$newpass){
+
+		$conn = getConnection();
+		$sql = "update system_user set password='{$newpass}' where id='{$currentid}'";
+
+		if (mysqli_query($conn,$sql)) {
+			return true;
+		}else{
+			return false;
+		}
+	}
  ?>
