@@ -1,46 +1,19 @@
 <?php 
 	
-	if (isset($_POST['submit'])) {
-		
-		$old = $_POST['oldpass'];
-		$new = $_POST['newpass'];
-		$con = $_POST['connewpass'];
-		$myfile = fopen('UserList.txt', 'r');
-		while (!feof($myfile)) {
-				$data = fgets($myfile);
-				$str = explode('|', $data);
-				for ($i=0; $i <count($str) ; $i++) { 
-					if ($old == $str[$i+1]) {
-					
-						$str[$i+1] = $new;
-						$user = array('username' =>$str[$i] ,'password' =>$str[$i+1], 'email' =>$str[$i+2] , 'phone' =>$str[$i+3] , 'type' =>$str[$i+4]);
-					}
-					
-				}
-				print_r($user);
-			}
-
-		/*$myfile = fopen('UserList.txt', 'w');
-		fwrite($myfile,"");
-		fclose($myfile);*/
-	}
-
-
-
-
 	session_start();
 
 	if (isset($_SESSION['username'])) {	
 		
 ?>
 
-?>
+
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Change Password</title>
 	<link rel="stylesheet" type="text/css" href="../css/Navigate.css">
 	<link rel="stylesheet" type="text/css" href="../css/Design.css">
+	<script type="text/javascript" src="../js/AdminScript.js"></script>
 </head>
 <body style="background-color: CornflowerBlue;">
 	<div class="nav">
@@ -90,11 +63,20 @@
 		  	</div>
 		</div>
 	</div>
-	<form method="POST" action="">
+	<form method="POST" action="../php/AdminChangePasswordCheck.php">
 		<table align="center" bgcolor="CornflowerBlue" cellspacing="30px">
 			<tr>
 				<td colspan="2">
-					<center><h1><font color="DarkBlue" face="Cursive"><u>Change Password</u></font></h1></center>
+					<center>
+						<h1><font color="DarkBlue" face="Cursive"><u>Change Password</u></font></h1>
+						<div style="color: red;font-weight: bold;">
+							<?php 
+								if (isset($_GET['msg'])) {
+									echo $_GET['msg'].'<br><br>';
+								}
+							?>
+						</div>
+					</center>
 				</td>
 			</tr>
 			<tr>
@@ -102,7 +84,8 @@
 					Old Password:
 				</td>
 				<td>
-					<input type="Password" name="opass" placeholder="Enter Old Password" size="27">
+					<input type="Password" name="opass" placeholder="Enter Old Password" size="27" id="oldpass" onkeyup="validateOldPassword()">
+					<div id="eroldpass" style="color: red;font-weight: bold;"></div>
 				</td>
 			</tr>
 			<tr>
@@ -110,7 +93,8 @@
 					New Password:
 				</td>
 				<td>
-					<input type="Password" name="npass" placeholder="Enter New Password" size="27">
+					<input type="Password" name="npass" placeholder="Enter New Password" size="27" id="newpass" onkeyup="validateNewPassword()">
+					<div id="ernewpass" style="color: red;font-weight: bold;"></div>
 				</td>
 			</tr>
 			<tr>
@@ -118,7 +102,8 @@
 					Confirm New Password:
 				</td>
 				<td>
-					<input type="Password" name="cnpass" placeholder="Enter Confirm New Password" size="27">
+					<input type="Password" name="cnpass" placeholder="Enter Confirm New Password" size="27" id="conpass" onkeyup="validateConfirmPass()">
+					<div id="erconpass" style="color: red;font-weight: bold;"></div>
 				</td>
 			</tr>
 			<tr>

@@ -693,3 +693,51 @@ function getPromoBySearch(){
     	//alert(this.responseText);
     }};
 }
+
+function validateOldPassword(){
+	var pass = document.getElementById('oldpass').value;
+	var erpass = document.getElementById('eroldpass');
+	
+		if(pass == "")
+		{
+			erpass.innerHTML = "Old Password can not be empty";
+		}
+		else{
+			erpass.innerHTML = "";
+		}
+}
+
+function validateNewPassword(){
+	var npass = document.getElementById('newpass').value;
+	var ernpass = document.getElementById('ernewpass');
+	
+		if(npass == "")
+		{
+			ernpass.innerHTML = "New Password can not be empty";
+		}
+		else{
+			ernpass.innerHTML = "";
+		}
+}
+
+function validateConfirmPass(){
+	var pass = document.getElementById('newpass').value;
+	var cpass = document.getElementById('conpass').value;
+	var ercpass = document.getElementById('erconpass');
+
+	if (cpass == "") {
+		ercpass.innerHTML = "Confirm Password can not be empty.";
+		ercpass.style.color = "red";
+	}
+	else{
+		if (cpass == pass) {
+			ercpass.innerHTML = "Password Matched";
+			ercpass.style.color = "green";
+		}
+		else{
+			ercpass.innerHTML = "Password is not matched";
+			ercpass.style.color = "red";
+		}
+	}
+
+}
