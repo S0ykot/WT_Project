@@ -118,8 +118,15 @@ if (isset($_COOKIE['id'])) {
 					</table>
 					</center>
 					</div>
+					<center>
+						<div class="header"><font size="12px">Payment Methods</font></div>
+						<div id="method">
+							<input type="radio" name="payment" value="Cash On Delivery" onclick>Cash On Delivery&emsp;&emsp;<input type="radio" name="payment" value="bKash">bKash
+						</div><br>
+						<div id='methodType' style="margin-bottom: 40px; color:red; font-size: 30px">Choose Your Option</div>
+					</center>
 					<div style="margin-bottom: 152px; text-align: center">
-						<input id="addCartBtn" type="button" name="checkout" value="Checkout" onclick="checkout()">
+						<input id="addCartBtn" type="button" name="checkout" value="Order Now" onclick="checkout()">
 					</div>
 							<?php
 						}
