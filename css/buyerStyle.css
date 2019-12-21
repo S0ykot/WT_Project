@@ -20,6 +20,9 @@
 	color: white;
 	border:none;
 }
+#searchList{
+	list-style: none;
+}
 #loginRegBtn{
 	height: 28px;
 	width: 80px;

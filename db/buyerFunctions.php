@@ -191,3 +191,16 @@ function getOrderList($id)
 	}
 	return $lists;
 }
+
+
+function searchProduct($ProductName)
+{
+	$conn = getConnection();
+	$sql = "select name from product where name like '%{$ProductName}%'";
+	$result = mysqli_query($conn, $sql);
+	while($getResult = mysqli_fetch_assoc($result))
+	{
+		$lists[]=$getResult;
+	}
+	return $lists;
+}
