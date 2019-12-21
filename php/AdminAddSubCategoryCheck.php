@@ -4,12 +4,10 @@
 	$subcatname = "";
 	$catname = "";
 
-	$result = getCategoryAndSubcategory();
-	
-	
 	if (isset($_POST['submit'])) {
 		$subcatname = $_POST['subcatname'];
 		$catname = $_POST['cat'];
+		$result = getCategoryAndSubcategory();
 		$m = 0;
 		while ($rows = mysqli_fetch_assoc($result)) {
 			if ($rows['cat_name'] == $catname && $rows['subcat_name'] == $subcatname) {
