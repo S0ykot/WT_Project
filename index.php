@@ -1,7 +1,3 @@
-<?php 
-$x=base64_encode("Samsung");
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
