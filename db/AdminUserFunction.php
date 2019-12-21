@@ -153,4 +153,22 @@
 
 		return $result;
 	}
+
+	function getCustomerDetails(){
+
+		$conn = getConnection();
+		$sql = "select cid, fullname, email, dob, gender, phone, shipping_address, billing_address from customer_user order by cid asc";
+		$result = mysqli_query($conn,$sql);
+
+		return $result;
+	}
+
+	function getSearchCustomer($key){
+
+		$conn = getConnection();
+		$sql = "select cid, fullname, email, dob, gender, phone, shipping_address, billing_address from customer_user where cid like '{$key}%' or fullname like '{$key}%' or email like '{$key}%' or phone like '{$key}%'";
+		$result = mysqli_query($conn,$sql);
+
+		return $result;	
+	}
  ?>
