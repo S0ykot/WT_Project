@@ -171,4 +171,34 @@
 
 		return $result;	
 	}
+
+	function getUserDetailsByUsername($uname){
+
+		$conn = getConnection();
+		$sql = "select system_user.id,system_user.username,system_user.email,system_user.fullname,system_user.image,system_user.last_update,emp_type.type from system_user,emp_type where system_user.eid=emp_type.eid and system_user.username='{$uname}'";
+		$result = mysqli_query($conn,$sql);
+
+		return $result;
+	}
+
+	function singleUserByUsername($uname)
+	{
+		$conn = getConnection();
+		$sql = "select * from system_user where username='{$uname}'";
+		$result = mysqli_query($conn,$sql);
+
+		return $result;
+	}
+
+	function updateProfile($id,$myuname,$myemail,$myfullname,$newname,$myutype,$mytime){
+
+		$conn = getConnection();
+		$sql = "update system_user set username='{$myuname}', email='{$myemail}', fullname='{$myfullname}', image='{$newname}', eid='{$myutype}', last_update='{$mytime}' where id='{$id}'";
+
+		if (mysqli_query($conn,$sql)) {
+			return true;
+		}else{
+			return false;
+		}
+	}
  ?>
