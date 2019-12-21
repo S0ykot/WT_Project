@@ -1,9 +1,10 @@
 <?php 
-	
+	require_once('../db/AdminUserFunction.php');
 	session_start();
 
 	if (isset($_SESSION['username'])) {	
-		
+		$result = getUserDetailsByUsername($_SESSION['username']);
+		$data = mysqli_fetch_assoc($result);
 ?>
 
 
@@ -80,26 +81,26 @@
 			</td>
 		</tr>
 		<tr>
-			<td>
+			<td style="font-weight: bold;">
 				User ID:
 			</td>
 			<td>
-				1
+				<?php echo $data['id']; ?>
 			</td>
 			<td rowspan="4">
-				<img src="../LoginLogo.jpg" width="150px" height="200px">
+				<img src="../upload/<?php echo $data['image']; ?>" width="150px" height="200px">
 			</td>
 		</tr>
 		<tr>
-			<td>
+			<td style="font-weight: bold;">
 				Name:
 			</td>
 			<td>
-				<?php echo $_SESSION['username']; ?>
+				<?php echo $data['fullname']; ?>
 			</td>
 		</tr>
 		<tr>
-			<td>
+			<td style="font-weight: bold;">
 				Username:
 			</td>
 			<td>
@@ -107,30 +108,30 @@
 			</td>
 		</tr>
 		<tr>
-			<td>
+			<td style="font-weight: bold;">
 				Email:
 			</td>
 			<td>
-				<?php echo $_SESSION['email']; ?>
+				<?php echo $data['email']; ?>
 			</td>
 		</tr>
 		<tr>
-			<td>
-				Phone Number:
+			<td style="font-weight: bold;">
+				Type:
 			</td>
 			<td>
-				<?php echo $_SESSION['phone']; ?>
+				<?php echo $data['type']; ?>
 			</td>
 			<td rowspan="2">
-				<a href="AdminHome.php" class="a1" style="">Update Profile</a>
+				<a href="AdminProfileUpdate.php?id=<?php echo $data['id']; ?>" class="a1" style="">Update Profile</a>
 			</td>
 		</tr>
 		<tr>
-			<td>
-				User Type:
+			<td style="font-weight: bold;">
+				Last Update Time:
 			</td>
 			<td>
-				<?php echo $_SESSION['type']; ?>
+				<?php echo $data['last_update']; ?>
 			</td>
 		</tr>
 	</table>

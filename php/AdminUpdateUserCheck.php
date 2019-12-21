@@ -31,13 +31,13 @@
 				}else{
 					while ($rows = mysqli_fetch_assoc($result)) {
 						if ($rows['email'] == $upemail) {
-							$em = 1;
+							$em = TRUE;
 							break;
 						}else{
-							$em=0;
+							$em = FALSE;
 						}
 					}
-					if ($em == 1) {
+					if ($em) {
 						header('location: ../view/AdminUpdateUser.php?id='.$_SESSION['uid'].'&msg=Email already exist');
 					}else{
 						if (verifyEmail($upemail,'@') == false) {
@@ -49,7 +49,7 @@
 								header('location: ../view/AdminUpdateUser.php?id='.$_SESSION['uid'].'&msg=Email is not valid');
 							}else{
 								while ($row = mysqli_fetch_assoc($result1)) {
-									if ($row['username'] == $uname) {
+									if ($row['username'] == $upuname) {
 										$usrValid = TRUE;
 										break;
 									}else{
@@ -84,6 +84,7 @@
 
 										if ($status) {
 											header('location: ../view/AdminUserDetails.php?msg=Updating successfull');
+											unset($_SESSION['uid']);
 										}else{
 											header('location: ../view/AdminUserDetails.php?msg=Updating error');
 										}
