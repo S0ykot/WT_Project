@@ -9,7 +9,7 @@ $orderList='';
 for ($i=0; $i <count($cart) ; $i++) { 
 	$orderList.=$cart[$i]['product_name']."(".$cart[$i]['quantity'].")"."\n";
 }
-//$delete = deleteCart($Username);
+$delete = deleteCart($Username);
 $status=checkout($id,$orderList,$Total);
 if($status)
 {
