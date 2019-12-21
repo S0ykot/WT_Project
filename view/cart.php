@@ -119,7 +119,7 @@ if (isset($_COOKIE['id'])) {
 					</center>
 					</div>
 					<div style="margin-bottom: 152px; text-align: center">
-						<input id="addCartBtn" type="button" name="checkout" value="Checkout" onclick="checkout()">
+						<input id="addCartBtn" type="button" name="checkout" value="Order Now" onclick="checkout()">
 					</div>
 							<?php
 						}
