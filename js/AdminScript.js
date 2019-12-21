@@ -212,22 +212,6 @@ function validateActivity(){
 		}
 }
 
-function validateFile(){
-	var errimg = document.getElementById('erimg');
-
-	$(document).ready(function(){
-        $('input[type="file"]').change(function(e){
-            var fileName = e.target.files[0].name;
-            console.log(fileName);
-            if(fileName == ""){
-				errimg.innerHTML = "Select file";
-			}else{
-				errimg.innerHTML = "";
-			}
-        });
-    });
-}
-
 function getProductBySearch(){
 	var search = document.getElementById('key').value;
 
@@ -515,7 +499,7 @@ function DeleteUser(deleteuid){
 	}
 }
 
-function getProductBySearch(){
+function getUserBySearch(){
 	var search = document.getElementById('skey').value;
 
 	var xhttp = new XMLHttpRequest();
@@ -525,6 +509,20 @@ function getProductBySearch(){
   	xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
     	document.getElementById("userdata").innerHTML = this.responseText;
+    	//alert(this.responseText);
+    }};
+}
+
+function getCustomerBySearch(){
+	var search = document.getElementById('ckey').value;
+
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "../db/AdminGetSearchCustomer.php", true);
+	xhttp.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+  	xhttp.send("cuskey="+search);
+  	xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    	document.getElementById("cusdata").innerHTML = this.responseText;
     	//alert(this.responseText);
     }};
 }

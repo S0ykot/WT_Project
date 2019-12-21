@@ -1,19 +1,22 @@
 <?php 
+	require_once('../db/AdminUserFunction.php');
 	session_start();
 
 	if (isset($_SESSION['username'])) {	
 		
 ?>
 
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Generate Promo Code</title>
+	<title>Customer Details</title>
 	<link rel="stylesheet" type="text/css" href="../css/Navigate.css">
 	<link rel="stylesheet" type="text/css" href="../css/Design.css">
+	<link rel="stylesheet" type="text/css" href="../css/Table.css">
 	<script type="text/javascript" src="../js/AdminScript.js"></script>
 </head>
-<body style="background-color: CornflowerBlue;">
+<body>
 	<div class="nav">
 
 		<a href="AdminHome.php" class="a1">Home</a>
@@ -61,72 +64,45 @@
 		  	</div>
 		</div>
 	</div>
-	<form method="POST" action="">
-		<table align="center" bgcolor="CornflowerBlue" cellspacing="30px">
+	<center>
+		<h1><font color="DarkBlue" face="Cursive"><u>Customer Details</u></font></h1><br><br>
+		<input type="text" name="searchkey" placeholder="Search Customer By ID or Name or Email or Phone" size="50" id="ckey" onkeyup="getCustomerBySearch()">
+	</center>
+
+	<div id="cusdata">
+		<table width="100%" cellspacing="20px" style="margin-top: 2.5%">
 			<tr>
-				<td colspan="4">
-					<center>
-						<h1><font color="DarkBlue" face="Cursive"><u>Generate Promo Code</u></font></h1>
-						<div style="color: red;font-weight: bold;">
-							<?php 
-								if (isset($_GET['msg'])) {
-									echo $_GET['msg'].'<br><br>';
-								}
-							?>
-						</div>
-					</center>
-				</td>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Date of Birth</th>
+				<th>Gender</th>
+				<th>Phone</th>
+				<th>Shipping Address</th>
+				<th>Billing Address</th>
 			</tr>
-			<tr>
-				<td>
-					Promo Code ID:
-				</td>
-				<td>
-					<input type="text" name="prid" >
-				</td>
-				<td>
-					Promo Code:
-				</td>
-				<td>
-					<input type="text" name="prname" placeholder="Enter Promo Code">
-				</td>
+
+			<?php 
+
+				$result = getCustomerDetails();
+				while ($rows = mysqli_fetch_assoc($result)) {
+
+			?>
+
+			<tr align="center">
+				<td><?php echo $rows['cid']; ?></td>
+				<td><?php echo $rows['fullname']; ?></td>
+				<td><?php echo $rows['email']; ?></td>
+				<td><?php echo $rows['dob']; ?></td>
+				<td><?php echo $rows['gender']; ?></td>
+				<td><?php echo $rows['phone']; ?></td>
+				<td><?php echo $rows['shipping_address']; ?></td>
+				<td><?php echo $rows['billing_address']; ?></td>
 			</tr>
-			<tr>
-				<td>
-					Amount of Discount:
-				</td>
-				<td>
-					<input type="text" name="dis" placeholder="Enter Discount Amount in %">
-				</td>
-				<td>
-					Validity:
-				</td>
-				<td>
-					<input type="date" name="prval">
-				</td>
-			</tr>
-			<tr>
-				<td>
-					Status:
-				</td>
-				<td>
-					<select name="prstat">
-						<option value="">Select Status</option>
-						<option value="Enable">Enable</option>
-						<option value="Disable">Disable</option>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<input type="submit" name="submit" value="Generate Promo">
-				</td>
-				<td >
-					<input type="reset" name="reset" value="Reset">
-				</td>
-			</tr>
+			<?php } ?>
+			
 		</table>
-	</form>
+	</div>
 </body>
 </html>
 

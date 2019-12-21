@@ -33,6 +33,7 @@
 		    <div class="dropdown-content">
 		    	<a href="AdminAddUser.php">Add User</a>
 		    	<a href="AdminUserDetails.php">User Details</a>
+		    	<a href="AdminCustomerDetails.php">Customer Details</a>
 		  	</div>
 		</div>
 
