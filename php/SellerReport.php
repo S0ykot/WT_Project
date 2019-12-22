@@ -32,8 +32,10 @@ if ($_POST['d1'] AND $_POST['d2']) {
 	</tr>
 
 	<?php 
+		$$profit=0;
 		$data = reportShow($d1,$d2);
 		while ($row = mysqli_fetch_assoc($data)) {
+			$profit+=$row['profit'];
 			echo "
 
 		<tr>
@@ -52,8 +54,12 @@ if ($_POST['d1'] AND $_POST['d2']) {
 			";
 
 }
-	 ?>
 
+
+	 ?>
+	 <tr>
+	 	<td colspan="7" align="center"><?php echo "Total Profit: <b>".$profit.'</b>';?></td>
+	 </tr>
 
 </table>
 

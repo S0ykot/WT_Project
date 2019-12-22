@@ -19,7 +19,6 @@ if ($_SESSION['name'] AND $_SESSION['type'] AND $_COOKIE['timeout']) {
 				<th>Order Date</th>
 				<th>Customer Name</th>
 				<th>Customer ID</th>
-				<th>Items</th>
 				<th>Total Cost</th>
 				<th>Status</th>
 				<th>Action</th>
@@ -34,7 +33,6 @@ if ($_SESSION['name'] AND $_SESSION['type'] AND $_COOKIE['timeout']) {
 						<td align='center'>".$row['order_date']."</td>
 						<td align='center'>".$row['fullname']."</td>
 						<td align='center'>".$row['cid']."</td>
-						<td align='center'>".$row['item_quantity']."</td>
 						<td align='center'>".$row['total_cost']."</td>
 						<td align='center'>".$row['status']."</td>
 						<td align='center'><button value='".$row['order_no']."' onclick='approve(this.value)'>Approved</button> <button value='".$row['order_no']."' onclick='deliver(this.value)'>Delivered</button> <button value='".$row['order_no']."' onclick='reject(this.value)'>Rejected</button></td>

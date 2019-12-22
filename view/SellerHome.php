@@ -10,6 +10,11 @@ if ($_SESSION['name'] AND $_SESSION['type'] AND $_COOKIE['timeout']) {
 	<title>Dashboard</title>
 	<link rel="stylesheet" type="text/css" href="../css/sellerDashboard.css">
 	<script type="text/javascript" src="../js/SellerScript.js"></script>
+	<script type="text/javascript" src="../js/SellerValid.js"></script>
+	<script type="text/javascript">
+		
+
+	</script>
 </head>
 <body >
 <div id="header">

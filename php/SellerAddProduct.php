@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
 	$cat = $_POST['catrgory'];
 	$ext = pathinfo($img['name'], PATHINFO_EXTENSION);
 	$file = rand().'.'.$ext;
-
+	$vn = validUserName($name);
 
 
 	if (empty($name) || empty($qntity) || empty($inDate) || empty($bprice) || empty($sprice) || empty($desc) || empty($img) || empty($activity)|| empty($cat) || empty($subCat)) {
@@ -27,14 +27,16 @@ if (isset($_POST['submit'])) {
 
 	else
 	{
-		if (($qntity<0) OR ($bprice<0) OR ($sprice<0)) {
+		if (is_numeric($quantity) OR is_numeric($bPrice) OR is_numeric($sPrice)) {
+			if (($qntity<0) OR ($bprice<0) OR ($sprice<0)) {
 			echo "<script>alert('Value can't be negative')</script>";
 				echo "<script>window.location='../view/SellerHome.php#profile';</script>";
 		}
 		else
 		{
 
-			if(dupPNameCheck($name)==NULL){
+			if (strlen($name)==$vn) {
+				if(dupPNameCheck($name)==NULL){
 				if ((pathinfo($img['name'], PATHINFO_EXTENSION) == "gif") OR (pathinfo($img['name'], PATHINFO_EXTENSION) == "jpg") OR (pathinfo($img['name'], PATHINFO_EXTENSION) == "png") OR (pathinfo($img['name'], PATHINFO_EXTENSION) == "jpge")) {
 
 				$status = productAdd($name,$qntity,$inDate,$bprice,$sprice,$desc,$file,$activity,$subCat);
@@ -72,7 +74,19 @@ if (isset($_POST['submit'])) {
 				echo "<script>alert('Same Name product Already added')</script>";
 				echo "<script>window.location='../view/SellerHome.php#profile';</script>";
 			}
+			}
+			else
+			{
+				echo "<script>alert('Invalid Name')</script>";
+				echo "<script>window.location='../view/SellerHome.php#profile';</script>";
+			}
 			
+		}
+		}
+		else
+		{
+			echo "<script>alert('use Numeric value please')</script>";
+				echo "<script>window.location='../view/SellerHome.php#profile';</script>";
 		}
 	}
 

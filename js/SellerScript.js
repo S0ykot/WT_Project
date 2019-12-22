@@ -54,6 +54,7 @@ function logout()
 function home()
 {
 	window.location='SellerHome.php';
+	//document.getElementById('path').innerHTML = "==>/";
 }
 
 
@@ -68,7 +69,7 @@ function profile()
 	  xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
 	     	document.getElementById('product').innerHTML = this.responseText;
-	     	document.getElementById('path').innerHTML = "==>View Profile";
+	     	document.getElementById('path').innerHTML = "==>(View Profile)";
 	    }
 	  };
 	}
@@ -88,7 +89,7 @@ function profileSettings()
 	  xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
 	     	document.getElementById('product').innerHTML = this.responseText;
-	     	document.getElementById('path').innerHTML = "==>(Options)Profile Update";
+	     	document.getElementById('path').innerHTML = "==>(Settings)==>(Profile Update)";
 	    }
 	  };
 	}
@@ -109,7 +110,7 @@ function profileOption()
 	  xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
 	     	document.getElementById('product').innerHTML = this.responseText;
-	     	document.getElementById('path').innerHTML = "==>Settings Options";
+	     	document.getElementById('path').innerHTML = "==>(Settings)";
 	    }
 	  };
 	}
@@ -128,7 +129,7 @@ function chnagePassword()
 	  xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
 	     	document.getElementById('product').innerHTML = this.responseText;
-	     	document.getElementById('path').innerHTML = "==>(Options) Change Password";
+	     	document.getElementById('path').innerHTML = "==>(Settings)==>(Change Password)";
 	    }
 	  };
 	}
@@ -162,7 +163,7 @@ function product_search_view()
 	  xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
 	     	document.getElementById('product').innerHTML = this.responseText;
-	     	document.getElementById('path').innerHTML = "==>(Options) Product Search";
+	     	document.getElementById('path').innerHTML = "==>(Product)==>(Product Search)";
 	    }
 	  };
 	}
@@ -180,7 +181,7 @@ function product_option()
 	  xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
 	     	document.getElementById('product').innerHTML = this.responseText;
-	     	document.getElementById('path').innerHTML = "==>Option";
+	     	document.getElementById('path').innerHTML = "==>(Product)";
 	    }
 	  };
 	}
@@ -197,7 +198,7 @@ function customer_details()
 	  xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
 	     	document.getElementById('product').innerHTML = this.responseText;
-	     	document.getElementById('path').innerHTML = "==>Customer Details";
+	     	document.getElementById('path').innerHTML = "==>(Customer Details)";
 	    }
 	  };
 	}
@@ -228,7 +229,7 @@ function product_add()
 	  xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
 	     	document.getElementById('product').innerHTML = this.responseText;
-	     	document.getElementById('path').innerHTML = "==>Product Add";
+	     	document.getElementById('path').innerHTML = "==>(Product)==>(Add Product)";
 	    }
 	  };
 	}
@@ -245,7 +246,7 @@ function category_add()
 	  xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
 	     	document.getElementById('product').innerHTML = this.responseText;
-	     	document.getElementById('path').innerHTML = "==>Product Add";
+	     	document.getElementById('path').innerHTML = "==>(Product)==>(Add Category)";
 	    }
 	  };
 	}
@@ -262,7 +263,7 @@ function subcategory_add()
 	  xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
 	     	document.getElementById('product').innerHTML = this.responseText;
-	     	document.getElementById('path').innerHTML = "==>Product Add";
+	     	document.getElementById('path').innerHTML = "==>(Product)==>(Add Sub-Category)";
 	    }
 	  };
 	}
@@ -299,6 +300,7 @@ function orders()
 {
 	window.location='SellerHome.php#orders';
 	if (window.location.hash=="#orders") {
+		window.title = "Orders";
 		var xhttp = new XMLHttpRequest();
 	xhttp.open("GET", "SellerOrder.php", true);
 	xhttp.send();
@@ -306,7 +308,7 @@ function orders()
 	  xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
 	     	document.getElementById('product').innerHTML = this.responseText;
-	     	document.getElementById('path').innerHTML = "==>Orders";
+	     	document.getElementById('path').innerHTML = "==>(Orders)";
 	    }
 	  };
 	}
@@ -324,7 +326,7 @@ function report()
 	  xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
 	     	document.getElementById('product').innerHTML = this.responseText;
-	     	document.getElementById('path').innerHTML = "==>Report";
+	     	document.getElementById('path').innerHTML = "==>(Report)";
 	    }
 	  };
 	}
