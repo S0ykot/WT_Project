@@ -292,6 +292,46 @@ function orderDestails($id)
 }
 
 
+//============================================= Validation =========================================================
+
+function verifyEmail($email,$key){
+		$flag = 0;
+		$splitEmail = str_split($email);
+		 for ($i=0; $i < count($splitEmail); $i++) { 
+		 	if ($splitEmail[$i] == $key) {
+		 		$flag += 1;
+		 	}
+		 	else
+		 		continue;
+		 }
+		 if ($flag == 1) {
+		 	return TRUE;
+		 }
+		 else
+		 	return FALSE;
+	}
+
+
+function email_verify($email)
+{
+	if (verifyEmail($email,'@'))
+	{
+		$splitEmail = explode("@", $email);
+		if (verifyEmail($splitEmail[1], '.')) {
+			return TRUE;
+		}
+		else{
+			return FALSE;
+		}
+	}
+	else
+	{
+		return FALSE;
+	}
+			
+}
+
+
 function profitCount($id,$q)
 {
 	$conn = getConnection();
@@ -313,14 +353,20 @@ function dupEmailcheck($mail,$name)
 }
 
 
-
-
-
-
-
-
-
-
+function validUserName($name)
+	{
+		$letter = array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' ','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','-','.');
+		$nameSplit = str_split($name);
+		$flag = 0;
+		foreach ($nameSplit as $key) {
+			foreach ($letter as $c) {
+				if ($key == $c) {
+					$flag+=1;
+				}
+			}
+		}
+		return $flag;
+	}
 
 
 

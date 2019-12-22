@@ -20,7 +20,7 @@ if (isset($_POST['update'])) {
 	}
 
 
-
+	$vn=validUserName($fullname);
 
 	if (empty($fullname) OR empty($email) OR empty($cpass)) {
 		echo "<script>alert('Null submission')</script>";
@@ -33,45 +33,54 @@ if (isset($_POST['update'])) {
 				echo "<script>window.location='../view/SellerHome.php#profile';</script>";
 			}
 			else{
-				if (dupEmailcheck($email,$_SESSION['name'])==NULL) {
-					if ((pathinfo($pImg, PATHINFO_EXTENSION) == "gif") OR (pathinfo($pImg, PATHINFO_EXTENSION) == "jpg") OR (pathinfo($pImg, PATHINFO_EXTENSION) == "png") OR (pathinfo($pImg, PATHINFO_EXTENSION) == "jpge")) 
-				{
-					$result = updateProfile($fullname,$_SESSION['name'],$email,$pImg);
-
-					if ($result) {
-						if ($_FILES['profile']['name']) {
-							$dir = '../upload/'.$pImg;
-							$x = move_uploaded_file($_FILES['profile']['tmp_name'], $dir);
-							if ($x) {
-								echo "<script>alert('Profile updated')</script>";
-								echo "<script>window.location='../view/SellerHome.php#profile';</script>";
-							}
-							else
+				if (email_verify($email)) {
+					if (dupEmailcheck($email,$_SESSION['name'])==NULL) {
+						if (strlen($fullname)==$vn) {
+							
+						if ((pathinfo($pImg, PATHINFO_EXTENSION) == "gif") OR (pathinfo($pImg, PATHINFO_EXTENSION) == "jpg") OR (pathinfo($pImg, PATHINFO_EXTENSION) == "png") OR (pathinfo($pImg, PATHINFO_EXTENSION) == "jpge")) 
 							{
-								echo "<script>alert('Profile updated')</script>";
-								echo "<script>window.location='../view/SellerHome.php#profile';</script>";
-							}
-						}
-						else
-						{
-							echo "<script>alert('Profile updated')</script>";
-							echo "<script>window.location='../view/SellerHome.php#profile';</script>";
-							//header('Location:../view/SellerHome.php#profile');
-						}
-					}
-					else
-					{
-						echo "<script>alert('Something wrong');</script>";
-						echo "<script>window.location='../view/SellerHome.php#profile';</script>";
-					}
+								$result = updateProfile($fullname,$_SESSION['name'],$email,$pImg);
 
-					
-				}
+									if ($result) {
+										if ($_FILES['profile']['name']) {
+											$dir = '../upload/'.$pImg;
+											$x = move_uploaded_file($_FILES['profile']['tmp_name'], $dir);
+													if ($x) {
+														echo "<script>alert('Profile updated')</script>";
+														echo "<script>window.location='../view/SellerHome.php#profile';</script>";
+													}
+													else
+													{
+														echo "<script>alert('Profile updated')</script>";
+														echo "<script>window.location='../view/SellerHome.php#profile';</script>";
+													}
+										}
+										else
+										{
+											echo "<script>alert('Profile updated')</script>";
+											echo "<script>window.location='../view/SellerHome.php#profile';</script>";
+											
+										}
+									}
+									else
+									{
+										echo "<script>alert('Something wrong');</script>";
+										echo "<script>window.location='../view/SellerHome.php#profile';</script>";
+									}
+
+						
+					}
 				else
 				{
 					echo "<script>alert('Invalid file type');</script>";
 					echo "<script>window.location='../view/SellerHome.php#profile';</script>";
 				}
+						}
+						else
+						{
+							echo "<script>alert('Invalid Full Name');</script>";
+							echo "<script>window.location='../view/SellerHome.php#profile';</script>";
+						}
 				}
 				else
 				{
@@ -79,6 +88,12 @@ if (isset($_POST['update'])) {
 					echo "<script>window.location='../view/SellerHome.php#profile';</script>";
 								
 				}
+				}
+				else
+					{
+						echo "<script>alert('Invalid Email type');</script>";
+					echo "<script>window.location='../view/SellerHome.php#profile';</script>";
+					}
 				
 				
 			}	

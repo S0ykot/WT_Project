@@ -47,15 +47,15 @@ $data =profile($_SESSION['ID']);
 		</tr>
 		<tr>
 			<td>Full Name</td>
-			<td align="center"><input type="text" name="fullname" value="<?=$fullname;?>"></td>
+			<td align="center"><input type="text" name="fullname" value="<?=$fullname;?>" id="name"><b id="Nalert" style="color: red"></b></td><b><p id="nmsg" style="color: red"></p></b>
 		</tr>
 		<tr>
 			<td>Email</td>
-			<td align="center"><input type="text" id="email" name="email" value="<?=$email;?>" id="email" ></td>
+			<td align="center"><input type="text" onkeyup="valid_email()" name="email" value="<?=$email;?>" id="email" ><b id="alert" style="color: red"></b></td><b><p id="pmsg" style="color: red"></p></b>
 		</tr>
 		<tr>
 			<td>Current Password</td>
-			<td align="center"><input type="password" name="pass"></td>
+			<td align="center"><input type="password" id="cpass" name="pass" onkeyup="validCurrentPass()"></td><b><p id="passmsg" style="color: red"></p></b>
 		</tr>
 		<tr>
 			<td>Image</td>
@@ -63,7 +63,7 @@ $data =profile($_SESSION['ID']);
 		</tr>
 		<tr>
 			<td></td>
-			<td><button name="update" onclick="validateEmail()">Update</button></td>
+			<td><button name="update" onclick="validateEmail()" id="updateProfile" disabled="">Update</button></td>
 		</tr>
 	</table>
 	</form>

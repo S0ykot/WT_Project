@@ -32,7 +32,7 @@ th,td {
 	<table border="1" width="30%">
 		<tr>
 			<td>Name</td>
-			<td><input type="text" name="name" id="name"></td><td><p id="nameE">TEST</p></td>
+			<td><input type="text" name="name" id="name"></td>
 		</tr><tr>
 			<td>Quantity</td>
 			<td><input type="text" name="quantity" id="qntity"></td>

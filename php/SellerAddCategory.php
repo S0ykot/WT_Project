@@ -5,6 +5,7 @@ $token="";
 if (isset($_POST['submit'])) {
 	$cat = $_POST['cat'];
 	$data = getCatageory();
+	$vn = validUserName($cat);
 
 	if (empty($cat)) {
 		echo "<script>alert('Null submission')</script>";
@@ -25,21 +26,28 @@ if (isset($_POST['submit'])) {
 		}
 
 		if ($token==1) {
-			$status = categoryAdd($cat);
-			if ($status) {
-				echo "<script>alert('Category Added')</script>";
-				echo "<script>window.location='../view/SellerHome.php#profile';</script>";
+			if (strlen($cat)==$vn) {
+						$status = categoryAdd($cat);
+					if ($status) {
+						echo "<script>alert('Category Added')</script>";
+						echo "<script>window.location='../view/SellerHome.php';</script>";
+					}
+					else
+					{
+						echo "<script>alert('Something Wrong')</script>";
+						echo "<script>window.location='../view/SellerHome.php';</script>";
+					}
 			}
 			else
 			{
-				echo "<script>alert('Something Wrong')</script>";
-				echo "<script>window.location='../view/SellerHome.php#profile';</script>";
+				echo "<script>alert('Invalid Category Name')</script>";
+						echo "<script>window.location='../view/SellerHome.php';</script>";
 			}
 		}
 		else
 		{
 			echo "<script>alert('Category Already added')</script>";
-				echo "<script>window.location='../view/SellerHome.php#profile';</script>";
+				echo "<script>window.location='../view/SellerHome.php';</script>";
 		}
 
 
@@ -48,7 +56,7 @@ if (isset($_POST['submit'])) {
 }
 else
 {
-	header('Location:../view/SellerHome.php#profile');
+	header('Location:../view/SellerHome.php');
 }
 
 

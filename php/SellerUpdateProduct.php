@@ -14,6 +14,7 @@ if (isset($_POST['submit'])) {
 	$img = $_FILES['image'];
 	$act = $_POST['activity'];
 	$date = $_POST['date'];
+	$vn = validUserName($name);
 
 
 	if (empty($name) || empty($qntity) || empty($bPrice) || empty($sPrice) || empty($desc) || empty($cat) || empty($subcat) || empty($date)) {
@@ -34,7 +35,8 @@ if (isset($_POST['submit'])) {
 			}
 			else
 			{
-				if ($img['name']=='') {
+				if (strlen($name)==$vn) {
+					if ($img['name']=='') {
 					$img = $_SESSION['pImg'];
 					$status = updateProduct($_SESSION['PID'],$name,$qntity,$date,$bPrice,$sPrice,$desc,$subcat,$img,$act);
 					if ($status) {
@@ -86,6 +88,12 @@ if (isset($_POST['submit'])) {
 										echo "<script>window.location='../view/SellerHome.php';</script>";
 					}
 
+				}
+				}
+				else
+				{
+						echo "<script>alert('Invalid Name')</script>";
+										echo "<script>window.location='../view/SellerHome.php';</script>";
 				}
 			}
 		}
