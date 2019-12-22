@@ -2,7 +2,7 @@
 	require_once('../db/AdminProductFunction.php');
 	session_start();
 
-	if (isset($_SESSION['username'])) {	
+	if (isset($_SESSION['username'])  && isset($_COOKIE['username'])) {	
 		if (isset($_GET['pid'])) {
 			$data =singleProduct($_GET['pid']);
 			$rows = mysqli_fetch_assoc($data);

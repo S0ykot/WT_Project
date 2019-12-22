@@ -2,7 +2,7 @@
 	require_once('AdminUserFunction.php');
 	session_start();
 
-	if (isset($_SESSION['username'])) {	
+	if (isset($_SESSION['username']) && isset($_COOKIE['username'])) {	
 
 		$searchkey = $_POST['shkey'];
 		

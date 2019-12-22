@@ -1,8 +1,8 @@
 <?php 
-	
+	require_once('../db/AdminReportFunction.php');
 	session_start();
 
-	if (isset($_SESSION['username'])) {	
+	if (isset($_SESSION['username'])  && isset($_COOKIE['username'])) {	
 		
 ?>
 
@@ -10,117 +10,103 @@
 <html>
 <head>
 	<title>Sales Report</title>
+	<link rel="stylesheet" type="text/css" href="../css/Navigate.css">
+	<link rel="stylesheet" type="text/css" href="../css/Design.css">
+	<link rel="stylesheet" type="text/css" href="../css/Table.css">
+	<script type="text/javascript" src="../js/AdminScript.js"></script>
 </head>
 <body>
-	
-		<table border="0" width="100%" bgcolor="PaleTurquoise">
+	<div class="nav">
+
+		<a href="AdminHome.php" class="a1">Home</a>
+
+		<div class="dropdown">
+			<button class="dropbtn">Products</button>
+		    <div class="dropdown-content">
+		    	<a href="AdminAddProduct.php">Add Product</a>
+		    	<a href="AdminProductDetails.php">Product Details</a>
+		    	<a href="AdminAddCategory.php">Add Category</a>
+		    	<a href="AdminAddSubCategory.php">Add Sub-Category</a>
+		  	</div>
+		</div>
+
+		<div class="dropdown">
+			<button class="dropbtn">Manage Users</button>
+		    <div class="dropdown-content">
+		    	<a href="AdminAddUser.php">Add User</a>
+		    	<a href="AdminUserDetails.php">User Details</a>
+		    	<a href="AdminCustomerDetails.php">Customer Details</a>
+		  	</div>
+		</div>
+
+		<div class="dropdown">
+			<button class="dropbtn">Sales Report</button>
+		    <div class="dropdown-content">
+		    	<a href="AdminGenerateReport.php">Generate Report</a>
+		  	</div>
+		</div>
+
+		<div class="dropdown">
+			<button class="dropbtn">Promo Code</button>
+		    <div class="dropdown-content">
+		    	<a href="AdminGeneratePromoCode.php">Generate Promo Code</a>
+		    	<a href="AdminPromoCodeDetails.php">Promo Code Details</a>
+		  	</div>
+		</div>
+
+		<div class="dropdown">
+			<button class="dropbtn">Profile</button>
+		    <div class="dropdown-content">
+		    	<a href="AdminProfileView.php">My Profile</a>
+		    	<a href="AdminChangePassword.php">Change Password</a>
+		    	<a href="../php/AdminLogout.php">Logout</a>
+		  	</div>
+		</div>
+	</div>
+	<center>
+		<h1><font color="DarkBlue" face="Cursive"><u>Sales Report</u></font></h1><br>
+		<strong>Starting Date:</strong> &ensp;
+		<input type="date" name="sdate" id="sdate"> &emsp;		
+		<strong>Ending Date:</strong> &ensp;				
+		<input type="date" name="edate" id="edate">	<br><br>
+		<button class="btn" onclick="generateReport()">Generate Report</button>
+		<div style="color: red;font-weight: bold;">
+			<?php 
+				if (isset($_GET['msg'])) {
+					echo $_GET['msg'].'<br><br>';
+				}
+			?>
+		</div>
+	</center>
+
+	<div id="reportdata">
+		<table width="100%" cellspacing="20px" style="margin-top: 2.5%">
 			<tr>
-				<td width="100%" height="50px">
-					<center><h1><font color="DarkBlue" face="Cursive"><u>Sales Report</u></font></h1></center>
-				</td>
+				<th>Report ID</th>
+				<th>Transaction ID</th>
+				<th>Transaction Date</th>
+				<th>Profit</th>
+				<th>Order No</th>
 			</tr>
-			<tr>
-				<td align="center">
-					<table bgcolor="PaleTurquoise" cellspacing="20px">
-						<tr>
-							<td><b>From:</b></td>
-							<td>
-								<input type="date" name="fromdate" >
-							</td>
-						</tr>
-						<tr>
-							<td><b>To:</b></td>
-							<td>
-								<input type="date" name="todate" >
-							</td>
-						</tr>
-					</table>
-				</td>		
+
+			<?php 
+
+				$result = getRportDetails();
+				while ($rows = mysqli_fetch_assoc($result)) {
+
+			?>
+
+			<tr align="center">
+				<td><?php echo $rows['rid']; ?></td>
+				<td><?php echo $rows['transaction_id']; ?></td>
+				<td><?php echo $rows['transaction_date']; ?></td>
+				<td><?php echo $rows['profit']; ?></td>
+				<td><?php echo $rows['order_no']; ?></td>
 			</tr>
-			<tr>
-				<td>
-					<table bgcolor="CornflowerBlue" width="100%" cellspacing="20px">
-						<tr>
-							<th>Transaction Date</th>
-							<th>Transaction ID</th>
-							<th>Order Number</th>
-							<th>Amount</th>
-							<th>Profit</th>
-						</tr>
-						<tr align="center">
-							<td>12/11/2018</td>
-							<td>ds42fgh5h</td>
-							<td>00001</td>
-							<td>5000</td>
-							<td>1200</td>
-						</tr>
-						<tr align="center">
-							<td>12/11/2018</td>
-							<td>ds55gjh5h</td>
-							<td>00002</td>
-							<td>1000</td>
-							<td>220</td>
-						</tr>
-						<tr align="center">
-							<td>15/11/2018</td>
-							<td>ds98ojm5h</td>
-							<td>00003</td>
-							<td>10000</td>
-							<td>2500</td>
-						</tr>
-						<tr align="center">
-							<td>19/11/2018</td>
-							<td>dshhfhjh5h</td>
-							<td>00004</td>
-							<td>2000</td>
-							<td>200</td>
-						</tr>
-						<tr align="center">
-							<td>20/11/2018</td>
-							<td>dsoo63h5h</td>
-							<td>00005</td>
-							<td>500</td>
-							<td>150</td>
-						</tr>
-						<tr align="center">
-							<td>21/11/2018</td>
-							<td>ds55qj65h</td>
-							<td>00006</td>
-							<td>3000</td>
-							<td>700</td>
-						</tr>
-						<tr align="center">
-							<td>21/11/2018</td>
-							<td>dsje5hl4</td>
-							<td>00007</td>
-							<td>6500</td>
-							<td>1400</td>
-						</tr>
-						<tr align="center">
-							<td>21/11/2018</td>
-							<td>ds58gjh5h</td>
-							<td>00008</td>
-							<td>7520</td>
-							<td>1840</td>
-						</tr>
-						<tr align="center">
-							<td>22/11/2018</td>
-							<td>ds2lyjh5h</td>
-							<td>00009</td>
-							<td>600</td>
-							<td>120</td>
-						</tr>
-						<tr align="center">
-							<td>22/11/2018</td>
-							<td>ds96sh5p</td>
-							<td>00010</td>
-							<td>1200</td>
-							<td>300</td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-		</table>	
+			<?php } ?>
+			
+		</table>
+	</div>
 </body>
 </html>
 

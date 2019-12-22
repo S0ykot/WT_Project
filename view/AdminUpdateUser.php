@@ -2,7 +2,7 @@
 	require_once('../db/AdminUserFunction.php');
 	session_start();
 
-	if (isset($_SESSION['username'])) {	
+	if (isset($_SESSION['username'])  && isset($_COOKIE['username'])) {	
 		if (isset($_GET['id'])) {
 			$data =singleUser($_GET['id']);
 			$rows = mysqli_fetch_assoc($data);
