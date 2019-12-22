@@ -87,7 +87,7 @@ if (isset($_SESSION['NAME'])) { ?>
 							<td width="15%" bgcolor="#E8EBEC">
 								<table border="0px" width="100%" cellpadding="0px" cellspacing="0px">
 									<tr>
-										<td><a href="../buyerLogoutCheck.php"><font color="black">Logout</font></a></td>
+										<td><a href="../../php/buyerLogoutCheck.php"><font color="black">Logout</font></a></td>
 									</tr>
 									<tr><td height="20px"></td></tr>
 									<tr>
