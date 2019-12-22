@@ -106,9 +106,9 @@ if (isset($_COOKIE['id'])) {
 							}
 						?>
 						<tr>
-							<th colspan="3" align="right"  style="padding-bottom: 10px ">Total</th>
-							<th align="center"  style="padding-bottom: 10px ">
-								<span id="mainTotal">
+							<th colspan="3" align="right"  >Total</th>
+							<th align="center"  >
+								<span id="pretotal">
 								<?php
 								$total = 0;
 									for ($i=0; $i <count($cart) ; $i++) { 
@@ -119,11 +119,33 @@ if (isset($_COOKIE['id'])) {
 							</span>
 							</th>
 						</tr>
+						<tr>
+							<th colspan="3" align="right" style="padding-bottom: 10px ">Dicount</th>
+							<th  style="padding-bottom: 10px ">-<span id="discount">0.00</span></th>
+						</tr>
+						<tr>
+							<th colspan="3" align="right">Main Total</th>
+							<th id="discount">
+								<span id="mainTotal">
+									<?= $total?>
+								</span>
+							</th>
+						</tr>
 					</table>
 					</center>
 					</div>
+					<div style="width: 500px; right: 90px; position: absolute;">
+						<table>
+							<tr>
+								<td><div style="font-size: 25px; color: tomato">Code:</div></td>
+								<td><div><input type="text" id="coupon" style="height: 30px;width: 100px"></div></td>
+								<td><div><input type="button" id="verifyBtn" value="Verify" onclick="verifyCoupon()" style="height: 30px; width: 70px; background-color: green;
+								border-radius: 2px; border:none; color: white;"></div></td>
+							</tr>
+						</table>
+					</div>
 					<center>
-						<div class="header"><font size="12px">Payment Methods</font></div>
+						<div class="header" style="padding-top: 80px"><font size="12px">Payment Methods</font></div>
 						<div id="method">
 							<input type="radio" name="payment" value="Cash On Delivery" onclick>Cash On Delivery&emsp;&emsp;<input type="radio" name="payment" value="bKash">bKash
 						</div><br>

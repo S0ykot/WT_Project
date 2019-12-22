@@ -147,10 +147,10 @@ function getId($id)
 	return $users;
 }
 
-function checkout($id,$orderList,$Total)
+function checkout($id,$orderList,$Date,$Total)
 {
 	$conn= getConnection();
-	$sql = "insert into orders values ('','{}','{$orderList}','$Total','Pending','$id')";
+	$sql = "insert into orders values ('','{$Date}','{$orderList}','$Total','Pending','$id')";
 	if(mysqli_query($conn, $sql))
 	{
 		return true;	
@@ -209,6 +209,39 @@ function deleteFromCart($Delete)
 {
 	$conn= getConnection();
 	$sql = "delete from cart where id='$Delete'";
+	if(mysqli_query($conn, $sql))
+	{
+		return true;	
+	}
+	else 
+		return false;
+}
+
+function verifyCouponValidity($Coupon,$id)
+{
+	$conn = getConnection();
+	$sql = "select * from discount where promo_code='{$Coupon}' and cid='{$id}'";
+	$result = mysqli_query($conn, $sql);
+	$status = mysqli_fetch_assoc($result);
+	return count($status);
+}
+
+function getCoupon($Coupon,$id)
+{
+	$conn = getConnection();
+	$sql = "select * from discount where promo_code='{$Coupon}' and cid='{$id}'";
+	$result = mysqli_query($conn, $sql);
+	while($getResult = mysqli_fetch_assoc($result))
+	{
+		$lists[]=$getResult;
+	}
+	return $lists;
+}
+
+function updateDiscountUsage($Coupon,$id)
+{
+	$conn= getConnection();
+	$sql = "update discount set Used='1' where promo_code='{$Coupon}' and cid='{$id}'";
 	if(mysqli_query($conn, $sql))
 	{
 		return true;	
