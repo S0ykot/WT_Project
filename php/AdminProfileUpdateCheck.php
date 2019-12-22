@@ -8,6 +8,7 @@
 		$myuname = $_POST['myuname'];
 		$myemail = $_POST['myemail'];
 		$myutype = $_POST['myutype'];
+		$mypass = $_POST['mycpass'];
 
 		$result = getsingleUserEmailAndUname($_SESSION['mid']);
 		$result1 = getsingleUserEmailAndUname($_SESSION['mid']);
@@ -18,7 +19,7 @@
 		$length2 = validUserName($mylname);
 		$length3 = validUName($myuname);
 
-		if (empty($myfname) || empty($mylname) || empty($myuname) || empty($myemail) || empty($myutype)) {
+		if (empty($myfname) || empty($mylname) || empty($myuname) || empty($myemail) || empty($myutype) || empty($mypass)) {
 			header('location: ../view/AdminProfileUpdate.php?id='.$_SESSION['mid'].'&msg=Please fill all data');
 			//echo '<script type="text/javascript">alert('.$utype.');</script>';
 		}else{
@@ -58,8 +59,10 @@
 									if (strlen($myuname) != $length3) {	
 										header('location: ../view/AdminProfileUpdate.php?id='.$_SESSION['mid'].'&msg=Username is not valid');
 									}else{
-
-										$data = singleUser($_SESSION['mid']);
+										if ($mypass != $_SESSION['password']) {
+											header('location: ../view/AdminProfileUpdate.php?id='.$_SESSION['mid'].'&msg=Wrong Password');
+										}else{
+											$data = singleUser($_SESSION['mid']);
 										$row = mysqli_fetch_assoc($data);
 										if (empty($_FILES['myuimage']['name'])) {
 											$newname = $row['image'];
@@ -84,6 +87,8 @@
 										}else{
 											header('location: ../view/AdminProfileUpdate.php?id='.$_SESSION['mid'].'&msg=Updating error');
 										}
+										}
+										
 									}
 								}
 							}

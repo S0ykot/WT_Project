@@ -1,7 +1,11 @@
 <?php 
+	error_reporting(0);
 	session_start();
-	if (isset($_SESSION['username']) == false) {
-
+	if ($_SESSION['username'] AND $_COOKIE['username']) {
+		header('location: view/AdminHome.php');
+	}
+	else
+	{
  ?>
 
 <!DOCTYPE html>
@@ -74,8 +78,5 @@
 
 <?php 
 
-	}else{
-		header('location: view/AdminHome.php');
-	}
-
+}
  ?>

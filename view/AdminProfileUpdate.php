@@ -92,7 +92,7 @@
 					User ID:
 				</td>
 				<td>
-					<input type="text" name="uid" value="<?php echo $_SESSION['myprofile']; ?>" disabled>
+					<input type="text" name="uid" value="<?php echo $rows['id']; ?>" disabled>
 				</td>
 				<td>
 					First Name:
@@ -150,6 +150,12 @@
 				</td>
 				<td>
 					<input type="file" name="myuimage" accept="image/x-png,image/jpeg,image/jpg">
+				</td>
+				<td>
+					Current Password:
+				</td>
+				<td>
+					<input type="Password" name="mycpass" placeholder="Enter Current Password">
 				</td>
 			</tr>
 			<tr>

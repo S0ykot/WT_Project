@@ -52,7 +52,9 @@
 			</td>
 		</tr>	
 	</table>
-	<button class="btn" onclick="downloadReport()">Download PDF</button>
+	<center><br><br>
+		<button class="btn" onclick="downloadReport()">Download PDF</button>
+	</center>
 </body>
 </html>
 <?php								
