@@ -1,4 +1,6 @@
 <?php
+if(isset($_GET['subCat']))
+{
 error_reporting(0);
 	session_start();
 	$products = base64_decode($_GET['subCat']);
@@ -166,3 +168,8 @@ error_reporting(0);
 					</table>
 </body>
 </html>
+<?php
+}
+else 
+	header('location: ../../index.php');
+?>

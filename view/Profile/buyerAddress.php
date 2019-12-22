@@ -33,7 +33,7 @@ if (isset($_SESSION['NAME'])) { ?>
 									}
 									?>
 
-								<a href="cart.php"><div id="cart">Cart</div></a>
+								<a href="../cart.php"><div id="cart">Cart</div></a>
 							</td>
 						</tr>
 					</table>
@@ -227,6 +227,6 @@ if (isset($_SESSION['NAME'])) { ?>
 <?php
 }
 	else
-		header('location: ../index.php');
+		header('location: ../../index.php');
 
 ?>

@@ -1,6 +1,11 @@
 <?php
 require_once('../db/buyerFunctions.php');
-$Delete = $_POST['delete'];
+if(isset($_POST['delete']))
+{
+	$Delete = $_POST['delete'];
 
-deleteFromCart($Delete);
+	deleteFromCart($Delete);
+}
+else
+	header('location: ../index.php');
 ?>
