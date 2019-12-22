@@ -1,14 +1,5 @@
 
-function LFV() //Login Validation
-{
 
-	var uname=document.getElementById('name');
-	var pass=document.getElementById('pass');
-	if (uname.value=='' || pass.value=='') {
-		alert('Null submission');
-		return(false);
-	}
-}
 
 
 function login_show()
@@ -395,4 +386,27 @@ function get()
 }
 
 
- 
+ function downloadReport(){
+
+	var pdf = document.getElementById('report').innerHTML;
+	
+	var style = "<style>";
+    style = style + "table {width: 100%;font: 17px Calibri;}";
+    style = style + "table, th, td {border: solid 1px ; border-collapse: collapse;";
+    style = style + "padding: 2px 3px;text-align: center;}";
+    style = style + "</style>";
+
+	var win = window.open('', 'Sales Report', 'height=700,width=700');
+
+    win.document.write('<html><head>');
+    win.document.write('<title>Sales Report</title>');   
+    win.document.write(style);          
+    win.document.write('</head>');
+    win.document.write('<body>');
+    win.document.write(pdf);         
+    win.document.write('</body></html>');
+
+    win.document.close(); 	
+
+    win.print();
+}

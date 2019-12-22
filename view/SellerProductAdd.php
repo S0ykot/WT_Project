@@ -7,6 +7,7 @@ if ($_SESSION['name'] AND $_SESSION['type'] AND $_COOKIE['timeout']) {
 
 ?>
 <script type="text/javascript" src="../js/SellerScript.js"></script>
+<script type="text/javascript" src="../js/SellerValid.js"></script>
 <style type="text/css">
 	input
 	{
@@ -31,25 +32,25 @@ th,td {
 	<table border="1" width="30%">
 		<tr>
 			<td>Name</td>
-			<td><input type="text" name="name"></td>
+			<td><input type="text" name="name" id="name"></td><td><p id="nameE">TEST</p></td>
 		</tr><tr>
 			<td>Quantity</td>
-			<td><input type="text" name="quantity"></td>
+			<td><input type="text" name="quantity" id="qntity"></td>
 		</tr><tr>
 			<td>Incoming Date</td>
-			<td><input type="date" name="date"></td>
+			<td><input type="date" name="date" id="date"></td>
 		</tr><tr>
 			<td>Buying Price</td>
-			<td><input type="text" name="bPrice"></td>
+			<td><input type="text" name="bPrice" id="bp"></td>
 		</tr><tr>
 			<td>Selling Price</td>
-			<td><input type="text" name="sPrice"></td>
+			<td><input type="text" name="sPrice" id="sp"></td>
 		</tr><tr>
 			<td>Description</td>
-			<td><textarea name="desc"></textarea style="width: 100%;"></td>
+			<td><textarea name="desc" id="desc"></textarea style="width: 100%;"></td>
 		</tr><tr>
 			<td>Image</td>
-			<td><input type="file" name="img"></td>
+			<td><input type="file" name="img" id="img"></td>
 		</tr><tr>
 			<td>Acivity</td>
 			<td>
@@ -82,7 +83,7 @@ th,td {
 				</select>
 			</td>
 		</tr><tr>
-			<td colspan="2" align="center"><br><input type="submit" name="submit" style="width: 20%; background-color: white;"><br></td>
+			<td colspan="2" align="center"><br><input type="submit" name="submit" onclick="" onclick="productValid()" style="width: 20%; background-color: white;"><br></td>
 		</tr>
 	</table>
 	</form>

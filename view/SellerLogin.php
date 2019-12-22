@@ -4,6 +4,7 @@
 	<title>System Login</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script src="js/SellerScript.js"></script>
+	<script src="js/SellerValid.js"></script>
 </head>
 <body id="login_body">
 <center>

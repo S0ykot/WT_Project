@@ -5,7 +5,7 @@ require_once '../db/SellerFunctions.php';
 if ($_SESSION['name'] AND $_SESSION['type'] AND $_COOKIE['timeout']) {
 	$act="";
 	if ($_POST['search']) {
-		$value = $_POST['search'];
+		$value = htmlspecialchars($_POST['search']);
 	}
 
 	if (empty($value)) {

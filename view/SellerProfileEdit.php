@@ -62,7 +62,7 @@ $data =profile($_SESSION['ID']);
 		</tr>
 		<tr>
 			<td></td>
-			<td><button name="update">Update</button></td>
+			<td><button name="update" onclick="validateEmail();">Update</button></td>
 		</tr>
 	</table>
 	</form>

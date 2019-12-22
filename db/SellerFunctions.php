@@ -271,9 +271,101 @@ function reportShow($d1,$d2)
 	return $result;
 }
 
+function dupPNameCheck($name)
+{
+	$conn = getConnection();
+	$query = "SELECT pid  FROM product WHERE name='$name'";
+	$result = mysqli_query($conn,$query);
+	$row = mysqli_fetch_assoc($result);
+
+	return $row['pid'];
+}
+
+
+function orderDestails($id)
+{
+	$conn = getConnection();
+	$query="SELECT item_quantity from orders where order_no=$id";
+	$result = mysqli_query($conn,$query);
+	$row = mysqli_fetch_assoc($result);
+	return $row['item_quantity'];
+}
+
+
+function profitCount($id,$q)
+{
+	$conn = getConnection();
+	$query = "SELECT $q*(selling_price-buying_price) 'profit' from product where pid=$id";
+	$result = mysqli_query($conn,$query);
+
+	$row = mysqli_fetch_assoc($result);
+
+	return $row['profit'];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ?>
+
 
 
 
