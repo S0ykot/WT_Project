@@ -13,18 +13,22 @@ $gender = "";
 $pass = "";
 $cpass = "";
 
+$Data = $_POST['cred'];
+$json = json_decode($Data,TRUE);
 
-if (isset($_REQUEST['userreg'])) {
+//print_r($json);
 
-	$id = $_REQUEST['username'];
-	$name = $_REQUEST['name'];
-	$email = $_REQUEST['email'];
-	$dob = $_REQUEST['dob'];
-	$address = $_REQUEST['address'];
-	$con = $_REQUEST['phnNo'];
-	$gender = $_REQUEST['gender'];
-	$pass = $_REQUEST['userPass'];
-	$cpass = $_REQUEST['confPass'];
+if (isset($json['btn'])) {
+
+	$id = $json['Uname'];
+	$name = $json['Name'];
+	$email = $json['Email'];
+	$dob = $json['Dob'];
+	$address = $json['Address'];
+	$con = $json['Con'];
+	$gender = $json['Gender'];
+	$pass = $json['Pass'];
+	$cpass = $json['ConPass'];
 
 
 	function verifyEmail($myEmail,$handler)
@@ -78,24 +82,29 @@ if (isset($_REQUEST['userreg'])) {
 
 	if(empty($id) == true || empty($pass) == true || empty($cpass) == true || empty($name) == true || empty($email) == true || empty($dob) == true || empty($address) == true || empty($con) == true || empty($gender) == true)
 	{
-		header('location: ../view/buyerReg.php');
+		//header('location: ../view/buyerReg.php');
+		echo "Failed";
 	}
 	else
 	{
 		if($pass!=$cpass)
 		{
-			header('location: ../view/buyerReg.php');
+			//header('location: ../view/buyerReg.php');
+			echo "Failed";
 		}
 		elseif (!verifyEmail($email,'@')) 
 		{
-			header('location: ../view/buyerReg.php');
+			//header('location: ../view/buyerReg.php');
+			echo "Failed";
 		}
 		elseif (!verifyNumber($con)) 
 		{
-			header('location: ../view/buyerReg.php');
+			//header('location: ../view/buyerReg.php');
+			echo "Failed";
 		}
 		elseif (strlen($name)!=verifyName($name)) {
-			header('location: ../view/buyerReg.php');
+			//header('location: ../view/buyerReg.php');
+			echo "Failed";
 		}
 		else
 		{
@@ -106,20 +115,25 @@ if (isset($_REQUEST['userreg'])) {
 
 				if (!verifyEmail($data[1], '.')) 
 				{
-					header('location: ../view/buyerReg.php');
+					//header('location: ../view/buyerReg.php');
+					echo "Failed";
 				}
 				else
 				{
 					$user = registration($id,$pass,$name,$email,$dob,$address,$gender,$con);
-					header('location: ../view/buyerLogin.php');
+					//header('location: ../view/buyerLogin.php');
+					echo "Done";
 				}
 			}
 			else
-				header('location: ../view/buyerReg.php');
+			{
+				//header('location: ../view/buyerReg.php');
+				echo "Failed";
+			}
 
 		}
 	}
 }
 else
-	header('location: index.php');
+	echo "Failed";
 ?>

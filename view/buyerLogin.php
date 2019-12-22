@@ -107,7 +107,7 @@ if (!isset($_COOKIE['id'])) { ?>
 													<tr>
 														<td align="center">New Here | Want to Register <br></td>
 													</tr>
-													<tr><td align="center"><a href="buyerReg.php"><font color="tomato">Create a new Account<</font></a> <br><br></td></tr>
+													<tr><td align="center"><a href="buyerReg.php"><font color="tomato">Create a new Account</font></a> <br><br></td></tr>
 												</table>
 											<!-- </form> -->
 										</td>

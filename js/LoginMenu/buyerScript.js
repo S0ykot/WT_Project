@@ -156,3 +156,47 @@ function gotoLogin(login)
 		  };
 		  //alert(data);
 }
+
+function gotoReg(Btn)
+{
+	var x = document.getElementsByName('gender');
+	var text="";
+	for(var i = 0; i < x.length; i++){
+	    if(x[i].checked){
+	        text=x[i].value;
+	        break;
+	    }
+	}
+	var json = {
+		'Name': document.getElementById('NAME').value,
+		'Email':document.getElementById('EMAIL').value,
+		'Dob':document.getElementById('DOB').value,
+		'Address':document.getElementById('address').value,
+		'Con':document.getElementById('CON').value,
+		'Gender':text,
+		'Uname':document.getElementById('UNAME').value,
+		'Pass':document.getElementById('PASS').value,
+		'ConPass':document.getElementById('CONPASS').value,
+		'btn':Btn
+	};
+
+	var data=JSON.stringify(json);
+	var xhttp = new XMLHttpRequest();
+		 xhttp.open("POST", "../php/buyerRegCheck.php", true);
+		  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		  //xhttp.send('uname='+Uname+'&upass='+Upass+'&btn='+login);
+		  xhttp.send('cred='+data);
+		  xhttp.onreadystatechange = function() {
+		    if (this.readyState == 4 && this.status==200) {
+		      //alert(this.responseText);
+		     if(this.responseText=="Done")
+		      {
+		      		window.location = "../index.php";
+		      }
+		      else if(this.responseText=="Failed")
+		      {
+		      		window.location = "buyerReg.php"
+		      }
+		    }
+		  };
+}
