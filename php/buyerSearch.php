@@ -13,14 +13,13 @@ if(isset($_POST['btn']))
 	echo $status[$i]['name']."<br>";
 }*/
 //header('location: ../view/cart.php');
-}
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Accessoy Store</title>
-	<link rel="stylesheet" href="../../css/buyerStyle.css">
-	<script type="text/javascript" src="../../js/ProductPagesMenu/buyerScript.js"></script>
+	<link rel="stylesheet" href="../css/buyerStyle.css">
+	<script type="text/javascript" src="../js/ProductPagesMenu/buyerScript.js"></script>
 </head>
 
 <body>
@@ -191,3 +190,8 @@ if(isset($_POST['btn']))
 					</table>
 </body>
 </html>
+<?php
+}
+else
+	header('location: ../index.php');
+?>

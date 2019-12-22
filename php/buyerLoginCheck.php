@@ -34,7 +34,7 @@ if (isset($json['btn'])) {
 			/*fclose($myFile);*/ 
 				if ($id == $user['username'] && $pass == $user['password']) {
 					$temp = TRUE;
-					setcookie('id',$user['username'],time()+(3600*60*24),"/");
+					setcookie('id',$user['username'],time()+(60*15),"/");
 					$_SESSION['Gender'] = $user['gender'];
 					$_SESSION['Pass'] = $user['password'];
 					$_SESSION['DOB'] = $user['dob'];

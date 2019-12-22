@@ -1,4 +1,6 @@
 <?php
+if(isset($_GET['product']))
+{
 	session_start();
 	require_once('../../db/buyerFunctions.php');
 	$Product=$_GET['product'];
@@ -170,3 +172,8 @@
 					</table>
 </body>
 </html>
+<?php
+}
+else
+	header('location: ../../index.php');
+?>
