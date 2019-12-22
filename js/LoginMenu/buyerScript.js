@@ -200,3 +200,48 @@ function gotoReg(Btn)
 		    }
 		  };
 }
+
+function verifyCoupon()
+{
+	var Coupon = document.getElementById('coupon');
+	//alert(Coupon);
+	if(Coupon.value!="")
+	{
+		var xhttp = new XMLHttpRequest();
+	 xhttp.open("POST", "../php/buyerGetCoupon.php", true);
+	  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	  xhttp.send('cpn='+Coupon.value);
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status==200) {
+	      //alert(this.responseText);
+	      //window.location = "cart.php";
+	     if(this.responseText=='Invalid')
+	     {
+	     	alert('Invalid Code');
+	     }
+	     else if(this.responseText=='used')
+	     {
+	     	alert('You have already used the code once');
+	     }
+	     else if(this.responseText=='date')
+	     {
+	     		alert('Code Is Not Available Now');
+	     }
+	     else
+	     {
+	     	 var obj = JSON.parse(this.responseText);
+		      var amount = document.getElementById('mainTotal').textContent;
+ 				document.getElementById('discount').innerHTML=((obj.amount/100)*amount);
+ 				document.getElementById('mainTotal').innerHTML=((amount-(obj.amount/100)*amount));
+ 				document.getElementById('coupon').value="";
+	     }
+	      //alert(this.responseText);
+	    }
+	  };
+
+	}
+	else if(Coupon.value=="")
+	{
+		alert('Empty Code');
+	}
+}
