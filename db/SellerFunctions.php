@@ -203,17 +203,73 @@ function orders()
 	$conn = getConnection();
 	$query ="SELECT * FROM orders,customer_user where orders.cid=customer_user.cid";
 	$result = mysqli_query($conn,$query);
-	return $return;
+	return $result;
 }
 
 
 
+function order_approve($orderID)
+{
+	$conn = getConnection();
+	$query = "UPDATE orders SET status='Approved' WHERE order_no=$orderID";
+	if (mysqli_query($conn,$query)) {
+		return TRUE;
+	}
+	else
+	{
+		return FALSE;
+	}
+}
+
+function order_deliver($orderID)
+{
+	$conn = getConnection();
+	$query = "UPDATE orders SET status='Delivered' WHERE order_no=$orderID";
+	if (mysqli_query($conn,$query)) {
+		return TRUE;
+	}
+	else
+	{
+		return FALSE;
+	}
+}
+
+function order_reject($orderID)
+{
+	$conn = getConnection();
+	$query = "UPDATE orders SET status='Rejected' WHERE order_no=$orderID";
+	if (mysqli_query($conn,$query)) {
+		return TRUE;
+	}
+	else
+	{
+		return FALSE;
+	}
+}
 
 
+function report_add($tID,$TDate,$profit,$order_id)
+{
+	$conn = getConnection();
+	$query = "INSERT INTO report values('','$tID','$TDate','$profit','$order_id')";
+	if (mysqli_query($conn,$query)) {
+		return TRUE;
+	}
+	else
+	{
+		return FALSE;
+	}
+}
 
 
+function reportShow($d1,$d2)
+{
+	$conn = getConnection();
+	$query = "SELECT * FROM report,orders WHERE report.order_no=orders.order_no AND transaction_date BETWEEN '$d1' AND '$d2'";
+	$result = mysqli_query($conn,$query);
 
-
+	return $result;
+}
 
 
 

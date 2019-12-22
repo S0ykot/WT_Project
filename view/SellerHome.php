@@ -31,9 +31,9 @@ if ($_SESSION['name'] AND $_SESSION['type'] AND $_COOKIE['timeout']) {
 		<br><br>
 		<button id="btn9" onclick="customer_details()">Customer List</button>
 		<br><br>
-		<button id="btn4">Report</button>
+		<button id="btn4" onclick="report()">Report</button>
 		<br><br>
-		<button id="btn5">Orders</button>
+		<button id="btn5" onclick="orders();">Orders</button>
 		<br><br>
 		<button id="btn6" onclick="logout()" >Logout</button>
 	</div>
