@@ -57,7 +57,7 @@ th,td {
 	</tr>
 
 	<tr>
-		<td colspan="2"> <input type="submit" name="update" value="update"></td>
+		<td colspan="2"> <input type="submit" name="update" value="update" onclick="changePasword()"></td>
 	</tr>
 </table>
 
