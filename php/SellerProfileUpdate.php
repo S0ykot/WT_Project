@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 session_start();
 require_once '../db/SellerFunctions.php';
 
@@ -33,7 +33,8 @@ if (isset($_POST['update'])) {
 				echo "<script>window.location='../view/SellerHome.php#profile';</script>";
 			}
 			else{
-				if ((pathinfo($pImg, PATHINFO_EXTENSION) == "gif") OR (pathinfo($pImg, PATHINFO_EXTENSION) == "jpg") OR (pathinfo($pImg, PATHINFO_EXTENSION) == "png") OR (pathinfo($pImg, PATHINFO_EXTENSION) == "jpge")) 
+				if (dupEmailcheck($email,$_SESSION['name'])==NULL) {
+					if ((pathinfo($pImg, PATHINFO_EXTENSION) == "gif") OR (pathinfo($pImg, PATHINFO_EXTENSION) == "jpg") OR (pathinfo($pImg, PATHINFO_EXTENSION) == "png") OR (pathinfo($pImg, PATHINFO_EXTENSION) == "jpge")) 
 				{
 					$result = updateProfile($fullname,$_SESSION['name'],$email,$pImg);
 
@@ -60,17 +61,25 @@ if (isset($_POST['update'])) {
 					}
 					else
 					{
-						echo "<script>alert('Something wrong')</script>";
-						header('Location:../view/SellerProfileEdit.php?msg=Something Wrong');
+						echo "<script>alert('Something wrong');</script>";
+						echo "<script>window.location='../view/SellerHome.php#profile';</script>";
 					}
 
 					
 				}
 				else
 				{
-					echo "<script>alert('13')</script>";
-					header('Location:../view/SellerProfileEdit.php?msg=invalid file type');
+					echo "<script>alert('Invalid file type');</script>";
+					echo "<script>window.location='../view/SellerHome.php#profile';</script>";
 				}
+				}
+				else
+				{
+					echo "<script>alert('Same email found');</script>";
+					echo "<script>window.location='../view/SellerHome.php#profile';</script>";
+								
+				}
+				
 				
 			}	
 	}

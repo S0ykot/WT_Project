@@ -101,15 +101,14 @@ function Email(email)
 
 function validateEmail(){
 	var email = document.getElementById('email').value;
-	var eremail = document.getElementById('eremail');
-
+	alert(1);
 	if (email == "") {
-		alert("Null submission")
+		alert("Null submission(JS)")
 	}
 	else {
 		if(Email(email))
 		{
-			
+			//alert("Ha, Hoy sa");
 		}
 		else
 		{
@@ -120,3 +119,22 @@ function validateEmail(){
 
 }
 
+
+function changePasword()
+{
+	var p1 = document.getElementById('npass').value;
+	var p2 = document.getElementById('cnpass').value;
+	var p3 = document.getElementById('cpass').value;
+
+	if (p1=='' || p2=='' || p3=='') {
+		alert('Null submission');
+		window.location='sellerHome.php';
+	}
+	else
+	{
+		if (p1!=p2) {
+			alert('Null submission');
+			window.location='sellerHome.php';
+		}
+	}
+}

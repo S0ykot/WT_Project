@@ -303,7 +303,14 @@ function profitCount($id,$q)
 	return $row['profit'];
 }
 
-
+function dupEmailcheck($mail,$name)
+{
+	$conn = getConnection();
+	$query = "SELECT email FROM system_user WHERE email='$mail' AND username!='$name'";
+	$result = mysqli_query($conn,$query);
+	$row = mysqli_fetch_assoc($result);
+	return $row['email'];
+}
 
 
 

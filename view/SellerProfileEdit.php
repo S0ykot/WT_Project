@@ -25,6 +25,7 @@ $data =profile($_SESSION['ID']);
 ?>
 
 <script type="text/javascript" src="../js/SellerScript.js"></script>
+<script type="text/javascript" src="../js/SellerValid.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/SellerSettings.css">
 <center>
 
@@ -33,7 +34,7 @@ $data =profile($_SESSION['ID']);
 	</center>
 
 	<h1>Edit Profile</h1>
-	<form method="POST" enctype="multipart/form-data" action="../php/SellerProfileUpdate.php" >
+	<form method="POST" enctype="multipart/form-data" action="../php/SellerProfileUpdate.php">
 		<table border="1" width="20%">
 		<tr>
 			<td colspan="2" align="center">
@@ -50,7 +51,7 @@ $data =profile($_SESSION['ID']);
 		</tr>
 		<tr>
 			<td>Email</td>
-			<td align="center"><input type="text" name="email" value="<?=$email;?>"></td>
+			<td align="center"><input type="text" id="email" name="email" value="<?=$email;?>" id="email" ></td>
 		</tr>
 		<tr>
 			<td>Current Password</td>
@@ -62,7 +63,7 @@ $data =profile($_SESSION['ID']);
 		</tr>
 		<tr>
 			<td></td>
-			<td><button name="update" onclick="validateEmail();">Update</button></td>
+			<td><button name="update" onclick="validateEmail()">Update</button></td>
 		</tr>
 	</table>
 	</form>
