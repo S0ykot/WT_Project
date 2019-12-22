@@ -741,3 +741,44 @@ function validateConfirmPass(){
 	}
 
 }
+
+function generateReport(){
+
+	var start = document.getElementById('sdate').value;
+	var end = document.getElementById('edate').value;
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "../db/AdminGenerateReportCheck.php", true);
+	xhttp.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+  	xhttp.send("stdate="+start+"&endate="+end);
+  	xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    	document.getElementById("reportdata").innerHTML = this.responseText;
+    	//alert(this.responseText);
+    }};
+}
+
+function downloadReport(){
+
+	var pdf = document.getElementById('reportdata').innerHTML;
+	
+	var style = "<style>";
+    style = style + "table {width: 100%;font: 17px Calibri;}";
+    style = style + "table, th, td {border: solid 1px ; border-collapse: collapse;";
+    style = style + "padding: 2px 3px;text-align: center;}";
+    style = style + "</style>";
+
+	var win = window.open('', 'Sales Report', 'height=700,width=700');
+
+    win.document.write('<html><head>');
+    win.document.write('<title>Sales Report</title>');   
+    win.document.write(style);          
+    win.document.write('</head>');
+    win.document.write('<body>');
+    win.document.write(pdf);         
+    win.document.write('</body></html>');
+
+    win.document.close(); 	
+
+    win.print();
+}
+

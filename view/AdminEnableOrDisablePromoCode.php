@@ -2,7 +2,7 @@
 	require_once('../db/AdminPromoFunction.php');
 	session_start();
 
-	if (isset($_SESSION['username'])) {	
+	if (isset($_SESSION['username'])  && isset($_COOKIE['username'])) {	
 		if (isset($_GET['id'])) {
 			$data =singlePromo($_GET['id']);
 			$rows = mysqli_fetch_assoc($data);

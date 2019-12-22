@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	
-	if ($_SESSION['username']) {
+	if (isset($_SESSION['username'])  && isset($_COOKIE['username'])) {
 	
 ?>
 
