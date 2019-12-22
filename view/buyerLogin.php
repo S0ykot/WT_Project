@@ -91,12 +91,12 @@ if (!isset($_COOKIE['id'])) { ?>
 													</tr>
 													<tr>
 														<td align="center">
-															<input type="text" name="userName" class="loginReg" placeholder="User Name"> <br><br>
+															<input type="text" id="uname" name="userName" class="loginReg" placeholder="User Name"> <br><br>
 														</td>
 													</tr>
 													<tr>
 														<td align="center">
-															<input type="password" name="userPass" class="loginReg" placeholder="Password"> <br><br><br>
+															<input type="password" id="upass" name="userPass" class="loginReg" placeholder="Password"> <br><br><br>
 														</td>
 													</tr>
 													<tr>
@@ -107,7 +107,7 @@ if (!isset($_COOKIE['id'])) { ?>
 													<tr>
 														<td align="center">New Here | Want to Register <br></td>
 													</tr>
-													<tr><td align="center"><a href="buyerReg.php"><font color="tomato">Create a new Account</font></a> <br><br></td></tr>
+													<tr><td align="center"><a href="buyerReg.php"><font color="tomato">Create a new Account<</font></a> <br><br></td></tr>
 												</table>
 											</form>
 										</td>

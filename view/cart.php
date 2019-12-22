@@ -84,19 +84,25 @@ if (isset($_COOKIE['id'])) {
 						<center>
 						<table border="0px" width="60%" cellpadding="0px" cellspacing="0px" bgcolor="#E8EBEC">
 							<tr>
+								<th  style="padding: 5px 0px">Order Id</th>
 								<th  style="padding: 5px 0px">Product Name</th>
 								<th  style="padding: 5px 0px">Product Price</th>
 								<th  style="padding: 5px 0px">Quantity</th>
 								<th  style="padding: 5px 0px">Total Price</th>
+								<th  style="padding: 5px 0px">Action</th>
 							</tr>
 						<?php
 							for ($i=0; $i <count($cart) ; $i++) { 
 								?>
 								<tr>
+									<td align="center"  style="padding-bottom: 10px " id="ID"><?= $cart[$i]['id']?></td>
 									<td align="center"  style="padding-bottom: 10px "><?= $cart[$i]['product_name']?></td>
 									<td align="center"  style="padding-bottom: 10px "><?= $cart[$i]['price']?></td>
 									<td align="center" style="padding-bottom: 10px "><?= $cart[$i]['quantity']?></td>
 									<td align="center"  style="padding-bottom: 10px "><?= $cart[$i]['total_price']?></td>
+									<td align="center"  style="padding-bottom: 10px ">
+										 <button type="button" id="delete" value="<?= $cart[$i]['id']?>" style="background-color: red; border:none; height: 30px; width: 50px; color: white; border-radius: 5px;" onclick="deleteCart(this.value)">Delete</button>
+									</td>
 								</tr>
 								<?php
 							}

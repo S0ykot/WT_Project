@@ -204,3 +204,15 @@ function searchProduct($ProductName)
 	}
 	return $lists;
 }
+
+function deleteFromCart($Delete)
+{
+	$conn= getConnection();
+	$sql = "delete from cart where id='$Delete'";
+	if(mysqli_query($conn, $sql))
+	{
+		return true;	
+	}
+	else 
+		return false;
+}

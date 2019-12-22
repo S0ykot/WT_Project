@@ -105,3 +105,21 @@ function checkout()
 	  		}
 	  }
 }
+
+function deleteCart(x)
+{
+	var X=x;
+	if(confirm("Are You Sure?"))
+	  			{
+	  				var xhttp = new XMLHttpRequest();
+					 xhttp.open("POST", "../php/buyerDeleteCart.php", true);
+					  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+					  xhttp.send('delete='+X);
+					  xhttp.onreadystatechange = function() {
+					    if (this.readyState == 4 && this.status==200) {
+					      //alert(this.responseText);
+					      window.location = "cart.php";
+					    }
+					  };
+	  			}	
+}
