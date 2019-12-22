@@ -2,7 +2,7 @@
 <script type="text/javascript" src="../js/SellerScript.js"></script>
 
 <?php 
-
+error_reporting(0);
 require_once '../db/SellerFunctions.php';
 
 
@@ -65,7 +65,7 @@ if ($_POST['d1'] AND $_POST['d2']) {
 }
 else
 {
-
+	header('Location:../view/SellerHome.php');
 }
 
 

@@ -1,5 +1,5 @@
 <?php 
-
+error_reporting(0);
 session_start();
 require_once '../db/SellerFunctions.php';
 
@@ -33,7 +33,9 @@ if (isset($_POST['submit'])) {
 		}
 		else
 		{
-			if ((pathinfo($img['name'], PATHINFO_EXTENSION) == "gif") OR (pathinfo($img['name'], PATHINFO_EXTENSION) == "jpg") OR (pathinfo($img['name'], PATHINFO_EXTENSION) == "png") OR (pathinfo($img['name'], PATHINFO_EXTENSION) == "jpge")) {
+
+			if(dupPNameCheck($name)==NULL){
+				if ((pathinfo($img['name'], PATHINFO_EXTENSION) == "gif") OR (pathinfo($img['name'], PATHINFO_EXTENSION) == "jpg") OR (pathinfo($img['name'], PATHINFO_EXTENSION) == "png") OR (pathinfo($img['name'], PATHINFO_EXTENSION) == "jpge")) {
 
 				$status = productAdd($name,$qntity,$inDate,$bprice,$sprice,$desc,$file,$activity,$subCat);
 
@@ -64,9 +66,19 @@ if (isset($_POST['submit'])) {
 				echo "<script>alert('Invalid file type')</script>";
 				echo "<script>window.location='../view/SellerHome.php#profile';</script>";
 			}
+			}
+			else
+			{
+				echo "<script>alert('Same Name product Already added')</script>";
+				echo "<script>window.location='../view/SellerHome.php#profile';</script>";
+			}
+			
 		}
 	}
 
+}else
+{
+	header('Location:../view/SellerHome.php');
 }
 
 
