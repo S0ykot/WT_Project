@@ -123,3 +123,36 @@ function deleteCart(x)
 					  };
 	  			}	
 }
+
+function gotoLogin(login)
+{
+	/*var Uname = document.getElementById('uname').value;
+	var Upass = document.getElementById('upass').value;*/
+	//alert(Uname+Upass+login);
+	var json = {
+			'uname': document.getElementById('uname').value,
+			'upass': document.getElementById('upass').value,
+			'btn': login
+		};
+	var data = JSON.stringify(json);
+	var xhttp = new XMLHttpRequest();
+		 xhttp.open("POST", "../php/buyerLoginCheck.php", true);
+		  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		  //xhttp.send('uname='+Uname+'&upass='+Upass+'&btn='+login);
+		  xhttp.send('cred='+data);
+		  xhttp.onreadystatechange = function() {
+		    if (this.readyState == 4 && this.status==200) {
+		      alert(this.responseText);
+		      if(this.responseText=="Done")
+		      {
+		      		window.location = "../index.php";
+		      }
+		      else if(this.responseText=="Failed")
+		      {
+		      		window.location = "buyerLogin.php"
+		      }
+		      //;
+		    }
+		  };
+		  //alert(data);
+}

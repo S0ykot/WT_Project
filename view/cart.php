@@ -84,7 +84,6 @@ if (isset($_COOKIE['id'])) {
 						<center>
 						<table border="0px" width="60%" cellpadding="0px" cellspacing="0px" bgcolor="#E8EBEC">
 							<tr>
-								<th  style="padding: 5px 0px">Order Id</th>
 								<th  style="padding: 5px 0px">Product Name</th>
 								<th  style="padding: 5px 0px">Product Price</th>
 								<th  style="padding: 5px 0px">Quantity</th>
@@ -95,7 +94,6 @@ if (isset($_COOKIE['id'])) {
 							for ($i=0; $i <count($cart) ; $i++) { 
 								?>
 								<tr>
-									<td align="center"  style="padding-bottom: 10px " id="ID"><?= $cart[$i]['id']?></td>
 									<td align="center"  style="padding-bottom: 10px "><?= $cart[$i]['product_name']?></td>
 									<td align="center"  style="padding-bottom: 10px "><?= $cart[$i]['price']?></td>
 									<td align="center" style="padding-bottom: 10px "><?= $cart[$i]['quantity']?></td>
