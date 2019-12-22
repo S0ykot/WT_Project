@@ -135,7 +135,7 @@ if (isset($_SESSION['NAME'])) { ?>
 											for ($i=0; $i <count($order) ; $i++) { 
 												?>
 												<tr>
-													<td align="center" width="140px" style="padding-bottom: 10px "><?= $order[$i]['item_quantity']?></td>
+													<td align="center" width="140px" style="padding-bottom: 10px "><?= $order[$i]['order_products']?></td>
 													<td align="center"  style="padding-bottom: 10px "><?= $order[$i]['total_cost']?></td>
 													<td align="center" style="padding-bottom: 10px "><?= $order[$i]['order_date']?></td>
 													<td align="center"  style="padding-bottom: 10px "><?= $order[$i]['status']?></td>
