@@ -300,7 +300,99 @@ function deleteProduct(id){
   		xhttp.onreadystatechange = function() {
     	if (this.readyState == 4 && this.status == 200) {
     		 alert(this.responseText);
-    		//alert(this.responseText);
     	}};
 	}
 }
+
+function orders()
+{
+	window.location='SellerHome.php#orders';
+	if (window.location.hash=="#orders") {
+		var xhttp = new XMLHttpRequest();
+	xhttp.open("GET", "SellerOrder.php", true);
+	xhttp.send();
+	
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	     	document.getElementById('product').innerHTML = this.responseText;
+	     	document.getElementById('path').innerHTML = "==>Orders";
+	    }
+	  };
+	}
+}
+
+
+function report()
+{
+	window.location='SellerHome.php#report';
+	if (window.location.hash=="#report") {
+		var xhttp = new XMLHttpRequest();
+	xhttp.open("GET", "SellerReportGen.php", true);
+	xhttp.send();
+	
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	     	document.getElementById('product').innerHTML = this.responseText;
+	     	document.getElementById('path').innerHTML = "==>Report";
+	    }
+	  };
+	}
+}
+
+
+
+function approve(id){
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "../php/SellerOrderApprove.php", true);
+	xhttp.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+  	xhttp.send("appID="+id);
+  	xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    	document.getElementById("product").innerHTML = this.responseText;
+    	
+    }};
+}
+
+function deliver(id){
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "../php/SellerOrderDeliv.php", true);
+	xhttp.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+  	xhttp.send("appID="+id);
+  	xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    	document.getElementById("product").innerHTML = this.responseText;
+    	
+    }};
+}
+
+function reject(id){
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "../php/SellerOrderReject.php", true);
+	xhttp.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+  	xhttp.send("appID="+id);
+  	xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    	document.getElementById("product").innerHTML = this.responseText;
+    	
+    }};
+}
+
+function get()
+{
+	var d1 = document.getElementById('date1').value;
+	var d2 = document.getElementById('date2').value;
+
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "../php/SellerReport.php", true);
+	xhttp.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+  	xhttp.send("d1="+d1+"&d2="+d2);
+  	xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    	document.getElementById("report").innerHTML = this.responseText;
+    	
+    }};
+
+}
+
+
+ 
