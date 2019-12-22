@@ -78,7 +78,7 @@ if (!isset($_COOKIE['id'])) { ?>
 							
 							<td bgcolor="#E8EBEC" align="center">
 								<table border="0px" width="100%" cellpadding="0px" cellspacing="0px">
-									<form action="../php/buyerRegCheck.php" method="post">
+									<!-- <form action="../php/buyerRegCheck.php" method="post"> -->
 									<tr>
 										<td>
 											
@@ -94,7 +94,7 @@ if (!isset($_COOKIE['id'])) { ?>
 														<td width="100px"></td>
 														<td>Name :</td>
 														<td>
-															<input type="text" class="loginReg" name="name" placeholder="Name" id="nameBox">
+															<input type="text" class="loginReg" id="NAME" name="name" placeholder="Name" id="nameBox">
 														</td>
 														<td width="70px"></td>
 													</tr>
@@ -103,7 +103,7 @@ if (!isset($_COOKIE['id'])) { ?>
 														<td width="100px"></td>
 														<td>Email :</td>
 														<td>
-															<input type="text" class="loginReg" name="email" placeholder="youremail@example.com">
+															<input type="text" id="EMAIL" class="loginReg" name="email" placeholder="youremail@example.com">
 														</td>
 														<td width="70px"></td>
 													</tr>
@@ -112,7 +112,7 @@ if (!isset($_COOKIE['id'])) { ?>
 														<td width="100px"></td>
 														<td>Date Of Birth :</td>
 														<td>
-															<input class="loginReg" type="date" name="dob">
+															<input class="loginReg" id="DOB" type="date" name="dob">
 														</td>
 														<td width="70px"></td>
 													</tr>
@@ -130,7 +130,7 @@ if (!isset($_COOKIE['id'])) { ?>
 														<td width="100px"></td>
 														<td>Contact No :</td>
 														<td>
-															<input type="text" class="loginReg" name="phnNo" placeholder="01XXXXXXXXX">
+															<input type="text" class="loginReg" id="CON" name="phnNo" placeholder="01XXXXXXXXX">
 														</td>
 														<td width="70px"></td>
 													</tr>
@@ -150,7 +150,7 @@ if (!isset($_COOKIE['id'])) { ?>
 														<td width="100px"></td>
 														<td>Username :</td>
 														<td>
-															<input type="text" class="loginReg" name="username" placeholder="Username">
+															<input type="text" class="loginReg" id="UNAME" name="username" placeholder="Username">
 														</td>
 														<td width="70px"></td>
 													</tr>
@@ -160,7 +160,7 @@ if (!isset($_COOKIE['id'])) { ?>
 														<td width="100px"></td>
 														<td>Password :</td>
 														<td>
-															<input type="password" class="loginReg" name="userPass" placeholder="Password">
+															<input type="password" class="loginReg" id="PASS" name="userPass" placeholder="Password">
 														</td>
 														<td width="70px"></td>
 													</tr>
@@ -169,13 +169,13 @@ if (!isset($_COOKIE['id'])) { ?>
 														<td width="100px"></td>
 														<td>Confirm Password :</td>
 														<td>
-															<input type="password" class="loginReg" name="confPass" placeholder="Confirm Password">
+															<input type="password" class="loginReg" id="CONPASS" name="confPass" placeholder="Confirm Password">
 														</td>
 														<td width="70px"></td>
 													</tr>
 													<tr><td height="40px" colspan="4"></td></tr>
 													<tr>
-														<td align="center" colspan="4"><input type="submit" id="loginRegBtn" name="userreg" value="Register" onclick="nameError()">
+														<td align="center" colspan="4"><input type="submit" id="loginRegBtn" name="userreg" value="Register" onclick="gotoReg(this.value)">
 															<br><br>
 														</td>
 													</tr>
