@@ -147,10 +147,10 @@ function getId($id)
 	return $users;
 }
 
-function checkout($id,$orderList,$Date,$Total)
+function checkout($id,$orderList,$orderQuantity,$Date,$Total)
 {
 	$conn= getConnection();
-	$sql = "insert into orders values ('','{$Date}','{$orderList}','$Total','Pending','$id')";
+	$sql = "insert into orders values ('','{$Date}','{$orderList}','{$orderQuantity}','$Total','Pending','$id')";
 	if(mysqli_query($conn, $sql))
 	{
 		return true;	
