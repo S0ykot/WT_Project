@@ -81,7 +81,7 @@ if (!isset($_COOKIE['id'])) { ?>
 								
 									<tr>
 										<td>
-											<form action="../php/buyerLoginCheck.php" method="post">
+											<!-- <form action="../php/buyerLoginCheck.php" method="post"> -->
 												<table border="0px" width="100%" cellpadding="0px" cellspacing="0px">
 													<tr>
 														<td bgcolor="dodgerblue" height="5px"></td>
@@ -101,7 +101,7 @@ if (!isset($_COOKIE['id'])) { ?>
 													</tr>
 													<tr>
 														<td align="center" valign="middle">
-															<input type="submit" id="loginRegBtn" name="login" value="Log In"><br><br>
+															<input type="submit" id="loginRegBtn" name="login" value="Log In" onclick="gotoLogin(this.value)"><br><br>
 														</td>
 													</tr>
 													<tr>
@@ -109,7 +109,7 @@ if (!isset($_COOKIE['id'])) { ?>
 													</tr>
 													<tr><td align="center"><a href="buyerReg.php"><font color="tomato">Create a new Account<</font></a> <br><br></td></tr>
 												</table>
-											</form>
+											<!-- </form> -->
 										</td>
 									</tr>
 								</table>

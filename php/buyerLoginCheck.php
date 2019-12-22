@@ -2,11 +2,15 @@
 
 session_start();
 require_once('../db/buyerFunctions.php');
+$Data = $_POST['cred'];
+$json=json_decode($Data,TRUE);
+//print_r($json);
+//echo $json['btn'];
 
-if (isset($_REQUEST['login'])) {
+if (isset($json['btn'])) {
 
-	$id = $_REQUEST['userName'];
-	$pass = $_REQUEST['userPass'];
+	$id = $json['uname'];
+	$pass = $json['upass'];
 	$temp = "";
 	$line = "";
 
@@ -46,14 +50,17 @@ if (isset($_REQUEST['login'])) {
 
 			if ($temp == TRUE) {
 
-				header('location: ../index.php');
+				//header('location: ../index.php');
+				echo "Done";
 			}
 			else
-				header('location: ../view/buyerLogin.php');
+			{
+				//header('location: ../view/buyerLogin.php');
+				echo "Failed";
+			}
 	}
 }
 
 	else
 		header('location: ../index.php');
-
 ?>
