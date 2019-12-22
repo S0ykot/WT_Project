@@ -15,7 +15,7 @@
 	$result2 = mysqli_query($conn,$sql2);
 
 	while ($rows = mysqli_fetch_assoc($result2)) {
-			$subcategory .= '<option value="'.$rows["subcat_name"].'">'.$rows["subcat_name"].'</option>';
+			$subcategory .= "<option value={$rows["subcat_name"]}>{$rows["subcat_name"]}</option>";
 		}
 
 	echo $subcategory;

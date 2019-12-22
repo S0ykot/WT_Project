@@ -10,6 +10,7 @@
 			$cat = singleProductCategory($_SESSION['pid']);
 			$category = mysqli_fetch_assoc($cat);
 			$catname = $category['cat_name'];
+			$subcatname = $category['subcat_name'];
 		}
 		
 ?>
@@ -77,8 +78,10 @@
 		while ($row = mysqli_fetch_assoc($result)) {
 			if ($row['cat_name'] == $catname) {
 				$s="selected";
+			}else{
+				$s = "";
 			}
-			$category .= '<option value="'.$row["cat_name"].'"'.$s.'">'.$row["cat_name"].'</option>';
+			$category .= "<option value={$row['cat_name']} {$s}>{$row['cat_name']}</option>";
 		}
 
 	 ?>
@@ -130,8 +133,7 @@
 				</td>
 				<td>
 					<select name="usubcat" id="sub">
-						<option value="">Select Sub-Category</option>
-						
+						<option value="<?php echo $subcatname; ?>"><?php echo $subcatname; ?></option>	
 					</select>
 					
 				</td>

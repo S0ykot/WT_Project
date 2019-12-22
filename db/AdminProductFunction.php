@@ -23,7 +23,7 @@
 
 	function validName($name)
 	{
-		$letter = array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' ','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','-');
+		$letter = array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' ','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','-','(',')');
 		$nameSplit = str_split($name);
 		$flag = 0;
 		foreach ($nameSplit as $key) {
@@ -166,7 +166,7 @@
 	function singleProductCategory($id){
 
 		$conn = getConnection();
-		$sql = "select product.pid,category.cat_name from product,category,subcategory where product.subcat_id=subcategory.subcat_id and subcategory.cat_id=category.cat_id and pid = '{$id}'";
+		$sql = "select product.pid,category.cat_name,subcategory.subcat_name from product,category,subcategory where product.subcat_id=subcategory.subcat_id and subcategory.cat_id=category.cat_id and pid = '{$id}'";
 		$result = mysqli_query($conn,$sql);
 
 		return $result;
