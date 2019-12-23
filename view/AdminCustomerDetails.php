@@ -78,7 +78,6 @@
 				<th>Date of Birth</th>
 				<th>Gender</th>
 				<th>Phone</th>
-				<th>Shipping Address</th>
 				<th>Billing Address</th>
 			</tr>
 
@@ -96,7 +95,6 @@
 				<td><?php echo $rows['dob']; ?></td>
 				<td><?php echo $rows['gender']; ?></td>
 				<td><?php echo $rows['phone']; ?></td>
-				<td><?php echo $rows['shipping_address']; ?></td>
 				<td><?php echo $rows['billing_address']; ?></td>
 			</tr>
 			<?php } ?>
