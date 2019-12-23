@@ -127,13 +127,13 @@ if (isset($_SESSION['NAME'])) { ?>
 									</tr>
 									<tr>
 										<td bgcolor="#E8EBEC">
-											<font color="tomato"><br>&emsp;Billing Address</font>
+											<font color="tomato"><br>&emsp;Address</font>
 										</td>
 									</tr>
 									<tr><td height="20px" bgcolor="#E8EBEC"></td></tr>
 										<tr>
 											<td bgcolor="#E8EBEC">&emsp;
-												<textarea name="address" cols="22" rows="5"><?= $_SESSION['ADDRESS']?></textarea>
+												<textarea name="address" cols="22" id="updateAddress" rows="5"><?= $_SESSION['ADDRESS']?></textarea>
 											</td>
 										</tr>
 										
@@ -141,19 +141,7 @@ if (isset($_SESSION['NAME'])) { ?>
 								
 									<tr><td height="20px" bgcolor="#E8EBEC"></td></tr>
 									
-									<tr>
-										<td bgcolor="#E8EBEC">
-											<font color="tomato"><br>&emsp;Shipping Address</font>
-										</td>
-									</tr>
-									<tr><td height="20px" bgcolor="#E8EBEC"></td></tr>
-										<tr><td height="20px" bgcolor="#E8EBEC"></td></tr>
-										<tr><td bgcolor="#E8EBEC">&emsp;<?= $_SESSION['NAME']?></td></tr>
-										<tr><td bgcolor="#E8EBEC">&emsp;<?= $_SESSION['EMAIL']?></td></tr>
-										<tr><td bgcolor="#E8EBEC">&emsp;<?= $_SESSION['ADDRESS']?></td></tr>
-										<tr><td bgcolor="#E8EBEC">&emsp;<?= $_SESSION['CONTACT']?></td></tr>
 									
-									<tr><td height="20px" bgcolor="#E8EBEC"></td></tr>
 									
 									<tr>
 										<td bgcolor="#E8EBEC">

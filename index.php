@@ -71,65 +71,7 @@
 						</nav>
 					</div>
 					<img src="view/Images/Cover.jpg" alt="" height="400px" width="100%">
-					<table border="0px" width="100%" cellpadding="0px" cellspacing="0px">
-						<tr><td colspan="3" align="center" height="30px" bgcolor="dodgerblue">**Hot Deals**</td></tr>
-						<tr>
-							<td width="20%" valign="top" align="center" bgcolor="#E8EBEC"><font color="tomato">Lifestyle <br> Accessories</font></td>
-							<td>
-								<table border="1px" width="100%" cellpadding="0px" cellspacing="0px">
-									<tr>
-										<td width="20%" align="center"> <img src="view/Images/w1.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px"><a href="view/ProductPages/productDetails.php">Watch </a> 	<br>1200tk <br><br> Available</td>
-										<td width="20%" align="center"> <img src="view/Images/w1.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px"><a href="view/ProductPages/productDetails.php">Watch </a>	<br>1200tk <br><br> Available</td>
-										<td width="20%" align="center"> <img src="view/Images/w1.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px"><a href="view/ProductPages/productDetails.php">Watch </a>		<br>1200tk <br><br> Available</td>
-										<td width="20%" align="center"> <img src="view/Images/w1.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px"><a href="view/ProductPages/productDetails.php">Watch </a>		<br>1200tk <br><br> Available</td>
-									</tr>
-								</table>
-							</td>
-							<td width="20%" align="center" bgcolor="#E8EBEC"><a href="view/ProductPages/lifestyle.php">More</a></td>
-						</tr>
-						<tr><td colspan="3" align="center" height="30px" bgcolor="dodgerblue">**Hot Deals**</td></tr>
-						<tr>
-							<td width="20%" valign="top" align="center" bgcolor="#E8EBEC"><font color="tomato">Smartphone <br> Accessories</font></td>
-							<td>
-								<table border="1px" width="100%" cellpadding="0px" cellspacing="0px">
-									<tr>
-										<td width="20%" align="center"> <img src="view/Images/mobileLense.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px"><a href="view/ProductPages/productDetails.php">Smartphone Camera Lense </a> 	<br>2000tk <br><br> Available</td>
-										<td width="20%" align="center"> <img src="view/Images/mobileLense.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px"><a href="view/ProductPages/productDetails.php">Smartphone Camera Lense </a>		<br>2000tk <br><br> Available</td>
-										<td width="20%" align="center"> <img src="view/Images/mobileLense.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px"><a href="view/ProductPages/productDetails.php">Smartphone Camera Lense </a>		<br>2000tk <br><br> Available</td>
-										<td width="20%" align="center"> <img src="view/Images/mobileLense.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px"><a href="view/ProductPages/productDetails.php">Smartphone Camera Lense </a>		<br>2000tk <br><br> Available</td>
-									</tr>
-								</table>
-							</td>
-							<td width="20%" align="center" bgcolor="#E8EBEC"><a href="view/ProductPages/smartphone.php">More</a></td>
-						</tr>
-						<tr><td colspan="3" align="center" height="30px" bgcolor="dodgerblue">**Hot Deals**</td></tr>
-						<tr>
-							<td width="20%" valign="top" align="center" bgcolor="#E8EBEC"><font color="tomato">Computer <br> Accessories</font></td>
-							<td>
-								<table border="1px" width="100%" cellpadding="0px" cellspacing="0px">
-									<tr>
-										<td width="20%" align="center"> <img src="view/Images/cooler.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px"><a href="view/ProductPages/productDetails.php">Laptop Cooler </a>	<br>6000tk <br><br> Available</td>
-										<td width="20%" align="center"> <img src="view/Images/cooler.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px"><a href="view/ProductPages/productDetails.php">Laptop Cooler </a>		<br>6000tk <br><br> Available</td>
-										<td width="20%" align="center"> <img src="view/Images/cooler.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px"><a href="view/ProductPages/productDetails.php">Laptop Cooler </a>		<br>6000tk <br><br> Available</td>
-										<td width="20%" align="center"> <img src="view/Images/cooler.jpg" alt="" height="125px" width="100px"><br><br>
-											<br><br><hr width="120px"><a href="view/ProductPages/productDetails.php">Laptop Cooler </a>		<br>6000tk <br><br> Available</td>
-									</tr>
-								</table>
-							</td>
-							<td width="20%" align="center"  bgcolor="#E8EBEC"><a href="view/ProductPages/computer.php">More</a></td>
-						</tr>
-					</table>
+					
 					<table border="0px" width="100%" cellpadding="0px" cellspacing="0px">
 						<tr><hr></tr>
 					</table>

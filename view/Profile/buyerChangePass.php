@@ -96,6 +96,19 @@ if (isset($_SESSION['NAME'])) { ?>
 														<th height="30%" align="center"><h2><div class="header">Change Password</div></h2></th>
 													</tr>
 													<tr>
+														<td>
+															<center>
+																<div style="color: red;font-weight: bold;">
+																<?php 
+																	if (isset($_GET['msg'])) {
+																		echo $_GET['msg'].'<br><br>';
+																	}
+																?>
+															</div>
+															</center>
+														</td>
+													</tr>
+													<tr>
 														<td align="center">
 															<input type="password" class="loginReg" name="oldpass" placeholder="Old Password"> <br><br>
 														</td>
@@ -112,7 +125,7 @@ if (isset($_SESSION['NAME'])) { ?>
 													</tr>
 													<tr>
 														<td align="center" valign="middle">
-															<input type="submit" id="loginRegBtn" name="savepass" value="Save"><br><br>
+															<input type="submit" id="loginRegBtn" name="savepass" value="Save" ><br><br>
 														</td>
 													</tr>
 													

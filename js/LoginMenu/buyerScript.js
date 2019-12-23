@@ -84,6 +84,86 @@ function verifyChar(name)
 		}
 }
 
+function verifyAddress(name)
+{
+	var alphabetBox = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' ','.','-',',','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+	var	nameArray = name.split('');
+	var	temp = 0;
+		for (var i = 0; i < nameArray.length; i++) {
+			for (var j = 0; j < alphabetBox.length; j++) {
+				if (nameArray[i] == alphabetBox[j]) {
+					if((i==0) && (alphabetBox[j]==" "||alphabetBox[j]=="."||alphabetBox[j]=="-"||alphabetBox[j]==","))
+					{
+						temp=temp;
+					}
+					else
+					{
+						if(nameArray[i]==" ")
+						{
+							if(nameArray[i+1]==" "||nameArray[i-1]==" "||nameArray[i+1]=="."||nameArray[i+1]=="-"||nameArray[i+1]==",")
+							{
+								temp=temp;
+							}
+							else
+								temp+=1;
+						}
+						else if(nameArray[i]==".")
+						{
+							if(nameArray[i+1]=="-"||nameArray[i+1]==".")
+							{
+								temp=temp;
+							}
+							else
+								temp+=1;
+						}
+						else if(nameArray[i]=="-")
+						{
+							if(nameArray[i+1]=="-"||nameArray[i+1]==".")
+							{
+								temp=temp;
+							}
+							else
+								temp+=1;
+						}
+						else
+							temp+=1;
+					}
+				}
+				else
+					temp=temp;
+			}
+		}
+		//var n = verifyChar(name);
+		if(temp==name.length)
+		{
+			var s = name.split(' ');
+			//msg.innerHTML = n;
+			if(s.length<2)
+			{
+				return false; 
+			}
+			else if(s.length>=2)
+			{
+				if(name.charAt(name.indexOf(' ')+1)=="")
+				{
+					return false; 
+				}
+				else
+					return true;
+			}
+			else if(name.length==n)
+			{
+				return true;
+			}
+			else
+				return false;
+		}
+		else
+		{
+			return false;
+		}
+}
+
 function verifyEmail(email)
 {
 	var pos = verifyExistance(email,'@');
@@ -334,20 +414,22 @@ function gotoLogin(login)
 	else
 	{
 		var data = JSON.stringify(json);
-	var xhttp = new XMLHttpRequest();
+		var xhttp = new XMLHttpRequest();
 		 xhttp.open("POST", "../php/buyerLoginCheck.php", true);
 		  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		  //xhttp.send('uname='+Uname+'&upass='+Upass+'&btn='+login);
 		  xhttp.send('cred='+data);
 		  xhttp.onreadystatechange = function() {
 		    if (this.readyState == 4 && this.status==200) {
-		      alert(this.responseText);
+		      
 		      if(this.responseText=="Done")
 		      {
+		      		alert('Login Successful');
 		      		window.location = "../index.php";
 		      }
 		      else if(this.responseText=="Failed")
 		      {
+		      		alert('Login Failed');
 		      		window.location = "buyerLogin.php"
 		      }
 		      //;
@@ -455,7 +537,7 @@ function gotoReg(Btn)
 		document.getElementById('unameMsg').innerHTML="";
 		document.getElementById('conMsg').innerHTML="";
 	}
-	else if(verifyChar(json.Address)==false)
+	else if(verifyAddress(json.Address)==false)
 	{
 		document.getElementById('emailMsg').innerHTML="";
 		document.getElementById('nameMsg').innerHTML="";
