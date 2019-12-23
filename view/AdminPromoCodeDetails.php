@@ -72,7 +72,7 @@
 				}
 			?>
 		</div>
-		<input type="text" name="searchkey" placeholder="Search Promo Code By ID or Discount or Customer ID or Customer Phone" size="70" id="pskey" onkeyup="getPromoBySearch()">
+		<input type="text" name="searchkey" placeholder="Search Promo Code By ID or Discount or Customer ID or Customer Phone" size="70" id="pskey" onkeyup="getPromoBySearch()"  onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode > 47 && event.charCode < 58) || (event.charCode ==32) || (event.charCode ==46)">
 
 	</center>
 		

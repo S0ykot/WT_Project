@@ -73,8 +73,28 @@
 			?>
 		</div>
 		
-		<input type="text" name="searchkey" placeholder="Search User By Name or Type or Email" size="50" id="skey" onkeyup="getUserBySearch()">
+		<input type="text" name="searchkey" placeholder="Search User By Name or Type or Email" size="50" id="skey" onkeyup="getUserBySearch()" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode > 47 && event.charCode < 58) || (event.charCode ==32) || (event.charCode ==46) || (event.charCode ==64)">
 	</center>
+	<!-- <script type="text/javascript">
+		function onlyAlphabets(e, t) {
+            try {
+                if (window.event) {
+                    var charCode = window.event.keyCode;
+                }
+                else if (e) {
+                    var charCode = e.which;
+                }
+                else { return true; }
+                if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123))
+                    return true;
+                else
+                    return false;
+            }
+            catch (err) {
+                alert(err.Description);
+            }
+        }
+	</script> -->
 	
 	<div id="userdata">
 		<table width="100%" cellspacing="20px" style="margin-top: 2.5%">

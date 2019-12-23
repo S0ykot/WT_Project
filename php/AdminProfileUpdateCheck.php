@@ -82,8 +82,9 @@
 										$status = updateProfile($_SESSION['mid'],$myuname,$myemail,$myfullname,$newname,$myutype,$mytime);
 
 										if ($status) {
+											$_SESSION['username'] = $myuname;
 											header('location: ../view/AdminProfileView.php');
-											unset($_SESSION['mid']);
+											unset($_SESSION['mid']);	
 										}else{
 											header('location: ../view/AdminProfileUpdate.php?id='.$_SESSION['mid'].'&msg=Updating error');
 										}
