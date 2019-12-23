@@ -249,3 +249,15 @@ function updateDiscountUsage($Coupon,$id)
 	else 
 		return false;
 }
+
+function updateProductQty($availableQuantity,$Productname)
+{
+	$conn= getConnection();
+	$sql = "update product set quantity='$availableQuantity' where name='{$Productname}'";
+	if(mysqli_query($conn, $sql))
+	{
+		return true;	
+	}
+	else 
+		return false;
+}

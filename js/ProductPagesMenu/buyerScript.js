@@ -64,12 +64,16 @@ function gotoProduct(x)
 	{
 		alert('Product Sold Out!');
 	}
+	else if(x<ProductQty)
+	{
+		alert('Desired Quantity is no Available');
+	}
 	else
 	{
 		var xhttp = new XMLHttpRequest();
 		 xhttp.open("POST", "../../php/getProduct.php", true);
 		  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		  xhttp.send('ProName='+Productname+'&ProPrice='+Productprice+'&ProQty='+ProductQty);
+		  xhttp.send('ProName='+Productname+'&ProPrice='+Productprice+'&ProQty='+ProductQty+'&avQ='+x);
 
 		  xhttp.onreadystatechange = function() {
 		    if (this.readyState == 4 && this.status==200) {
