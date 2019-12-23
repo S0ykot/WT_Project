@@ -340,7 +340,7 @@ function specialCharPresent(a,b)
 function Email(email)
 {
 	var c = specialCharPresent(email,'@');
-	if(email.charAt(0)==" "||email.charAt(0)=="@")
+	if(email.charAt(0)==" "||email.charAt(0)=="@" || email.charAt(email.length-1) == '.')
 	{
 		return false;
 	}

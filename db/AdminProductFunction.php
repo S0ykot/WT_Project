@@ -65,7 +65,7 @@
 	function getSearchProduct($key){
 
 		$conn = getConnection();
-		$sql = "select product.pid, product.name, category.cat_name, subcategory.subcat_name, product.quantity, product.incoming_date, product.buying_price, product.selling_price, product.description, product.image, product.activity from product , category, subcategory where product.subcat_id = subcategory.subcat_id and subcategory.cat_id = category.cat_id and product.name like '{$key}%'";
+		$sql = "select product.pid, product.name, category.cat_name, subcategory.subcat_name, product.quantity, product.incoming_date, product.buying_price, product.selling_price, product.description, product.image, product.activity from product , category, subcategory where product.subcat_id = subcategory.subcat_id and subcategory.cat_id = category.cat_id and product.name like '{$key}%' order by product.pid asc";
 		$result = mysqli_query($conn,$sql);
 
 		return $result;	

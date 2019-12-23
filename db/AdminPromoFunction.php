@@ -65,7 +65,7 @@
 	function getSearchPromo($key){
 
 		$conn = getConnection();
-		$sql = "select discount.did,discount.promo_code,discount.amount,discount.validity,discount.status,discount.cid,customer_user.fullname,customer_user.phone from discount,customer_user where discount.cid=customer_user.cid and (discount.did like '{$key}%' or discount.amount like '{$key}%' or discount.cid like'{$key}%' or customer_user.phone like '{$key}%')";
+		$sql = "select discount.did,discount.promo_code,discount.amount,discount.validity,discount.status,discount.cid,customer_user.fullname,customer_user.phone from discount,customer_user where discount.cid=customer_user.cid and (discount.did like '{$key}%' or discount.amount like '{$key}%' or discount.cid like'{$key}%' or customer_user.phone like '{$key}%') order by discount.did asc";
 		$result = mysqli_query($conn,$sql);
 
 		return $result;	
