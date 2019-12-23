@@ -47,7 +47,7 @@ $data =profile($_SESSION['ID']);
 		</tr>
 		<tr>
 			<td>Full Name</td>
-			<td align="center"><input type="text" name="fullname" value="<?=$fullname;?>" id="name"><b id="Nalert" style="color: red"></b></td><b><p id="nmsg" style="color: red"></p></b>
+			<td align="center"><input type="text" name="fullname" onkeyup="profileName()" onclick="profileName()" value="<?=$fullname;?>" id="name"><b id="Nalert" style="color: red"></b></td><b><p id="nmsg" style="color: red"></p></b>
 		</tr>
 		<tr>
 			<td>Email</td>
@@ -55,7 +55,7 @@ $data =profile($_SESSION['ID']);
 		</tr>
 		<tr>
 			<td>Current Password</td>
-			<td align="center"><input type="password" id="cpass" name="pass" onkeyup="validCurrentPass()"></td><b><p id="passmsg" style="color: red"></p></b>
+			<td align="center"><input type="password" id="cpass" name="pass" onkeyup="validCurrentPass()" onclick="alidCurrentPass()"></td><b><p id="passmsg" style="color: red"></p></b>
 		</tr>
 		<tr>
 			<td>Image</td>

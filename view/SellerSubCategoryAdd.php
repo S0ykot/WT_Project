@@ -10,6 +10,7 @@ $data = getCatageory();
 
 
 <script type="text/javascript" src="../js/SellerScript.js"></script>
+<script type="text/javascript" src="../js/SellerValid.js"></script>
 <style type="text/css">
 	#subcatT
 	{
@@ -32,7 +33,7 @@ $data = getCatageory();
 			<tr>
 				<td>Category Name:</td>
 				<td>
-					<select name="cat">
+					<select name="cat" id="cat" onclick="cateValid()" onchange="cateValid()">
 						<option value="">Select Category</option>
 						<?php 
 
@@ -48,14 +49,14 @@ $data = getCatageory();
 					</select>
 
 
-				</td>
+				</td><b id="Ce" style="color: red"></b>
 			</tr>
 			<tr>
 				<td>Sub-Category Name:</td>
-				<td><input type="text" name="subcat" id="subcat"></td>
+				<td><input type="text" name="subcat" id="subcat" onclick="subcarValid()" onkeyup="subcarValid()"></td><b id="sCe" style="color: red"></b>
 			</tr>
 			<tr>
-				<td colspan="2" align="center"><input type="submit" name="submit" value="Add"></td>
+				<td colspan="2" align="center"><input type="submit" name="submit" value="Add" id="addP"></td>
 			</tr>
 		</table>
 	</form>

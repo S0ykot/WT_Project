@@ -36,22 +36,21 @@ th,td {
 
 <center>
 	<h3><?=$msg;?></h3>
-	<p id="error">test</p>
 	<h2>Change Password</h2>
 </center>
 	<form action="../php/SellerChangePassword.php" method="POST">
 	<table border="1" align="center">
 	<tr>
 		<td>New Password:</td>
-		<td><input type="password" name="npass" id="npass" onkeypress="changePasword()"></td>
+		<td><input type="password" name="npass" id="npass" onkeyup="changepass1()" onclick="changepass1()"></td><b id="newP" style="color: red"></b>
 	</tr>
 	<tr>
 		<td>Confirm New Password:</td>
-		<td><input type="password" name="cnpass" id="cnpass"></td>
+		<td><input type="password" name="cnpass" id="cnpass" onkeyup="changepass2()" onclick="changepass2()"></td><b id="CnewP" style="color: red"></b>
 	</tr>
 	<tr>
 		<td>Current Password</td>
-		<td><input type="password" name="cpass" id="cpass"></td>
+		<td><input type="password" name="cpass" id="cpass" onkeyup="changepass3()" onclick="changepass3()"></td><b id="CP" style="color: red"></b>
 	</tr>
 	
 	<tr>
@@ -59,7 +58,7 @@ th,td {
 	</tr>
 
 	<tr>
-		<td colspan="2" align="center"> <input type="submit" name="update" value="update" onclick="changePasword()"></td>
+		<td colspan="2" align="center"> <input type="submit" name="update" value="update" id="updatepass" ></td>
 	</tr>
 </table>
 

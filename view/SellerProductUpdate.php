@@ -39,32 +39,32 @@ if ($_SESSION['name'] AND $_SESSION['type'] AND $_COOKIE['timeout']) {
 		<table border="1" width="40%">
 			<tr>
 				<td>Name:</td>
-				<td><input type="text" name="name" value="<?=$name;?>"></td>
+				<td><input type="text" name="name" id="name" onclick="Pname()" onkeyup="Pname()" value="<?=$name;?>"></td><b id="Ne" style="color: red"></b>
 			</tr>
 			<tr>
 				<td>Quantity</td>
-				<td><input type="text" name="quantity" value="<?=$qunt;?>"></td>
+				<td><input type="text" id="qntity" onclick="Pquantity()" onkeyup="Pquantity()" name="quantity" value="<?=$qunt;?>"></td><b id="Qe" style="color: red"></b>
 			</tr>
 			<tr>
 				<td>Buying price</td>
-				<td><input type="text" name="bPrice" value="<?=$bPrice?>"></td>
+				<td><input type="text" name="bPrice" onclick="Pbuy()" onkeyup="Pbuy()" id="bp" value="<?=$bPrice?>"></td></td><b id="Be" style="color: red"></b>
 			</tr>
 			<tr>
 				<td>Selling price</td>
-				<td><input type="text" name="sPrice" value="<?=$sPrice;?>"></td>
+				<td><input type="text" id="sp" onclick="Psell()" onkeyup="Psell()" name="sPrice" value="<?=$sPrice;?>"></td></td><b id="Se" style="color: red"></b>
 			</tr>
 			<tr>
 				<td>Description</td>
-				<td><textarea name="desc"><?=$desc;?></textarea></td>
+				<td><textarea name="desc" onclick="Pdesc()" onkeyup="Pdesc()"><?=$desc;?></textarea></td></td><b id="Dse" style="color: red"></b>
 			</tr>
 			<tr>
 				<td>Incoming Date</td>
-				<td><input type="date" name="date" value="<?=$date;?>"></td>
+				<td><input type="date" id="date" onclick="Pdate()" onchange="Pdate()" name="date" value="<?=$date;?>"></td></td><b id="De" style="color: red"></b>
 			</tr>
 			<tr>
 				<td>Category</td>
 				<td>
-					<select name="cat" id="cat" onchange="getSubCat()">
+					<select name="cat" id="cat" onclick="Pcat()" onchange="getSubCat();Pcat()">
 						<?php 
 							$getCat = getCatageory();
 							$s = '';
@@ -84,7 +84,7 @@ if ($_SESSION['name'] AND $_SESSION['type'] AND $_COOKIE['timeout']) {
 
 						 ?>
 					</select>
-				</td>
+				</td></td><b id="Ce" style="color: red"></b>
 			</tr>
 			<tr>
 				<td>Sub-Category</td>
@@ -134,7 +134,7 @@ if ($_SESSION['name'] AND $_SESSION['type'] AND $_COOKIE['timeout']) {
 					</select>
 				</td>
 				<tr>
-					<td colspan="2" align="center"><input type="submit" name="submit" value="update"></td>
+					<td colspan="2" align="center"><input type="submit" name="submit" value="update" id="addP"></td>
 				</tr>
 			</tr>
 		</table>
