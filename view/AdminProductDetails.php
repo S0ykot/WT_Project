@@ -74,7 +74,7 @@
 			?>
 		</div>
 		
-		<input type="text" name="searchkey" placeholder="Search Product By Name" size="50" id="key" onkeyup="getProductBySearch()">
+		<input type="text" name="searchkey" placeholder="Search Product By Name" size="50" id="key" onkeyup="getProductBySearch()" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode > 47 && event.charCode < 58) || (event.charCode ==32) || (event.charCode ==46) || (event.charCode ==40) ||(event.charCode ==41)">
 	</center>
 	
 	<div id="select">

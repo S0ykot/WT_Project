@@ -66,7 +66,7 @@
 	</div>
 	<center>
 		<h1><font color="DarkBlue" face="Cursive"><u>Customer Details</u></font></h1><br><br>
-		<input type="text" name="searchkey" placeholder="Search Customer By ID or Name or Email or Phone" size="50" id="ckey" onkeyup="getCustomerBySearch()">
+		<input type="text" name="searchkey" placeholder="Search Customer By ID or Name or Email or Phone" size="50" id="ckey" onkeyup="getCustomerBySearch()" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode > 47 && event.charCode < 58) || (event.charCode ==32) || (event.charCode ==46) || (event.charCode ==64)">
 	</center>
 
 	<div id="cusdata">
