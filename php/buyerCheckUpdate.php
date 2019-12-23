@@ -2,13 +2,10 @@
 
 session_start();
 require_once('../db/buyerFunctions.php');
-$newName = "";
-$newEmail = "";
-$newCon = "";
-$username = "";
 
 
-if (isset($_REQUEST['save'])) 
+
+if (isset($_REQUEST['btn'])) 
 {
 
 	function verifyEmail($myEmail,$handler)
@@ -60,51 +57,59 @@ if (isset($_REQUEST['save']))
 	}
 
 	$username = $_SESSION['Username'];
-	$newName = $_REQUEST['nameInfo'];
-	$newEmail = $_REQUEST['emailInfo'];
-	$newCon = $_REQUEST['conInfo'];
+	$NewName = $_REQUEST['newName'];
+	$NewEmail = $_REQUEST['newEmail'];
+	$NewCon = $_REQUEST['newCon'];
+	//echo $NewEmail.$NewCon.$NewName;
 
-	if(empty($newName) == true || empty($newEmail) == true || empty($newCon) == true)
+	if(empty($NewName) == true || empty($NewEmail) == true || empty($NewCon) == true)
 	{
 		header('location: ../view/Profile/buyerContact.php');
 	}
 	else
 	{
-		if (!verifyEmail($newEmail,'@')) 
+		if (!verifyEmail($NewEmail,'@')) 
 		{
-			header('location: ../view/Profile/buyerContact.php');
+			//header('location: ../view/Profile/buyerContact.php');
+			echo '0';
 		}
-		elseif (!verifyNumber($newCon)) 
+		elseif (!verifyNumber($NewCon)) 
 		{
-			header('location: ../view/Profile/buyerContact.php');
+			echo '0';
+			//header('location: ../view/Profile/buyerContact.php');
 		}
-		elseif (strlen($newName)!=verifyName($newName)) {
-			header('location: ../view/Profile/buyerContact.php');
+		elseif (strlen($NewName)!=verifyName($NewName)) {
+			//header('location: ../view/Profile/buyerContact.php');
+			echo '0';
 		}
 		else
 		{
-			if (verifyEmail($newEmail,'@')) 
+			if (verifyEmail($NewEmail,'@')) 
 			{
 				
-				$data = explode("@", $newEmail);
+				$data = explode("@", $NewEmail);
 
 				if (!verifyEmail($data[1], '.')) 
 				{
-					header('location: ../view/Profile/buyerContact.php');
+					//header('location: ../view/Profile/buyerContact.php');
+					echo '0';
 				}
 				else
 				{
-					$update = updateInfo($username,$newName,$newEmail,$newCon);
+					$update = updateInfo($username,$NewName,$NewEmail,$NewCon);
 
-					header('location: buyerLogoutCheck.php');
+					//header('location: buyerLogoutCheck.php');
+					echo '1';
 				}
 			}
 			else
-				header('location: ../view/Profile/buyerContact.php');
+				//header('location: ../view/Profile/buyerContact.php');
+				echo '0';
 
 		}
 	}
 }
 else
-				header('location: ../index.php')
+				header('location: ../index.php');
+
 ?>

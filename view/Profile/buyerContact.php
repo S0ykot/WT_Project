@@ -1,6 +1,6 @@
 <?php session_start();
 
-if (isset($_SESSION['NAME'])) { ?>
+if (isset($_SESSION['NAME']) && isset($_COOKIE['id'])) { ?>
 
 <!DOCTYPE html>
 <html>
@@ -111,7 +111,7 @@ if (isset($_SESSION['NAME'])) { ?>
 							<td width="2%"></td>
 							<td width="1%" bgcolor="white"></td>
 							<td bgcolor="">
-								<form action="../../php/buyerCheckUpdate.php" method="post">
+								<!-- <form action="../../php/buyerCheckUpdate.php" method="post"> -->
 									<table border="0px" width="100%" cellpadding="0px" cellspacing="0px">
 									<tr>
 										<td height="30px"></td>
@@ -134,7 +134,7 @@ if (isset($_SESSION['NAME'])) { ?>
 									</tr>
 									
 									<tr>
-										<td bgcolor="#E8EBEC">&emsp;<input type="text" class="loginReg" name="nameInfo" value="<?= $_SESSION['NAME']?>"></td>
+										<td bgcolor="#E8EBEC">&emsp;<input type="text" class="loginReg" id='newName' name="nameInfo" value="<?= $_SESSION['NAME']?>"></td>
 									</tr>
 									<tr>
 										<td bgcolor="#E8EBEC">
@@ -142,7 +142,7 @@ if (isset($_SESSION['NAME'])) { ?>
 										</td>
 									</tr>
 									<tr>
-										<td bgcolor="#E8EBEC">&emsp;<input type="text" class="loginReg" name="emailInfo" value="<?= $_SESSION['EMAIL']?>"></td>
+										<td bgcolor="#E8EBEC">&emsp;<input type="text" id='newEmail' class="loginReg" name="emailInfo" value="<?= $_SESSION['EMAIL']?>" ></td>
 									</tr>
 									<tr><td height="20px" bgcolor="#E8EBEC"></td></tr>
 									<tr>
@@ -150,20 +150,20 @@ if (isset($_SESSION['NAME'])) { ?>
 									</tr>
 									
 									<tr>
-										<td bgcolor="#E8EBEC">&emsp;<input type="text" class="loginReg" name="conInfo" value="<?= $_SESSION['CONTACT']?>"></td>
+										<td bgcolor="#E8EBEC">&emsp;<input type="text" class="loginReg" id='newCon' name="conInfo" value="<?= $_SESSION['CONTACT']?>"></td>
 									</tr>
 									<tr><td height="20px" bgcolor="#E8EBEC"></td></tr>
 									
 									<tr><td height="20px" bgcolor="#E8EBEC"></td></tr>
 									<tr>
 										<td bgcolor="#E8EBEC">
-											&emsp;<input type="submit" id="loginRegBtn" name="save" value="Save">
+											&emsp;<input type="submit" id="loginRegBtn" name="save" value="Save" onclick="updateInfo(this.value)">
 										</td>
 									</tr>
 									
 									<tr><td height="20px" bgcolor="#E8EBEC"></td></tr>
 								</table>
-								</form>
+								<!-- </form> -->
 							</td>
 							<td width="5%"></td>
 						</tr>
