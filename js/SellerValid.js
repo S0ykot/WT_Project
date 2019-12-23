@@ -9,36 +9,7 @@ function LFV()
 	}
 }
 
-function productValid()
-{
-	var name = document.getElementById('name').value;
-	var q = document.getElementById('qntity').value;
-	var d = document.getElementById('date').value;
-	var bp = document.getElementById('bp').value;
-	var sp = document.getElementById('sp').value;
-	var des = document.getElementById('desc').value;
-	var photo = document.getElementById('img').value;
-	var cate = document.getElementById('cat').value;
-	var subcate = document.getElementById('sub').value;
-	
-	if (name=='' || q=='' || d=='' || sp=='' || des=='' || photo==''|| cate=='' || subcate=='') {
-		alert("Null submission");
-		window.location='sellerHome.php';
-	}
-	else
-	{
-		// no problem
-	}
-}
 
-
-function categoryValid()
-{
-	var catName = document.getElementById('cat').value;
-	if (catName=='') {
-		alert('Null submission');
-	}
-}
 
 function specialCharPresent(a,b)
 {
@@ -130,113 +101,6 @@ function changePasword()
 }
 
 
-/*function letterValid(name)
-{
-	var letter = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' ','.','-','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','(',')'];
-	var	splitName = name.split('');
-	var	flag = 0;
-		for (var i = 0; i < splitName.length; i++) {
-			for (var j = 0; j < letter.length; j++) {
-				if (splitName[i] == letter[j]) {
-					if((i==0) && (letter[j]==" "||letter[j]=="."||letter[j]=="-"))
-					{
-						flag=flag;
-					}
-					else
-					{
-						if(splitName[i]==" ")
-						{
-							if(splitName[i+1]==" "||splitName[i-1]==" "||splitName[i+1]=="."||splitName[i+1]=="-")
-							{
-								flag=flag;
-							}
-							else
-								flag+=1;
-						}
-						else if(splitName[i]==".")
-						{
-							if(splitName[i+1]=="-"||splitName[i+1]==".")
-							{
-								flag=flag;
-							}
-							else
-								flag+=1;
-						}
-						else if(splitName[i]=="-")
-						{
-							if(splitName[i+1]=="-"||splitName[i+1]==".")
-							{
-								flag=flag;
-							}
-							else
-								flag+=1;
-						}
-						else
-							flag+=1;
-					}
-				}
-				else
-					flag=flag;
-			}
-		}
-		if(flag==name.length)
-		{
-			var s = name.split(' ');
-			if(s.length<2)
-			{
-				return true; 
-			}
-			else if(s.length>=2)
-			{
-				if(name.charAt(name.indexOf(' ')+1)=="")
-				{
-					return false; 
-				}
-				else
-					return true;
-			}
-			else if(name.length==n)
-			{
-				return true;
-			}
-			else
-				return false;
-		}
-		else
-		{
-			return false;
-		}
-}
-
-
-function validateName() {
-
-	var ername = document.getElementById('nmsg');
-	var name = document.getElementById('name').value;
-	var mark = document.getElementById('Nalert');
-	
-	if (name == "") 
-	{
-		ername.innerHTML = "Product name can not be empty.";
-
-	}
-	else {
-		if(letterValid(name))
-		{
-			ername.innerHTML = "";
-			mark.innerHTML="";
-		}
-		else
-		{
-			ername.innerHTML = "Product name is not Valid.";
-			mark.innerHTML="*";
-			document.getElementById('updateProfile').disabled=true;
-			
-		}
-	}
-	
-}*/
-
 
 function validCurrentPass()
 {
@@ -244,7 +108,7 @@ function validCurrentPass()
 	var pass = document.getElementById('cpass').value;
 
 	if (pass=='') {
-		msg.innerHTML="Empty password field";
+		msg.innerHTML=" *Empty password field";
 		document.getElementById('updateProfile').disabled=true;
 	}
 	else
@@ -253,4 +117,294 @@ function validCurrentPass()
 		document.getElementById('updateProfile').disabled=false;
 	}
 
+}
+
+function changepass1()
+{
+	var newpass = document.getElementById('npass').value;
+	var error = document.getElementById('newP');
+	if (newpass==="") {
+		error.innerHTML=" *Empty new password field";
+		document.getElementById('updatepass').disabled=true;
+	}
+	else
+	{
+		error.innerHTML="";
+		//document.getElementById('updatepass').disabled=false
+		;
+	}
+}
+
+function changepass2()
+{
+	var newpass = document.getElementById('npass').value;
+	var cnewpass = document.getElementById('cnpass').value;
+	var error = document.getElementById('CnewP');
+	if (cnewpass==="") {
+		error.innerHTML=" *Empty current new password field";
+		document.getElementById('updatepass').disabled=true;
+	}
+	else
+	{
+		if (newpass===cnewpass) {
+			error.innerHTML="";
+		}
+		else
+		{
+			error.innerHTML=" *New pass & current new pass didn't matching";
+			document.getElementById('updatepass').disabled=true;
+		}
+		//document.getElementById('updatepass').disabled=false
+		;
+	}
+}
+
+
+function changepass3()
+{
+	var currentpass = document.getElementById('cpass').value;
+	var newpass = document.getElementById('npass').value;
+	var cnewpass = document.getElementById('cnpass').value;
+	var error = document.getElementById('CP');
+	if (currentpass==="") {
+		error.innerHTML=" *Empty current pass field";
+		document.getElementById('updatepass').disabled=true;
+	}
+	else
+	{
+		if (newpass=="" || cnewpass==="") {
+			error.innerHTML=" *Empty prevoius field";
+			document.getElementById('updatepass').disabled=true;
+		}
+		else
+		{
+			error.innerHTML="";
+			document.getElementById('updatepass').disabled=false;
+		}
+	}
+}
+
+function profileName()
+{
+	var name = document.getElementById('name').value;
+	var error = document.getElementById('nmsg');
+	var alert= document.getElementById('Nalert');
+
+	if (name==="") {
+		error.innerHTML=" *Empty Full name field";
+		alert.innerHTML="*";
+		document.getElementById('updatepass').disabled=true;
+	}
+	else{
+		error.innerHTML="";
+		alert.innerHTML="";
+	}
+}
+
+
+
+function Pname()
+{
+	var name = document.getElementById('name').value;
+	var error = document.getElementById('Ne');
+
+	if (name==="") {
+		error.innerHTML=" *Empty product name";
+		document.getElementById('addP').disabled=true;
+	}
+	else
+	{
+		error.innerHTML="";
+	}
+}
+
+function Pquantity()
+{
+	var q = document.getElementById('qntity').value;
+	var error = document.getElementById('Qe');
+
+	if (q=="") {
+		error.innerHTML=" *Empty quantity field";
+		document.getElementById('addP').disabled=true;
+	}
+	else
+	{
+		if (q<0) {
+			error.innerHTML=" *Quantity can't be negative";
+			document.getElementById('addP').disabled=true;
+		}
+		else
+		{
+			error.innerHTML="";
+		}
+	}
+}
+
+function Pdate()
+{
+	var d= document.getElementById('date').value;
+	var error = document.getElementById('De');
+	if (d=="") {
+		error.innerHTML=" *Blank date";
+		document.getElementById('addP').disabled=true;
+	}
+	else
+	{
+		error.innerHTML="";
+	}
+}
+
+function Pbuy()
+{
+	var q = document.getElementById('bp').value;
+	var error = document.getElementById('Be');
+
+	if (q=="") {
+		error.innerHTML=" *Empty buy price field";
+		document.getElementById('addP').disabled=true;
+	}
+	else
+	{
+		if (q<0) {
+			error.innerHTML=" *Price value can't be negative";
+			document.getElementById('addP').disabled=true;
+		}
+		else
+		{
+			error.innerHTML="";
+		}
+	}
+}
+
+
+function Psell()
+{
+	var q = document.getElementById('sp').value;
+	var error = document.getElementById('Se');
+
+	if (q=="") {
+		error.innerHTML=" *Empty sell price field";
+		document.getElementById('addP').disabled=true;
+	}
+	else
+	{
+		if (q<0) {
+			error.innerHTML=" *Price can't be negative";
+			document.getElementById('addP').disabled=true;
+		}
+		else
+		{
+			error.innerHTML="";
+		}
+	}
+}
+
+function Pdesc()
+{
+	var q = document.getElementById('desc').value;
+	var error = document.getElementById('Dse');
+
+	if (q=="") {
+		error.innerHTML=" *Empty description field";
+		document.getElementById('addP').disabled=true;
+	}
+	else{
+		error.innerHTML="";
+	}
+}
+
+
+function Pimg()
+{
+	var q = document.getElementById('img').value;
+	var error = document.getElementById('Ie');
+	if (q=="") {
+		error.innerHTML=" *Image add please";
+		document.getElementById('addP').disabled=true;
+	}
+	else{
+		error.innerHTML="";
+	}
+}
+
+
+function Pcat()
+{
+	var q = document.getElementById('cat').value;
+	var error = document.getElementById('Ce');
+
+	if (q=="") {
+		error.innerHTML=" *Empty category field";
+		document.getElementById('addP').disabled=true;
+	}
+	else{
+		error.innerHTML="";
+		document.getElementById('addP').disabled=false;
+	}
+}
+
+function cateValid()
+{
+	var q = document.getElementById('cat').value;
+	var error = document.getElementById('Ce');
+	if (q=="") {
+		error.innerHTML=" *Empty category field";
+		document.getElementById('addP').disabled=true;
+	}
+	else{
+		error.innerHTML="";
+		document.getElementById('addP').disabled=false;
+	}
+}
+
+function subcarValid()
+{
+	var q = document.getElementById('subcat').value;
+	var error = document.getElementById('sCe');
+	if (q=="") {
+		error.innerHTML=" *Empty Sub-category field";
+		document.getElementById('addP').disabled=true;
+	}
+	else{
+		error.innerHTML="";
+		document.getElementById('addP').disabled=false;
+	}
+}
+
+function date1Valid()
+{
+	var d1 = document.getElementById('date1').value;
+	//var d2 = document.getElementById('date2').value;
+	var error = document.getElementById('dateE1');
+
+	if (d1==="") {
+		error.innerHTML=" *Starting date empty";
+		document.getElementById('data').disabled=true;
+		document.getElementById('export').disabled=true;
+	}
+	else
+	{
+		error.innerHTML="";
+		document.getElementById('data').disabled=false;
+		document.getElementById('export').disabled=true;
+	}
+}
+
+function date2Valid()
+{
+
+	var d2 = document.getElementById('date2').value;
+	var error = document.getElementById('dateE2');
+
+	if (d2==="") {
+		error.innerHTML=" *Ending date empty";
+		document.getElementById('data').disabled=true;
+		document.getElementById('export').disabled=true;
+	}
+	else
+	{
+		error.innerHTML="";
+		document.getElementById('data').disabled=false;
+		document.getElementById('export').disabled=false;
+	}
 }

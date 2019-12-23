@@ -7,7 +7,8 @@ if ($_SESSION['name'] AND $_SESSION['type'] AND $_COOKIE['timeout']) {
 
 ?>
 
-<script type="text/javascript" src="../js.SellerScript.php"></script>
+<script type="text/javascript" src="../js/SellerScript.js"></script>
+<script type="text/javascript" src="../js/SellerValid.js"></script>
 <style type="text/css">
 	#catT
 	{
@@ -27,10 +28,10 @@ if ($_SESSION['name'] AND $_SESSION['type'] AND $_COOKIE['timeout']) {
 		<table border="1" width="20%" id="catT">
 			<tr>
 				<td>Category Name:</td>
-				<td><input type="text" name="cat" id="cat"></td>
+				<td><input type="text" name="cat" id="cat" onclick="cateValid()" onkeyup="cateValid()"></td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center"><input type="submit" name="submit" value="Add"></td>
+				<td colspan="2" align="center"><input type="submit" name="submit" value="Add" id="addP"></td><b id="Ce" style="color: red"></b>
 			</tr>
 		</table>
 	</form>
