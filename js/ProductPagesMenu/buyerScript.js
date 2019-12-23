@@ -53,24 +53,35 @@ function lifestyle()
 	  };
 }
 
-function gotoProduct()
+function gotoProduct(x)
 {
 	var Productname = document.getElementById('productname').textContent;
 	var Productprice = document.getElementById('productprice').textContent;
 	var ProductQty = document.getElementById('qty').value;
 	//alert(ProductQty);
 
-	var xhttp = new XMLHttpRequest();
-	 xhttp.open("POST", "../../php/getProduct.php", true);
-	  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	  xhttp.send('ProName='+Productname+'&ProPrice='+Productprice+'&ProQty='+ProductQty);
+	if(x<=0)
+	{
+		alert('Product Sold Out!');
+	}
+	else if(x<ProductQty)
+	{
+		alert('Desired Quantity is no Available');
+	}
+	else
+	{
+		var xhttp = new XMLHttpRequest();
+		 xhttp.open("POST", "../../php/getProduct.php", true);
+		  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		  xhttp.send('ProName='+Productname+'&ProPrice='+Productprice+'&ProQty='+ProductQty+'&avQ='+x);
 
-	  xhttp.onreadystatechange = function() {
-	    if (this.readyState == 4 && this.status==200) {
-	    	//alert(this.responseText);
-	    window.location = "../cart.php";
+		  xhttp.onreadystatechange = function() {
+		    if (this.readyState == 4 && this.status==200) {
+		    	//alert(this.responseText);
+		    window.location = "../cart.php";
 
-	    }
-	    //alert(this.responseText);
-	  };
+		    }
+		    //alert(this.responseText);
+		  };
+	}
 }

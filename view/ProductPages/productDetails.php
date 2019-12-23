@@ -108,7 +108,7 @@ if(isset($_GET['product']))
 								</td>
 							</tr>
 							<tr>
-								<td colspan="3" height="90px" valign="bottom"><input type="submit" id="addCartBtn" name="addcart" value="Add To Cart" onclick="gotoProduct()"></td>
+								<td colspan="3" height="90px" valign="bottom"><input type="submit" id="addCartBtn" name="addcart" value="Add To Cart" onclick="gotoProduct('<?=$getProduct[0]['quantity']?>')"></td>
 							</tr>
 							<tr>
 								<td height="20px" colspan="3"></td>
