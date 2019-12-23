@@ -23,7 +23,7 @@ if (isset($_SESSION['NAME'])) { ?>
 								<?php
 									if (isset($_COOKIE['id'])) {
 										?>
-										<a href="Profile/buyerDashboard.php"><div id="myAccount">My Account</div></a>
+										<a href="buyerDashboard.php"><div id="myAccount">My Account</div></a>
 										<?php
 									}
 									else{

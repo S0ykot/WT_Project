@@ -94,6 +94,10 @@ if(isset($_POST['cred']))
 				//header('location: ../view/buyerReg.php');
 				echo "Failed";
 			}
+			elseif(strlen($pass)<8)
+			{
+				echo 'Failed';
+			}
 			elseif (!verifyEmail($email,'@')) 
 			{
 				//header('location: ../view/buyerReg.php');

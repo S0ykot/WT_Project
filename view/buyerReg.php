@@ -91,12 +91,12 @@ if (!isset($_COOKIE['id'])) { ?>
 													</tr>
 													<tr><td height="40px" colspan="4"></td></tr>
 													<tr>
-														<td width="100px"></td>
-														<td>Name :</td>
+														<td width="30px"></td>
+														<td width="120px">Name :</td>
 														<td>
 															<input type="text" class="loginReg" id="NAME" name="name" placeholder="Name" id="nameBox">
 														</td>
-														<td width="70px"></td>
+														<td width="200px" id="nameMsg" align="center"></td>
 													</tr>
 													<tr><td height="20px" colspan="4" ><div id="nameError"></div></td></tr>
 													<tr>
@@ -105,7 +105,7 @@ if (!isset($_COOKIE['id'])) { ?>
 														<td>
 															<input type="text" id="EMAIL" class="loginReg" name="email" placeholder="youremail@example.com">
 														</td>
-														<td width="70px"></td>
+														<td width="200px" id="emailMsg" align="center"></td>
 													</tr>
 													<tr><td height="20px" colspan="4"></td></tr>
 													<tr>
@@ -114,7 +114,7 @@ if (!isset($_COOKIE['id'])) { ?>
 														<td>
 															<input class="loginReg" id="DOB" type="date" name="dob">
 														</td>
-														<td width="70px"></td>
+														<td width="200px" id="dobMsg" align="center"></td>
 													</tr>
 													<tr><td height="20px" colspan="4"></td></tr>
 													<tr>
@@ -123,7 +123,7 @@ if (!isset($_COOKIE['id'])) { ?>
 														<td>
 															<textarea name="address" id="address" cols="25" rows="5" placeholder="Address"></textarea>
 														</td>
-														<td width="70px"></td>
+														<td width="200px" id="addressMsg" align="center"></td>
 													</tr>
 													<tr><td height="17px" colspan="4"></td></tr>
 													<tr>
@@ -132,7 +132,7 @@ if (!isset($_COOKIE['id'])) { ?>
 														<td>
 															<input type="text" class="loginReg" id="CON" name="phnNo" placeholder="01XXXXXXXXX">
 														</td>
-														<td width="70px"></td>
+														<td width="200px" id="conMsg" align="center"></td>
 													</tr>
 													<tr><td height="20px" colspan="4"></td></tr>
 													<tr>
@@ -152,7 +152,7 @@ if (!isset($_COOKIE['id'])) { ?>
 														<td>
 															<input type="text" class="loginReg" id="UNAME" name="username" placeholder="Username">
 														</td>
-														<td width="70px"></td>
+														<td width="200px" id="unameMsg" align="center"></td>
 													</tr>
 													<tr><td height="20px" colspan="4"></td></tr>
 													<tr>
